@@ -494,6 +494,30 @@ describe("quiz flow", () => {
   })
 })
 
+describe("text questions in survey mode", () => {
+  it("does not grade or reveal answers left from quiz editing", async () => {
+    const { game, sockets, status, start } = setup(
+      createQuizz([createTextQuestion()], QUIZZ_MODES.SURVEY),
+    )
+
+    await start()
+    game.selectAnswer(sockets[0], [], "Paris")
+    game.advance()
+    await vi.advanceTimersByTimeAsync(TICK_MS)
+
+    expect(status(MANAGER)?.data).toMatchObject({
+      answers: [],
+      textResponses: [{ text: "Paris", count: 1, correct: false }],
+    })
+
+    game.advance()
+
+    const [meta] = getResultsMeta()
+
+    expect(getResultById(meta.id).questions[0].answers).toEqual([])
+  })
+})
+
 describe("ending a game", () => {
   it("resets everyone and keeps the revealed questions", async () => {
     const { game, sockets, start, events } = setup(

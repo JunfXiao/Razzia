@@ -131,6 +131,11 @@ export class RoundManager {
     return this.isTextQuestion() ? [] : this.question.answers
   }
 
+  // A survey has no right answers, whatever was left from editing it as a quiz.
+  private get gradedTextAnswers(): string[] {
+    return this.isSurvey() ? [] : this.question.answers
+  }
+
   private get textResponses() {
     return this.isTextQuestion()
       ? groupTextAnswers(this.playersAnswers)
@@ -366,6 +371,7 @@ export class RoundManager {
   private recordHistory(players: Player[], scored: ScoredPlayer[] = []): void {
     this.questionsHistory.push({
       ...this.question,
+      answers: this.isSurvey() ? this.publicAnswers : this.question.answers,
       solutions: this.isSurvey() ? undefined : this.question.solutions,
       playerAnswers: players.map((player) => {
         const score = scored.find((s) => s.id === player.id)
@@ -396,6 +402,7 @@ export class RoundManager {
     if (this.isSurvey()) {
       this.sendReveal({
         ...this.question,
+        answers: this.publicAnswers,
         solutions: undefined,
         responses: answerCounts,
         textResponses: this.textResponses,
@@ -567,7 +574,7 @@ export class RoundManager {
   }
 
   private matchText(text?: string): number[] | null {
-    return text ? [matchTextAnswer(text, this.question.answers)] : null
+    return text ? [matchTextAnswer(text, this.gradedTextAnswers)] : null
   }
 
   selectAnswer(socket: Socket, answerIds: number[], rawText?: string): void {

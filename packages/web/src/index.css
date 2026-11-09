@@ -8,6 +8,12 @@
   --color-answer-2: #56b4e9;
   --color-answer-3: #3dbfa0;
   --color-answer-4: #cc79a7;
+  --color-answer-5: #d55e00;
+  --color-answer-6: #0072b2;
+  --color-answer-7: #8e6bbf;
+  --color-answer-8: #6b8e23;
+  --color-answer-9: #c0504d;
+  --color-answer-10: #607d8b;
   --color-correct: var(--color-green-500);
 
   --color-background: var(--color-white);

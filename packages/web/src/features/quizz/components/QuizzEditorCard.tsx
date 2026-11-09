@@ -1,6 +1,7 @@
 import { MEDIA_TYPES, QUESTION_TYPES } from "@razzia/common/constants"
 import type { Question, QuestionMedia } from "@razzia/common/types/game"
 import AlertDialog from "@razzia/web/components/AlertDialog"
+import { ROOMY_ANSWER_COUNT } from "@razzia/web/features/game/utils/constants"
 import clsx from "clsx"
 import { CircleAlert, Music, Trash2, Video } from "lucide-react"
 import { useTranslation } from "react-i18next"
@@ -83,7 +84,14 @@ const QuizzEditorCard = ({
           </div>
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-1">
+        <div
+          className={clsx(
+            "grid gap-1",
+            question.answers.length > ROOMY_ANSWER_COUNT
+              ? "grid-cols-5"
+              : "grid-cols-2",
+          )}
+        >
           {question.answers.map((_, i) => (
             <div
               key={i}

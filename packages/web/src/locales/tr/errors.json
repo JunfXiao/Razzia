@@ -55,7 +55,7 @@
     "questionEmpty": "Soru alanı boş bırakılamaz",
     "subjectEmpty": "Konu alanı boş bırakılamaz",
     "tooFewAnswers": "Bir sorunun en az 2 cevabı olmalıdır",
-    "tooManyAnswers": "Bir sorunun 4'ten fazla cevabı olamaz",
+    "tooManyAnswers": "Bir sorunun 10'dan fazla cevabı olamaz",
     "estimationInvalidRange": "Maksimum, minimumdan büyük olmalıdır",
     "estimationSolutionOutOfRange": "Doğru cevap minimum ile maksimum arasında olmalıdır",
     "estimationStepInvalid": "Adım 0'dan büyük olmalıdır",

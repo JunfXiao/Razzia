@@ -55,7 +55,7 @@ Quiz Options:
   - `question`: The question text
   - `category`: Optional round name, see [Categories](#categories)
   - `note`: Optional explanation shown on the main screen when the answer is revealed, e.g. `"Red, green and blue are the primary colors of light"`
-  - `answers`: Array of possible answers (2-4 options)
+  - `answers`: Array of possible answers (2-10 options)
   - `media`: Optional media object displayed with the question:
     - `type`: `"image"`, `"video"`, or `"audio"`
     - `url`: URL of the media, either a full `http(s)://` URL or a `/media/...` path for a file uploaded from the editor (stored in `config/media`)

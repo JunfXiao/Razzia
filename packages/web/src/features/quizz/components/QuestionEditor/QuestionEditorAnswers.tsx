@@ -3,6 +3,7 @@ import FieldError from "@razzia/web/components/forms/FieldError"
 import {
   ANSWERS_COLORS,
   ANSWERS_LABELS,
+  ROOMY_ANSWER_COUNT,
 } from "@razzia/web/features/game/utils/constants"
 import { QUESTION_REGISTRY } from "@razzia/web/features/questions"
 import {
@@ -93,7 +94,10 @@ const QuestionEditorAnswers = () => {
                 <div className="flex flex-col gap-1">
                   <div
                     className={clsx(
-                      "flex items-center gap-3 rounded-2xl px-4 py-6",
+                      "flex items-center gap-3 rounded-2xl px-4",
+                      currentQuestion.answers.length > ROOMY_ANSWER_COUNT
+                        ? "py-3"
+                        : "py-6",
                       ANSWERS_COLORS[i],
                       fieldState.invalid && "ring-2 ring-red-500",
                     )}

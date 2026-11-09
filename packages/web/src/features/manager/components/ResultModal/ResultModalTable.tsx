@@ -48,10 +48,10 @@ const ResultModalTableRow = ({ playerAnswer }: RowProps) => {
                 key={id}
                 className={clsx(
                   "inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs text-white",
-                  ANSWERS_COLORS[id % 4],
+                  ANSWERS_COLORS[id],
                 )}
               >
-                <span className="font-bold">{ANSWERS_LABELS[id % 4]}</span>
+                <span className="font-bold">{ANSWERS_LABELS[id]}</span>
                 <span className="max-w-30 truncate">
                   {questionResult.answers[id]}
                 </span>

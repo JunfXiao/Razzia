@@ -18,9 +18,18 @@ export const ANSWERS_COLORS = [
   "bg-[var(--color-answer-2)] text-white",
   "bg-[var(--color-answer-3)] text-white",
   "bg-[var(--color-answer-4)] text-white",
+  "bg-[var(--color-answer-5)] text-white",
+  "bg-[var(--color-answer-6)] text-white",
+  "bg-[var(--color-answer-7)] text-white",
+  "bg-[var(--color-answer-8)] text-white",
+  "bg-[var(--color-answer-9)] text-white",
+  "bg-[var(--color-answer-10)] text-white",
 ]
 
-export const ANSWERS_LABELS = ["A", "B", "C", "D"]
+/** Beyond this many answers the layouts switch to a compact, scrollable form. */
+export const ROOMY_ANSWER_COUNT = 4
+
+export const ANSWERS_LABELS = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
 
 export const GAME_STATES = {
   status: {

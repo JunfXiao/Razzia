@@ -75,12 +75,12 @@ describe("quizzValidator", () => {
     expect(issues(quizz([question], QUIZZ_MODES.SURVEY))).toEqual([])
   })
 
-  it("limits choice questions to 2-4 answers", () => {
+  it("limits choice questions to 2-10 answers", () => {
     expect(issues(quizz([choiceQuestion({ answers: ["A"] })]))).toContain(
       "errors:quizz.tooFewAnswers",
     )
     expect(
-      issues(quizz([choiceQuestion({ answers: ["A", "B", "C", "D", "E"] })])),
+      issues(quizz([choiceQuestion({ answers: Array<string>(11).fill("A") })])),
     ).toContain("errors:quizz.tooManyAnswers")
   })
 

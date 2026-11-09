@@ -55,7 +55,7 @@
     "questionEmpty": "Die Frage darf nicht leer sein",
     "subjectEmpty": "Das Thema darf nicht leer sein",
     "tooFewAnswers": "Eine Frage muss mindestens 2 Antworten haben",
-    "tooManyAnswers": "Eine Frage darf nicht mehr als 4 Antworten haben",
+    "tooManyAnswers": "Eine Frage darf nicht mehr als 10 Antworten haben",
     "estimationInvalidRange": "Das Maximum muss größer als das Minimum sein",
     "estimationSolutionOutOfRange": "Die richtige Antwort muss zwischen Minimum und Maximum liegen",
     "estimationStepInvalid": "Die Schrittweite muss größer als 0 sein",

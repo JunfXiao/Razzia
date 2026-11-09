@@ -8,6 +8,7 @@ type Props = PropsWithChildren &
     correct?: boolean
     selected?: boolean
     large?: boolean
+    compact?: boolean
   }
 
 const AnswerButton = ({
@@ -17,6 +18,7 @@ const AnswerButton = ({
   correct,
   selected,
   large,
+  compact,
   ...otherProps
 }: Props) => {
   const CorrectIcon = correct ? Check : X
@@ -24,7 +26,8 @@ const AnswerButton = ({
   return (
     <button
       className={clsx(
-        "relative flex rounded-2xl p-4 text-left sm:py-6",
+        "relative flex rounded-2xl text-left",
+        compact ? "p-2 sm:px-3 sm:py-2.5" : "p-4 sm:py-6",
         className,
       )}
       {...otherProps}

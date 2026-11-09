@@ -1,12 +1,20 @@
 import {
   ANSWERS_COLORS,
   ANSWERS_LABELS,
+  ROOMY_ANSWER_COUNT,
 } from "@razzia/web/features/game/utils/constants"
 import type { PreparedComponentProps } from "@razzia/web/features/questions/types"
 import clsx from "clsx"
 
 const PreparedAnswers = ({ totalAnswers }: PreparedComponentProps) => (
-  <div className="anim-quizz grid aspect-square w-60 grid-cols-2 gap-4 rounded-2xl bg-gray-700 p-5 md:w-60">
+  <div
+    className={clsx(
+      "anim-quizz grid rounded-2xl bg-gray-700",
+      totalAnswers > ROOMY_ANSWER_COUNT
+        ? "w-80 max-w-full grid-cols-5 gap-2 p-3"
+        : "aspect-square w-60 grid-cols-2 gap-4 p-5 md:w-60",
+    )}
+  >
     {Array.from({ length: totalAnswers }).map((_, key) => (
       <div
         key={key}

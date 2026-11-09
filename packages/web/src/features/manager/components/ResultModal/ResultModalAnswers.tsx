@@ -163,8 +163,8 @@ const ResultModalAnswers = () => {
         pa.answerIds?.includes(ai),
       ).length,
       isCorrect: questionResult.solutions?.includes(ai) ?? false,
-      color: ANSWERS_COLORS[ai % 4],
-      answerLabel: ANSWERS_LABELS[ai % 4],
+      color: ANSWERS_COLORS[ai],
+      answerLabel: ANSWERS_LABELS[ai],
     }))
   })()
 

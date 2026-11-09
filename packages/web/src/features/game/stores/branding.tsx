@@ -6,7 +6,17 @@ interface GameBrandingStore {
   setBranding: (_branding: QuizzBranding | null) => void
 }
 
+const preload = (url?: string) => {
+  if (url) {
+    new Image().src = url
+  }
+}
+
 export const useGameBrandingStore = create<GameBrandingStore>((set) => ({
   branding: null,
-  setBranding: (branding) => set({ branding }),
+  setBranding: (branding) => {
+    preload(branding?.background)
+    preload(branding?.logo)
+    set({ branding })
+  },
 }))

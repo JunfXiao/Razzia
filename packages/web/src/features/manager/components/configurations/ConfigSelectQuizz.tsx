@@ -1,6 +1,7 @@
 import { STATUS } from "@razzia/common/types/game/status"
 import Button from "@razzia/web/components/Button"
 import Skeleton, { SkeletonRows } from "@razzia/web/components/Skeleton"
+import { useGameBrandingStore } from "@razzia/web/features/game/stores/branding"
 import { useManagerStore } from "@razzia/web/features/game/stores/manager"
 import { createStatus } from "@razzia/web/features/game/utils/createStatus"
 import ConfigActiveGame from "@razzia/web/features/manager/components/configurations/ConfigActiveGame"
@@ -25,13 +26,15 @@ const ConfigSelectQuizz = () => {
     useQuery(activeGameQuery())
   const queryClient = useQueryClient()
   const { updateManager } = useManagerStore()
+  const { setBranding } = useGameBrandingStore()
   const [selected, setSelected] = useState<string | null>(null)
   const navigate = useNavigate()
   const { t } = useTranslation()
 
   const { mutate: start } = useMutation({
     mutationFn: createGame,
-    onSuccess: ({ gameId, inviteCode }) => {
+    onSuccess: ({ gameId, inviteCode, branding }) => {
+      setBranding(branding)
       updateManager({
         gameId,
         inviteCode,

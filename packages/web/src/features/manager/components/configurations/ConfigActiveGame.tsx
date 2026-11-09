@@ -1,5 +1,7 @@
+import type { QuizzBranding } from "@razzia/common/types/game"
 import AlertDialog from "@razzia/web/components/AlertDialog"
 import Button from "@razzia/web/components/Button"
+import { useGameBrandingStore } from "@razzia/web/features/game/stores/branding"
 import {
   activeGameKey,
   endGame,
@@ -12,10 +14,18 @@ import toast from "react-hot-toast"
 import { useTranslation } from "react-i18next"
 
 interface Props {
-  game: { gameId: string; inviteCode: string; subject: string }
+  game: {
+    gameId: string
+    inviteCode: string
+    subject: string
+    branding: QuizzBranding | null
+  }
 }
 
-const ConfigActiveGame = ({ game: { gameId, inviteCode, subject } }: Props) => {
+const ConfigActiveGame = ({
+  game: { gameId, inviteCode, subject, branding },
+}: Props) => {
+  const { setBranding } = useGameBrandingStore()
   const navigate = useNavigate()
   const queryClient = useQueryClient()
   const { t } = useTranslation()
@@ -46,9 +56,10 @@ const ConfigActiveGame = ({ game: { gameId, inviteCode, subject } }: Props) => {
       </div>
 
       <Button
-        onClick={() =>
+        onClick={() => {
+          setBranding(branding)
           navigate({ to: "/party/manager/$gameId", params: { gameId } })
-        }
+        }}
       >
         {t("manager:activeGame.return")}
       </Button>

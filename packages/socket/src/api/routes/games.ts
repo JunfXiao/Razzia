@@ -26,6 +26,7 @@ const routes = apiFactory
             gameId: game.gameId,
             inviteCode: game.inviteCode,
             subject: game.subject,
+            branding: game.branding,
           }
         : null,
     })
@@ -57,7 +58,11 @@ const routes = apiFactory
       registry.markGameAsEmpty(game)
 
       return c.json(
-        { gameId: game.gameId, inviteCode: game.inviteCode },
+        {
+          gameId: game.gameId,
+          inviteCode: game.inviteCode,
+          branding: game.branding,
+        },
         StatusCodes.CREATED,
       )
     },

@@ -47,7 +47,11 @@
       "label": "Solo risposte",
       "hint": "I giocatori vedono solo i pulsanti di risposta, con un pulsante per rileggere la domanda."
     },
-    "title": "Impostazioni sessione"
+    "title": "Impostazioni sessione",
+    "language": {
+      "label": "Lingua",
+      "hint": "Cambia l'interfaccia solo su questo dispositivo."
+    }
   },
   "startGame": "Inizia",
   "summary": {

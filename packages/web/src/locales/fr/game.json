@@ -47,7 +47,11 @@
       "label": "Réponses seules",
       "hint": "Les joueurs ne voient que les boutons de réponse, avec un bouton pour relire la question."
     },
-    "title": "Réglages de la session"
+    "title": "Réglages de la session",
+    "language": {
+      "label": "Langue",
+      "hint": "Change l'interface uniquement sur cet appareil."
+    }
   },
   "startGame": "Démarrer",
   "summary": {

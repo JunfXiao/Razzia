@@ -5,6 +5,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@razzia/web/components/Select"
+import { selectLanguage } from "@razzia/web/i18n"
 import { Globe } from "lucide-react"
 import { useTranslation } from "react-i18next"
 
@@ -27,7 +28,7 @@ const LanguageSwitcher = () => {
   return (
     <Select
       value={normalizedLanguage}
-      onValueChange={(lang) => i18n.changeLanguage(lang)}
+      onValueChange={(lang) => void selectLanguage(lang)}
     >
       <SelectTrigger
         aria-label={t("common:changeLanguage")}

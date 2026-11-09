@@ -49,7 +49,11 @@
       "label": "Answers only",
       "hint": "Players only see the answer buttons, with a button to read the question again."
     },
-    "title": "Session settings"
+    "title": "Session settings",
+    "language": {
+      "label": "Language",
+      "hint": "Changes the interface on this device only."
+    }
   },
   "startGame": "Start",
   "summary": {

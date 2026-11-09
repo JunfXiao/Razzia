@@ -46,7 +46,11 @@
       "label": "Nur Antworten",
       "hint": "Die Spieler sehen nur die Antwortknöpfe, mit einem Knopf, um die Frage erneut zu lesen."
     },
-    "title": "Sitzungseinstellungen"
+    "title": "Sitzungseinstellungen",
+    "language": {
+      "label": "Sprache",
+      "hint": "Ändert die Oberfläche nur auf diesem Gerät."
+    }
   },
   "startGame": "Starten",
   "summary": {

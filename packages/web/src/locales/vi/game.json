@@ -47,7 +47,11 @@
       "label": "Chỉ hiện đáp án",
       "hint": "Người chơi chỉ thấy các nút đáp án, kèm một nút để đọc lại câu hỏi."
     },
-    "title": "Cài đặt phiên"
+    "title": "Cài đặt phiên",
+    "language": {
+      "label": "Ngôn ngữ",
+      "hint": "Chỉ thay đổi giao diện trên thiết bị này."
+    }
   },
   "startGame": "Bắt đầu phiên",
   "summary": {

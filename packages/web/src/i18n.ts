@@ -21,18 +21,35 @@ const resources = Object.entries(modules).reduce<Resource>(
   {},
 )
 
+const LANGUAGE_STORAGE_KEY = "i18nextLng"
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     fallbackLng: "en",
+    supportedLngs: Object.keys(resources),
+    load: "languageOnly",
     defaultNS: "common",
     resources,
     detection: {
       order: ["localStorage", "navigator"],
-      caches: ["localStorage"],
+      lookupLocalStorage: LANGUAGE_STORAGE_KEY,
+      // Only an explicit choice is stored, so an inferred language keeps
+      // following the browser.
+      caches: [],
     },
     interpolation: { escapeValue: false },
   })
+
+export const selectLanguage = async (language: string) => {
+  await i18n.changeLanguage(language)
+
+  try {
+    localStorage.setItem(LANGUAGE_STORAGE_KEY, language)
+  } catch {
+    /* Empty */
+  }
+}
 
 export default i18n

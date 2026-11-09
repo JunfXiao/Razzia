@@ -46,7 +46,11 @@
       "label": "Yalnızca cevaplar",
       "hint": "Oyuncular yalnızca cevap butonlarını görür; soruyu tekrar okumak için bir buton bulunur."
     },
-    "title": "Oturum ayarları"
+    "title": "Oturum ayarları",
+    "language": {
+      "label": "Dil",
+      "hint": "Arayüzü yalnızca bu cihazda değiştirir."
+    }
   },
   "startGame": "Başlat",
   "summary": {

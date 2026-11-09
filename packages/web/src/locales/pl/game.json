@@ -46,7 +46,11 @@
       "label": "Tylko odpowiedzi",
       "hint": "Gracze widzą tylko przyciski odpowiedzi oraz przycisk do ponownego przeczytania pytania."
     },
-    "title": "Ustawienia sesji"
+    "title": "Ustawienia sesji",
+    "language": {
+      "label": "Język",
+      "hint": "Zmienia interfejs tylko na tym urządzeniu."
+    }
   },
   "startGame": "Start",
   "summary": {

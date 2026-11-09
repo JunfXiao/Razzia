@@ -12,6 +12,10 @@ import {
   getRangeRatio,
   snapToStep,
 } from "@razzia/web/features/questions/estimation/utils"
+import {
+  rotationOf,
+  seededRandom,
+} from "@razzia/web/features/questions/text/wordCloudLayout"
 import { isAnswerCorrect } from "@razzia/web/features/questions/utils"
 import { describe, expect, it } from "vitest"
 
@@ -52,6 +56,32 @@ describe("buildHistogram", () => {
     expect(bins).toHaveLength(20)
     expect(bins[0].count).toBe(1)
     expect(bins[19].count).toBe(3)
+  })
+})
+
+describe("word cloud layout", () => {
+  it("keeps the top answer and long phrases horizontal", () => {
+    expect(rotationOf("anything", 0)).toBe(0)
+    expect(rotationOf("a rather long phrase", 3)).toBe(0)
+  })
+
+  it("rotates the same answer the same way", () => {
+    expect(rotationOf("Munich", 2)).toBe(rotationOf("Munich", 2))
+    expect([0, 90]).toContain(rotationOf("Munich", 2))
+  })
+
+  it("rotates some short answers", () => {
+    const words = ["alpha", "beta", "gamma", "delta", "kappa", "omega"]
+
+    expect(words.map((word) => rotationOf(word, 1))).toContain(90)
+  })
+
+  it("draws a repeatable random sequence", () => {
+    const first = seededRandom(42)
+    const second = seededRandom(42)
+
+    expect([first(), first()]).toEqual([second(), second()])
+    expect(first()).toBeLessThan(1)
   })
 })
 

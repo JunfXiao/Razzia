@@ -287,3 +287,33 @@ describe("quizz branding and word clouds", () => {
     expect(parsed.questions[0].options).toEqual({ wordCloud: true })
   })
 })
+
+describe("estimation solutions in survey mode", () => {
+  it("ignores a hidden solution left outside the range", () => {
+    const question = estimationQuestion({
+      solutions: [50],
+      options: {
+        inputMode: ESTIMATION_INPUT_MODES.SLIDER,
+        min: 16,
+        max: 30,
+        step: 1,
+        margin: 0,
+      },
+    })
+
+    expect(
+      quizzValidator.safeParse({
+        gameMode: QUIZZ_MODES.SURVEY,
+        subject: "Subject",
+        questions: [question],
+      }).success,
+    ).toBe(true)
+    expect(
+      quizzValidator.safeParse({
+        gameMode: QUIZZ_MODES.QUIZ,
+        subject: "Subject",
+        questions: [question],
+      }).error?.issues[0]?.message,
+    ).toBe("errors:quizz.estimationSolutionOutOfRange")
+  })
+})

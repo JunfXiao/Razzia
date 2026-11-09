@@ -1,5 +1,6 @@
 import { ESTIMATION_INPUT_MODES } from "@razzia/common/constants"
 import { isEstimationOptions } from "@razzia/common/questions/options"
+import type { Question } from "@razzia/common/types/game"
 import type { QuestionRefinement } from "@razzia/common/validators/questions"
 import { z } from "zod"
 
@@ -11,8 +12,25 @@ export const estimationOptionsValidator = z.object({
   margin: z.number(),
 })
 
+export const isEstimationSolutionValid = ({
+  options,
+  solutions,
+}: Pick<Question, "options" | "solutions">): boolean => {
+  if (!isEstimationOptions(options)) {
+    return true
+  }
+
+  const solution = solutions?.at(0)
+
+  return (
+    (solutions?.length ?? 0) <= 1 &&
+    (solution === undefined ||
+      (solution >= options.min && solution <= options.max))
+  )
+}
+
 export const refineEstimationQuestion: QuestionRefinement = (
-  { options, solutions },
+  { options },
   addIssue,
 ) => {
   if (!isEstimationOptions(options)) {
@@ -31,13 +49,5 @@ export const refineEstimationQuestion: QuestionRefinement = (
 
   if (options.min >= options.max) {
     addIssue(["options", "max"], "errors:quizz.estimationInvalidRange")
-  }
-
-  const solution = solutions?.at(0)
-  const isOutOfRange =
-    solution !== undefined && (solution < options.min || solution > options.max)
-
-  if ((solutions?.length ?? 0) > 1 || isOutOfRange) {
-    addIssue(["solutions"], "errors:quizz.estimationSolutionOutOfRange")
   }
 }

@@ -9,7 +9,10 @@ import {
 } from "@razzia/common/constants"
 import { QUESTION_REFINEMENTS } from "@razzia/common/validators/questions"
 import { multiOptionsValidator } from "@razzia/common/validators/questions/choice"
-import { estimationOptionsValidator } from "@razzia/common/validators/questions/estimation"
+import {
+  estimationOptionsValidator,
+  isEstimationSolutionValid,
+} from "@razzia/common/validators/questions/estimation"
 import { textOptionsValidator } from "@razzia/common/validators/questions/text"
 import { z } from "zod"
 
@@ -108,6 +111,14 @@ export const quizzValidator = z
       }
 
       if (question.solutions && question.solutions.length > 0) {
+        if (!isEstimationSolutionValid(question)) {
+          ctx.addIssue({
+            code: "custom",
+            path: ["questions", index, "solutions"],
+            message: "errors:quizz.estimationSolutionOutOfRange",
+          })
+        }
+
         return
       }
 

@@ -244,6 +244,9 @@ importers:
       tailwindcss-animated:
         specifier: ^2.1.0
         version: 2.1.0(tailwindcss@4.3.3)
+      text-security:
+        specifier: ^3.2.1
+        version: 3.2.1
       use-sound:
         specifier: ^5.0.0
         version: 5.0.0(react@19.3.1)
@@ -2997,6 +3000,9 @@ packages:
     resolution: {integrity: sha512-uxc/zpqFg6x7C8vOE7lh6Lbda8eEL9zmVm/PLeTPBRhh1xCgdWaQ+J1CUieGpIfm2HdtsUpRv+HshiasBMcc6A==}
     engines: {node: '>=6'}
 
+  text-security@3.2.1:
+    resolution: {integrity: sha512-MjDQ3lyLeLqcGqZfQCZ6kvjQiuNfJaicdgIczPJDtD4tj0vIPT8WwIOKTi8wgXCVS/F1WJmapO3SppXemrwbIA==}
+
   tinybench@6.2.2:
     resolution: {integrity: sha512-nIZ2N2dFpjBsg2hgitKu7mA+FvsIJuGJOwysRngmVRRmWgR/UyPjwJj8c/fT/dhm8EkHnF5EOogRf+0Z2qrimA==}
     engines: {node: '>=20.0.0'}
@@ -5658,6 +5664,8 @@ snapshots:
   tailwindcss@4.3.3: {}
 
   tapable@2.3.3: {}
+
+  text-security@3.2.1: {}
 
   tinybench@6.2.2: {}
 

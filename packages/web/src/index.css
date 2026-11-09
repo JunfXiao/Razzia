@@ -1,6 +1,17 @@
 @import "tailwindcss";
 @import "tailwindcss-animated";
 
+/*
+ * Every glyph of this font is a dot. Mobile browsers briefly show the last
+ * character typed in a password field; drawn with this font, it is a dot too.
+ * `block` keeps the text hidden instead of falling back while it loads.
+ */
+@font-face {
+  font-family: "text-security-disc";
+  src: url("text-security/text-security-disc-compat.woff2") format("woff2");
+  font-display: block;
+}
+
 @theme {
   --color-primary: #ff9900;
   --color-secondary: #1a140b;
@@ -25,6 +36,7 @@
   --color-foreground: var(--color-gray-700);
 
   --font-display: "Rubik Variable", sans-serif;
+  --font-password: "text-security-disc";
 
   --animate-fade: fade 150ms ease both;
 }

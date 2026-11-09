@@ -13,6 +13,24 @@ test("refuses a wrong manager password", async ({ page }) => {
   await expect(page).toHaveURL(/\/manager$/u)
 })
 
+test("draws the manager password with the mask font", async ({ page }) => {
+  await page.goto("/manager")
+
+  const password = page.getByPlaceholder(t("manager:passwordPlaceholder"))
+
+  await password.fill("secret")
+
+  expect(
+    await password.evaluate((input) => getComputedStyle(input).fontFamily),
+  ).toContain("text-security-disc")
+  expect(
+    await page.evaluate(
+      async () =>
+        (await document.fonts.load('1em "text-security-disc"')).length,
+    ),
+  ).toBe(1)
+})
+
 test("keeps the manager logged in after a reload", async ({ page }) => {
   await loginManager(page)
   await page.reload()

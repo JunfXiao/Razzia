@@ -17,6 +17,8 @@ const Input = ({
       "focus:border-primary border-accent text-foreground rounded-lg border-2 font-semibold focus:outline-none",
       variant === "md" && "p-2 text-lg",
       variant === "sm" && "px-3 py-2 text-sm",
+      // Masks the last typed character that mobile browsers briefly reveal.
+      type === "password" && "font-password placeholder:font-display",
       className,
     )}
     {...otherProps}

@@ -23,8 +23,14 @@ const ManagerGamePage = () => {
   const navigate = useNavigate()
   const { gameId: gameIdParam } = useParams({ from: "/party/manager/$gameId" })
   const { socket, isConnected } = useSocket()
-  const { gameId, status, updateManager, addReveal, resetManager } =
-    useManagerStore()
+  const {
+    gameId,
+    status,
+    updateManager,
+    addReveal,
+    updatePlayers,
+    resetManager,
+  } = useManagerStore()
   const { setQuestionStates } = useQuestionStore()
   const { t } = useTranslation()
 
@@ -70,6 +76,22 @@ const ManagerGamePage = () => {
       setQuestionStates(currentQuestion)
     },
   )
+
+  const dropPlayer = (playerId: string) => {
+    updatePlayers((list) => list.filter((p) => p.id !== playerId))
+  }
+
+  useEvent(EVENTS.MANAGER.NEW_PLAYER, (player) => {
+    updatePlayers((list) => [...list, player])
+  })
+
+  useEvent(EVENTS.MANAGER.REMOVE_PLAYER, dropPlayer)
+
+  useEvent(EVENTS.MANAGER.PLAYER_KICKED, dropPlayer)
+
+  useEvent(EVENTS.MANAGER.PLAYER_UPDATED, ({ previousId, player }) => {
+    updatePlayers((list) => list.map((p) => (p.id === previousId ? player : p)))
+  })
 
   useEvent(EVENTS.MANAGER.LOCK_UPDATED, (locked) => {
     updateManager({ locked })

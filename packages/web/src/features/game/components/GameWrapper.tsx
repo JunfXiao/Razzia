@@ -9,6 +9,8 @@ import GameBackground from "@razzia/web/components/GameBackground"
 import Loader from "@razzia/web/components/Loader"
 import Tooltip from "@razzia/web/components/Tooltip"
 import GameSettingsModal from "@razzia/web/features/game/components/GameSettingsModal"
+import JoinQrButton from "@razzia/web/features/game/components/JoinQrButton"
+import PlayersButton from "@razzia/web/features/game/components/PlayersButton"
 import RevealReview from "@razzia/web/features/game/components/RevealReview"
 import RoomLockButton from "@razzia/web/features/game/components/RoomLockButton"
 import {
@@ -22,7 +24,7 @@ import { MANAGER_SKIP_BTN } from "@razzia/web/features/game/utils/constants"
 import type { Status as GameStatus } from "@razzia/web/features/game/utils/createStatus"
 import { useFullscreen } from "@razzia/web/hooks/useFullscreen"
 import clsx from "clsx"
-import { Maximize, Minimize, Users } from "lucide-react"
+import { Maximize, Minimize } from "lucide-react"
 import { type PropsWithChildren, useState } from "react"
 import toast from "react-hot-toast"
 import { useTranslation } from "react-i18next"
@@ -162,18 +164,14 @@ const GameWrapper = ({
                         <span>{window.location.host}</span>
                         <span className="h-5 w-px bg-white/40" />
                         <span>{inviteCode}</span>
+                        <JoinQrButton />
                       </>
                     )}
                     <RoomLockButton className="-mx-1 rounded-md p-1 hover:bg-white/20" />
                   </div>
                 )}
 
-                <Tooltip content={t("game:playersJoined")}>
-                  <div className="ml-auto flex items-center gap-2 rounded-lg bg-black/40 px-3 py-1.5 text-xl font-bold text-white drop-shadow-md">
-                    <Users className="size-5" />
-                    {totalPlayers ?? players.length}
-                  </div>
-                </Tooltip>
+                <PlayersButton count={totalPlayers ?? players.length} />
 
                 {statusName === STATUS.SHOW_ROOM && <GameSettingsModal />}
 

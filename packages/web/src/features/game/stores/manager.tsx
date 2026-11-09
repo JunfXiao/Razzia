@@ -17,6 +17,7 @@ interface ManagerState<T> {
 type ManagerStore<T> = ManagerState<T> & {
   updateManager: (_state: Partial<ManagerState<T>>) => void
   addReveal: (_reveal: Reveal) => void
+  updatePlayers: (_update: (_players: Player[]) => Player[]) => void
   resetManager: () => void
 }
 
@@ -37,6 +38,9 @@ export const useManagerStore = create<ManagerStore<StatusDataMap>>((set) => ({
 
   addReveal: (reveal) =>
     set((state) => ({ reveals: [...state.reveals, reveal] })),
+
+  updatePlayers: (update) =>
+    set((state) => ({ players: update(state.players) })),
 
   resetManager: () => set(initialState),
 }))

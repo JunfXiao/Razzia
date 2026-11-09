@@ -51,7 +51,9 @@
         "stepHint": "Kaydırıcının ve beklenen cevabın hassasiyeti",
         "margin": "Tolerans",
         "marginHint": "Doğru cevaba bu mesafedeki cevaplar %100'den (tam) %50'ye kadar puan alır. Tolerans dışındaki cevaplar puan almaz."
-      }
+      },
+      "wordCloud": "Kelime bulutu",
+      "wordCloudHint": "Cevapları kelime bulutu olarak göster. Büyük/küçük harf ve fazla boşluklar yok sayılır."
     },
     "deleteQuestion": "Soruyu sil",
     "deleteQuestionConfirm": "Bu soruyu silmek istediğinizden emin misiniz?",
@@ -107,5 +109,11 @@
   },
   "addAnswer": "Cevap ekle",
   "removeAnswer": "Cevabı kaldır",
-  "markCorrect": "{{label}} seçeneğini doğru olarak işaretle"
+  "markCorrect": "{{label}} seçeneğini doğru olarak işaretle",
+  "branding": {
+    "title": "Arka plan ve logo",
+    "background": "Arka plan görseli",
+    "logo": "Logo",
+    "hint": "Yalnızca bu test için, katılım ekranında ve oyun sırasında kullanılır."
+  }
 }

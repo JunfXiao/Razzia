@@ -49,6 +49,7 @@ Quiz Options:
 
 - `gameMode`: `"quiz"` (default) or `"survey"`, see [Survey mode](#survey-mode)
 - `subject`: Title/topic of the quiz
+- `branding`: Optional `background` and `logo` image URLs for this quiz only, shown on the join screen and during the game (a full `http(s)://` URL or a `/media/...` path). They take priority over [Custom Branding](branding.md)
 - `questions`: Array of question objects containing:
   - `type`: `"single"` (exactly one answer), `"multi"` (one or more) or `"estimation"` (a number, see [Estimation questions](#estimation-questions)) or `"text"` (typed text, see [Text questions](#text-questions)). Defaults to `"single"` when omitted
   - `question`: The question text
@@ -112,6 +113,7 @@ A `"text"` question asks players to type their answer. Scoring works like a choi
 - `solutions`: Not used
 - Matching ignores case, surrounding or repeated spaces and full-width characters. Any other difference, such as a typo, counts as wrong unless it is listed in `answers`
 - Answers are limited to 100 characters
+- `options.wordCloud`: `true` shows the answers as a word cloud on the reveal. Answers are grouped ignoring case and extra spaces
 
 ## Categories
 

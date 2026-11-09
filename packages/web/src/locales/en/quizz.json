@@ -51,7 +51,9 @@
         "stepHint": "Precision of the slider and the expected answer",
         "margin": "Margin",
         "marginHint": "Answers within this distance of the correct answer score from 100% (exact) down to 50%. Answers outside score nothing."
-      }
+      },
+      "wordCloud": "Word cloud",
+      "wordCloudHint": "Show the answers as a word cloud. Case and extra spaces are ignored."
     },
     "deleteQuestion": "Delete question",
     "deleteQuestionConfirm": "Are you sure you want to delete this question?",
@@ -107,5 +109,11 @@
   },
   "addAnswer": "Add answer",
   "removeAnswer": "Remove answer",
-  "markCorrect": "Mark {{label}} as correct"
+  "markCorrect": "Mark {{label}} as correct",
+  "branding": {
+    "title": "Background and logo",
+    "background": "Background image",
+    "logo": "Logo",
+    "hint": "Used for this quizz only, on the join screen and during the game."
+  }
 }

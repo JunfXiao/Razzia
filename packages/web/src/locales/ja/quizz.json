@@ -51,7 +51,9 @@
         "stepHint": "スライダーと正解の精度",
         "margin": "許容範囲",
         "marginHint": "正解からこの範囲内の回答は 100%（完全一致）から 50% の得点になります。範囲外は 0 点です。"
-      }
+      },
+      "wordCloud": "ワードクラウド",
+      "wordCloudHint": "回答をワードクラウドで表示します。大文字と小文字、余分なスペースは無視されます。"
     },
     "deleteQuestion": "この質問を削除",
     "deleteQuestionConfirm": "この質問を削除してもよろしいですか？",
@@ -107,5 +109,11 @@
   },
   "addAnswer": "回答を追加",
   "removeAnswer": "回答を削除",
-  "markCorrect": "{{label}} を正解にする"
+  "markCorrect": "{{label}} を正解にする",
+  "branding": {
+    "title": "背景とロゴ",
+    "background": "背景画像",
+    "logo": "ロゴ",
+    "hint": "このクイズの参加画面とゲーム中にのみ使用されます。"
+  }
 }

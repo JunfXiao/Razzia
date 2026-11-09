@@ -51,7 +51,9 @@
         "stepHint": "Genauigkeit des Schiebereglers und der erwarteten Antwort",
         "margin": "Toleranz",
         "marginHint": "Antworten innerhalb dieses Abstands zur richtigen Antwort bringen 100 % (exakt) bis 50 %. Außerhalb gibt es keine Punkte."
-      }
+      },
+      "wordCloud": "Wortwolke",
+      "wordCloudHint": "Antworten als Wortwolke anzeigen. Groß-/Kleinschreibung und zusätzliche Leerzeichen werden ignoriert."
     },
     "deleteQuestion": "Frage löschen",
     "deleteQuestionConfirm": "Möchtest du diese Frage wirklich löschen?",
@@ -107,5 +109,11 @@
   },
   "addAnswer": "Antwort hinzufügen",
   "removeAnswer": "Antwort entfernen",
-  "markCorrect": "{{label}} als richtig markieren"
+  "markCorrect": "{{label}} als richtig markieren",
+  "branding": {
+    "title": "Hintergrund und Logo",
+    "background": "Hintergrundbild",
+    "logo": "Logo",
+    "hint": "Gilt nur für dieses Quiz, beim Beitreten und während des Spiels."
+  }
 }

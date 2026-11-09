@@ -51,7 +51,9 @@
         "stepHint": "Precisión del deslizador y de la respuesta esperada",
         "margin": "Margen",
         "marginHint": "Las respuestas dentro de esta distancia de la respuesta correcta obtienen del 100 % (exacta) al 50 %. Fuera de ella no obtienen nada."
-      }
+      },
+      "wordCloud": "Nube de palabras",
+      "wordCloudHint": "Muestra las respuestas como nube de palabras. Se ignoran las mayúsculas y los espacios adicionales."
     },
     "deleteQuestion": "Eliminar pregunta",
     "deleteQuestionConfirm": "¿Estás seguro de que quieres eliminar esta pregunta?",
@@ -107,5 +109,11 @@
   },
   "addAnswer": "Añadir respuesta",
   "removeAnswer": "Quitar respuesta",
-  "markCorrect": "Marcar {{label}} como correcta"
+  "markCorrect": "Marcar {{label}} como correcta",
+  "branding": {
+    "title": "Fondo y logotipo",
+    "background": "Imagen de fondo",
+    "logo": "Logotipo",
+    "hint": "Solo para este cuestionario, en la pantalla de acceso y durante la partida."
+  }
 }

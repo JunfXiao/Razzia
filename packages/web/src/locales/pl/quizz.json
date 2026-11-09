@@ -51,7 +51,9 @@
         "stepHint": "Dokładność suwaka i oczekiwanej odpowiedzi",
         "margin": "Margines",
         "marginHint": "Odpowiedzi mieszczące się w tej odległości od poprawnej dostają od 100% (dokładne trafienie) do 50% punktów. Odpowiedzi poza marginesem nie dostają nic."
-      }
+      },
+      "wordCloud": "Chmura słów",
+      "wordCloudHint": "Pokaż odpowiedzi jako chmurę słów. Wielkość liter i dodatkowe spacje są ignorowane."
     },
     "deleteQuestion": "Usuń pytanie",
     "deleteQuestionConfirm": "Czy na pewno chcesz usunąć to pytanie?",
@@ -107,5 +109,11 @@
   },
   "addAnswer": "Dodaj odpowiedź",
   "removeAnswer": "Usuń odpowiedź",
-  "markCorrect": "Oznacz {{label}} jako poprawną"
+  "markCorrect": "Oznacz {{label}} jako poprawną",
+  "branding": {
+    "title": "Tło i logo",
+    "background": "Obraz tła",
+    "logo": "Logo",
+    "hint": "Tylko dla tego quizu, na ekranie dołączania i podczas gry."
+  }
 }

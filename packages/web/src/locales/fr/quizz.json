@@ -51,7 +51,9 @@
         "stepHint": "Précision du curseur et de la réponse attendue",
         "margin": "Marge",
         "marginHint": "Les réponses à cette distance de la bonne réponse rapportent de 100 % (exacte) à 50 %. Au-delà, elles ne rapportent rien."
-      }
+      },
+      "wordCloud": "Nuage de mots",
+      "wordCloudHint": "Affiche les réponses sous forme de nuage de mots. La casse et les espaces superflus sont ignorés."
     },
     "deleteQuestion": "Supprimer la question",
     "deleteQuestionConfirm": "Êtes-vous sûr de vouloir supprimer cette question ?",
@@ -107,5 +109,11 @@
   },
   "addAnswer": "Ajouter une réponse",
   "removeAnswer": "Retirer une réponse",
-  "markCorrect": "Marquer {{label}} comme bonne réponse"
+  "markCorrect": "Marquer {{label}} comme bonne réponse",
+  "branding": {
+    "title": "Fond et logo",
+    "background": "Image de fond",
+    "logo": "Logo",
+    "hint": "Uniquement pour ce quiz, sur l'écran d'accès et pendant la partie."
+  }
 }

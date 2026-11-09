@@ -28,7 +28,17 @@ export interface EstimationQuestionOptions {
   margin: number
 }
 
-export type QuestionOptions = MultiQuestionOptions | EstimationQuestionOptions
+export interface TextQuestionOptions {
+  wordCloud: boolean
+}
+
+export type QuestionOptions =
+  MultiQuestionOptions | EstimationQuestionOptions | TextQuestionOptions
+
+export interface QuizzBranding {
+  background?: string
+  logo?: string
+}
 
 export interface Player {
   id: string
@@ -81,6 +91,7 @@ export interface Question {
 export interface Quizz {
   gameMode: QuizzMode
   subject: string
+  branding?: QuizzBranding
   questions: Question[]
 }
 

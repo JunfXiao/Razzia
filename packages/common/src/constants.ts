@@ -77,6 +77,8 @@ export const QUESTION_TYPES = {
 
 export const MAX_TEXT_ANSWER_LENGTH = 100
 
+export const MAX_LOGO_TEXT_LENGTH = 40
+
 export const ESTIMATION_INPUT_MODES = {
   SLIDER: "slider",
   INPUT: "input",

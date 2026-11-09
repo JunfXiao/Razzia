@@ -112,8 +112,20 @@
   "markCorrect": "Đánh dấu {{label}} là đúng",
   "branding": {
     "title": "Hình nền và logo",
-    "background": "Ảnh nền",
+    "background": "Hình nền",
     "logo": "Logo",
-    "hint": "Chỉ dùng cho bộ câu hỏi này, ở màn hình tham gia và trong khi chơi."
+    "hint": "Chỉ dùng cho bộ câu hỏi này, ở màn hình tham gia và trong khi chơi.",
+    "none": "Không",
+    "color": "Màu",
+    "image": "Hình ảnh",
+    "text": "Chữ",
+    "logoTextPlaceholder": "Chữ của logo"
+  },
+  "setup": {
+    "title": "Bộ câu hỏi mới",
+    "quizDescription": "Đặt trước đáp án đúng. Người chơi ghi điểm và cạnh tranh trên bảng xếp hạng.",
+    "surveyDescription": "Thu thập ý kiến. Không có đáp án đúng hay điểm, kết quả cho thấy phân bố các câu trả lời.",
+    "name": "Tên",
+    "continue": "Tiếp tục"
   }
 }

@@ -256,6 +256,22 @@ describe("quizz branding and word clouds", () => {
     )
   })
 
+  it("accepts a solid color and a text logo", () => {
+    const branding = { backgroundColor: "#12ab9F", logoText: "Razzia Night" }
+
+    expect(quizzValidator.parse(buildQuizz({ branding })).branding).toEqual(
+      branding,
+    )
+  })
+
+  it("rejects a malformed color", () => {
+    expect(
+      quizzValidator.safeParse(
+        buildQuizz({ branding: { backgroundColor: "red" } }),
+      ).success,
+    ).toBe(false)
+  })
+
   it("rejects branding that is not a media url", () => {
     expect(
       quizzValidator.safeParse(buildQuizz({ branding: { logo: "nope" } }))

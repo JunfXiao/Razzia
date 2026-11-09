@@ -112,8 +112,20 @@
   "markCorrect": "{{label}} seçeneğini doğru olarak işaretle",
   "branding": {
     "title": "Arka plan ve logo",
-    "background": "Arka plan görseli",
+    "background": "Arka plan",
     "logo": "Logo",
-    "hint": "Yalnızca bu test için, katılım ekranında ve oyun sırasında kullanılır."
+    "hint": "Yalnızca bu test için, katılım ekranında ve oyun sırasında kullanılır.",
+    "none": "Yok",
+    "color": "Renk",
+    "image": "Görsel",
+    "text": "Metin",
+    "logoTextPlaceholder": "Logo metni"
+  },
+  "setup": {
+    "title": "Yeni test",
+    "quizDescription": "Doğru cevapları önceden belirleyin. Oyuncular puan kazanır ve sıralamada yarışır.",
+    "surveyDescription": "Görüş toplayın. Doğru cevap veya puan yoktur, sonuçlar cevapların dağılımını gösterir.",
+    "name": "Ad",
+    "continue": "Devam"
   }
 }

@@ -61,7 +61,8 @@
     "estimationStepInvalid": "The step must be greater than 0",
     "estimationMarginNegative": "The margin cannot be negative",
     "estimationInvalidOptions": "Estimation settings are missing or invalid",
-    "textNoAnswer": "Add at least one accepted answer"
+    "textNoAnswer": "Add at least one accepted answer",
+    "invalidBranding": "Invalid background or logo"
   },
   "result": {
     "notFound": "Result not found"

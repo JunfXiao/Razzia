@@ -9,6 +9,8 @@ const Background = ({ children }: PropsWithChildren) => {
   const { branding: gameBranding } = useGameBrandingStore()
   const logo = gameBranding?.logo ?? branding?.logo ?? defaultLogo
   const background = gameBranding?.background
+  const backgroundColor = gameBranding?.backgroundColor
+  const logoText = gameBranding?.logo ? undefined : gameBranding?.logoText
   const appName = branding?.appName ?? "Razzia"
 
   return (
@@ -17,23 +19,29 @@ const Background = ({ children }: PropsWithChildren) => {
       style={
         background
           ? { backgroundImage: `url(${JSON.stringify(background)})` }
-          : undefined
+          : { backgroundColor }
       }
     >
       <div
         className="absolute h-full max-h-svh w-full overflow-hidden"
-        hidden={Boolean(background)}
+        hidden={Boolean(background ?? backgroundColor)}
       >
         <div className="bg-primary/15 absolute top-[-70vmin] left-[-50vmin] min-h-[120vmin] min-w-[120vmin] rotate-20 rounded-4xl" />
         <div className="bg-primary/15 absolute right-[-10vmin] bottom-[-45vmin] min-h-[75vmin] min-w-[75vmin] rotate-20 rounded-4xl" />
       </div>
 
-      <img
-        src={logo}
-        onError={imageFallback(defaultLogo)}
-        className="mb-10 h-16"
-        alt={appName}
-      />
+      {logoText ? (
+        <h1 className="relative mb-10 text-5xl font-bold text-white drop-shadow-lg">
+          {logoText}
+        </h1>
+      ) : (
+        <img
+          src={logo}
+          onError={imageFallback(defaultLogo)}
+          className="mb-10 h-16"
+          alt={appName}
+        />
+      )}
       {children}
 
       <a

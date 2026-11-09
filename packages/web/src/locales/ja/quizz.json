@@ -112,8 +112,20 @@
   "markCorrect": "{{label}} を正解にする",
   "branding": {
     "title": "背景とロゴ",
-    "background": "背景画像",
+    "background": "背景",
     "logo": "ロゴ",
-    "hint": "このクイズの参加画面とゲーム中にのみ使用されます。"
+    "hint": "このクイズの参加画面とゲーム中にのみ使用されます。",
+    "none": "なし",
+    "color": "色",
+    "image": "画像",
+    "text": "テキスト",
+    "logoTextPlaceholder": "ロゴのテキスト"
+  },
+  "setup": {
+    "title": "新しいクイズ",
+    "quizDescription": "正解をあらかじめ設定します。プレイヤーはポイントを獲得し、ランキングで競います。",
+    "surveyDescription": "意見を集めます。正解やポイントはなく、結果には回答の分布が表示されます。",
+    "name": "名前",
+    "continue": "続ける"
   }
 }

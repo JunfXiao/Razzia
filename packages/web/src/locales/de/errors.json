@@ -61,7 +61,8 @@
     "estimationStepInvalid": "Die Schrittweite muss größer als 0 sein",
     "estimationMarginNegative": "Die Toleranz darf nicht negativ sein",
     "estimationInvalidOptions": "Die Schätzungseinstellungen fehlen oder sind ungültig",
-    "textNoAnswer": "Füge mindestens eine akzeptierte Antwort hinzu"
+    "textNoAnswer": "Füge mindestens eine akzeptierte Antwort hinzu",
+    "invalidBranding": "Ungültiger Hintergrund oder ungültiges Logo"
   },
   "result": {
     "notFound": "Ergebnis nicht gefunden"

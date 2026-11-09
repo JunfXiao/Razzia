@@ -61,7 +61,8 @@
     "estimationStepInvalid": "Il passo deve essere maggiore di 0",
     "estimationMarginNegative": "Il margine non può essere negativo",
     "estimationInvalidOptions": "Le impostazioni della stima mancano o non sono valide",
-    "textNoAnswer": "Aggiungi almeno una risposta accettata"
+    "textNoAnswer": "Aggiungi almeno una risposta accettata",
+    "invalidBranding": "Sfondo o logo non valido"
   },
   "result": {
     "notFound": "Risultato non trovato"

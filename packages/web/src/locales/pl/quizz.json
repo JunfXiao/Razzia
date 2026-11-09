@@ -112,8 +112,20 @@
   "markCorrect": "Oznacz {{label}} jako poprawną",
   "branding": {
     "title": "Tło i logo",
-    "background": "Obraz tła",
+    "background": "Tło",
     "logo": "Logo",
-    "hint": "Tylko dla tego quizu, na ekranie dołączania i podczas gry."
+    "hint": "Tylko dla tego quizu, na ekranie dołączania i podczas gry.",
+    "none": "Brak",
+    "color": "Kolor",
+    "image": "Obraz",
+    "text": "Tekst",
+    "logoTextPlaceholder": "Tekst logo"
+  },
+  "setup": {
+    "title": "Nowy quiz",
+    "quizDescription": "Ustaw poprawne odpowiedzi z wyprzedzeniem. Gracze zdobywają punkty i rywalizują w rankingu.",
+    "surveyDescription": "Zbieraj opinie. Nie ma poprawnych odpowiedzi ani punktów, a wyniki pokazują rozkład odpowiedzi.",
+    "name": "Nazwa",
+    "continue": "Dalej"
   }
 }

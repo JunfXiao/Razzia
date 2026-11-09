@@ -112,8 +112,20 @@
   "markCorrect": "Marcar {{label}} como correcta",
   "branding": {
     "title": "Fondo y logotipo",
-    "background": "Imagen de fondo",
+    "background": "Fondo",
     "logo": "Logotipo",
-    "hint": "Solo para este cuestionario, en la pantalla de acceso y durante la partida."
+    "hint": "Solo para este cuestionario, en la pantalla de acceso y durante la partida.",
+    "none": "Ninguno",
+    "color": "Color",
+    "image": "Imagen",
+    "text": "Texto",
+    "logoTextPlaceholder": "Texto del logotipo"
+  },
+  "setup": {
+    "title": "Nuevo cuestionario",
+    "quizDescription": "Define las respuestas correctas de antemano. Los jugadores ganan puntos y compiten en una clasificación.",
+    "surveyDescription": "Recoge opiniones. No hay respuestas correctas ni puntos, y los resultados muestran cómo se distribuyen las respuestas.",
+    "name": "Nombre",
+    "continue": "Continuar"
   }
 }

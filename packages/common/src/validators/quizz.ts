@@ -1,4 +1,5 @@
 import {
+  MAX_LOGO_TEXT_LENGTH,
   MAX_MEDIA_SIZE,
   MEDIA_TYPES,
   MEDIA_URL_PREFIX,
@@ -28,7 +29,16 @@ export const questionMediaValidator = z.object({
 
 const quizzBrandingValidator = z.object({
   background: mediaUrlValidator.optional(),
+  backgroundColor: z
+    .string()
+    .regex(/^#[0-9a-f]{6}$/iu, "errors:quizz.invalidBranding")
+    .optional(),
   logo: mediaUrlValidator.optional(),
+  logoText: z
+    .string()
+    .min(1, "errors:quizz.invalidBranding")
+    .max(MAX_LOGO_TEXT_LENGTH, "errors:quizz.invalidBranding")
+    .optional(),
 })
 
 export const mediaUploadValidator = z.object({

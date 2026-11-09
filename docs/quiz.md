@@ -49,7 +49,7 @@ Quiz Options:
 
 - `gameMode`: `"quiz"` (default) or `"survey"`, see [Survey mode](#survey-mode)
 - `subject`: Title/topic of the quiz
-- `branding`: Optional `background` and `logo` image URLs for this quiz only, shown on the join screen and during the game (a full `http(s)://` URL or a `/media/...` path). They take priority over [Custom Branding](branding.md)
+- `branding`: Optional look for this quiz only: `background` (image URL) or `backgroundColor` (`#rrggbb`), and `logo` (image URL) or `logoText` (up to 40 characters). Image URLs are a full `http(s)://` URL or a `/media/...` path. Shown on the join screen and during the game, and they take priority over [Custom Branding](branding.md)
 - `questions`: Array of question objects containing:
   - `type`: `"single"` (exactly one answer), `"multi"` (one or more) or `"estimation"` (a number, see [Estimation questions](#estimation-questions)) or `"text"` (typed text, see [Text questions](#text-questions)). Defaults to `"single"` when omitted
   - `question`: The question text

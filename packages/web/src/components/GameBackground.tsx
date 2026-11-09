@@ -10,6 +10,15 @@ const GameBackground = () => {
   const custom = branding?.background
   const background = custom ?? getBranding()?.background ?? defaultBackground
 
+  if (branding?.backgroundColor && !custom) {
+    return (
+      <div
+        className="fixed top-0 left-0 h-full w-full"
+        style={{ backgroundColor: branding.backgroundColor }}
+      />
+    )
+  }
+
   return (
     <div className="bg-secondary fixed top-0 left-0 h-full w-full">
       <img

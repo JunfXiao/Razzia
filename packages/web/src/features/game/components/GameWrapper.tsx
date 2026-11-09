@@ -9,6 +9,7 @@ import GameBackground from "@razzia/web/components/GameBackground"
 import Loader from "@razzia/web/components/Loader"
 import Tooltip from "@razzia/web/components/Tooltip"
 import EndGameButton from "@razzia/web/features/game/components/EndGameButton"
+import GameLogo from "@razzia/web/features/game/components/GameLogo"
 import GameSettingsModal from "@razzia/web/features/game/components/GameSettingsModal"
 import JoinQrButton from "@razzia/web/features/game/components/JoinQrButton"
 import PlayersButton from "@razzia/web/features/game/components/PlayersButton"
@@ -19,7 +20,6 @@ import {
   useEvent,
   useSocket,
 } from "@razzia/web/features/game/contexts/socket-context"
-import { useGameBrandingStore } from "@razzia/web/features/game/stores/branding"
 import { useManagerStore } from "@razzia/web/features/game/stores/manager"
 import { usePlayerStore } from "@razzia/web/features/game/stores/player"
 import { useQuestionStore } from "@razzia/web/features/game/stores/question"
@@ -50,7 +50,6 @@ const GameWrapper = ({
   const { player, gameMode } = usePlayerStore()
   const { players, inviteCode, locked, status } = useManagerStore()
   const { questionStates, setQuestionStates } = useQuestionStore()
-  const { branding } = useGameBrandingStore()
   const { isFullscreen, toggle: toggleFullscreen } = useFullscreen()
   const { t } = useTranslation()
   const [skippedStatus, setSkippedStatus] =
@@ -99,13 +98,7 @@ const GameWrapper = ({
     <section className="relative flex min-h-dvh">
       <GameBackground />
 
-      {branding?.logo && (
-        <img
-          src={branding.logo}
-          alt=""
-          className="pointer-events-none absolute top-4 left-1/2 z-20 h-10 -translate-x-1/2 object-contain md:h-14"
-        />
-      )}
+      <GameLogo className="pointer-events-none absolute top-4 left-1/2 z-20 -translate-x-1/2" />
 
       <div className="z-10 flex w-full flex-1 flex-col justify-between">
         {!isConnected && !statusName ? (

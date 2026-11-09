@@ -112,8 +112,20 @@
   "markCorrect": "{{label}} als richtig markieren",
   "branding": {
     "title": "Hintergrund und Logo",
-    "background": "Hintergrundbild",
+    "background": "Hintergrund",
     "logo": "Logo",
-    "hint": "Gilt nur für dieses Quiz, beim Beitreten und während des Spiels."
+    "hint": "Gilt nur für dieses Quiz, beim Beitreten und während des Spiels.",
+    "none": "Keine",
+    "color": "Farbe",
+    "image": "Bild",
+    "text": "Text",
+    "logoTextPlaceholder": "Logo-Text"
+  },
+  "setup": {
+    "title": "Neues Quiz",
+    "quizDescription": "Lege richtige Antworten im Voraus fest. Die Spieler sammeln Punkte und treten auf einer Bestenliste gegeneinander an.",
+    "surveyDescription": "Sammle Meinungen. Es gibt keine richtigen Antworten oder Punkte, die Ergebnisse zeigen die Verteilung der Antworten.",
+    "name": "Name",
+    "continue": "Weiter"
   }
 }

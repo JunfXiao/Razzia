@@ -112,8 +112,20 @@
   "markCorrect": "Mark {{label}} as correct",
   "branding": {
     "title": "Background and logo",
-    "background": "Background image",
+    "background": "Background",
     "logo": "Logo",
-    "hint": "Used for this quizz only, on the join screen and during the game."
+    "hint": "Used for this quizz only, on the join screen and during the game.",
+    "none": "None",
+    "color": "Color",
+    "image": "Image",
+    "text": "Text",
+    "logoTextPlaceholder": "Logo text"
+  },
+  "setup": {
+    "title": "New quizz",
+    "quizDescription": "Set correct answers in advance. Players earn points and compete on a leaderboard.",
+    "surveyDescription": "Collect opinions. There are no correct answers or points, and the results show how answers are distributed.",
+    "name": "Name",
+    "continue": "Continue"
   }
 }

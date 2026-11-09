@@ -112,8 +112,20 @@
   "markCorrect": "Marquer {{label}} comme bonne réponse",
   "branding": {
     "title": "Fond et logo",
-    "background": "Image de fond",
+    "background": "Fond",
     "logo": "Logo",
-    "hint": "Uniquement pour ce quiz, sur l'écran d'accès et pendant la partie."
+    "hint": "Uniquement pour ce quiz, sur l'écran d'accès et pendant la partie.",
+    "none": "Aucun",
+    "color": "Couleur",
+    "image": "Image",
+    "text": "Texte",
+    "logoTextPlaceholder": "Texte du logo"
+  },
+  "setup": {
+    "title": "Nouveau quiz",
+    "quizDescription": "Définis les bonnes réponses à l'avance. Les joueurs gagnent des points et s'affrontent au classement.",
+    "surveyDescription": "Recueille des avis. Il n'y a ni bonnes réponses ni points, et les résultats montrent la répartition des réponses.",
+    "name": "Nom",
+    "continue": "Continuer"
   }
 }

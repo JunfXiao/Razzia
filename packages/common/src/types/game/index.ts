@@ -37,7 +37,9 @@ export type QuestionOptions =
 
 export interface QuizzBranding {
   background?: string
+  backgroundColor?: string
   logo?: string
+  logoText?: string
 }
 
 export interface Player {

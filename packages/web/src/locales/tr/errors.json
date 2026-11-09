@@ -61,7 +61,8 @@
     "estimationStepInvalid": "Adım 0'dan büyük olmalıdır",
     "estimationMarginNegative": "Tolerans negatif olamaz",
     "estimationInvalidOptions": "Tahmin ayarları eksik veya geçersiz",
-    "textNoAnswer": "En az bir kabul edilen cevap ekleyin"
+    "textNoAnswer": "En az bir kabul edilen cevap ekleyin",
+    "invalidBranding": "Geçersiz arka plan veya logo"
   },
   "result": {
     "notFound": "Sonuç bulunamadı"

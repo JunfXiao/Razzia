@@ -1,4 +1,5 @@
 import GameBackground from "@razzia/web/components/GameBackground"
+import GameLogo from "@razzia/web/features/game/components/GameLogo"
 import { useGameBrandingStore } from "@razzia/web/features/game/stores/branding"
 import { QUESTION_REGISTRY } from "@razzia/web/features/questions"
 import QuestionEditorAnswers from "@razzia/web/features/quizz/components/QuestionEditor/QuestionEditorAnswers"
@@ -16,13 +17,20 @@ import { useFormContext, useWatch } from "react-hook-form"
 const QuestionEditor = () => {
   const { currentQuestion, currentQuestionId, isRemoving } = useQuizzEditor()
   const { control } = useFormContext<QuizzFormValues>()
-  const background = useWatch({ control, name: "branding.background" })
-  const logo = useWatch({ control, name: "branding.logo" })
+  const [background, backgroundColor, logo, logoText] = useWatch({
+    control,
+    name: [
+      "branding.background",
+      "branding.backgroundColor",
+      "branding.logo",
+      "branding.logoText",
+    ],
+  })
   const { setBranding } = useGameBrandingStore()
 
   useEffect(() => {
-    setBranding(background || logo ? { background, logo } : null)
-  }, [background, logo, setBranding])
+    setBranding({ background, backgroundColor, logo, logoText })
+  }, [background, backgroundColor, logo, logoText, setBranding])
 
   useEffect(() => () => setBranding(null), [setBranding])
 
@@ -37,13 +45,7 @@ const QuestionEditor = () => {
   return (
     <div className="flex flex-1 overflow-hidden">
       <main className="mx-auto flex max-w-7xl flex-1 flex-col gap-4 overflow-y-auto p-6">
-        {logo && (
-          <img
-            src={logo}
-            alt=""
-            className="relative z-10 mx-auto h-10 shrink-0 object-contain md:h-14"
-          />
-        )}
+        <GameLogo className="relative z-10 mx-auto w-fit shrink-0" />
         <QuestionEditorTitle />
         <QuestionEditorMedia />
         <QuestionEditorNote />

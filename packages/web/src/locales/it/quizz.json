@@ -112,8 +112,20 @@
   "markCorrect": "Segna {{label}} come corretta",
   "branding": {
     "title": "Sfondo e logo",
-    "background": "Immagine di sfondo",
+    "background": "Sfondo",
     "logo": "Logo",
-    "hint": "Solo per questo quiz, nella schermata di accesso e durante la partita."
+    "hint": "Solo per questo quiz, nella schermata di accesso e durante la partita.",
+    "none": "Nessuno",
+    "color": "Colore",
+    "image": "Immagine",
+    "text": "Testo",
+    "logoTextPlaceholder": "Testo del logo"
+  },
+  "setup": {
+    "title": "Nuovo quiz",
+    "quizDescription": "Imposta in anticipo le risposte corrette. I giocatori guadagnano punti e competono in classifica.",
+    "surveyDescription": "Raccogli opinioni. Non ci sono risposte corrette né punti, e i risultati mostrano la distribuzione delle risposte.",
+    "name": "Nome",
+    "continue": "Continua"
   }
 }

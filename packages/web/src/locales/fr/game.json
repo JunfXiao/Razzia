@@ -65,5 +65,9 @@
   },
   "showQrCode": "Afficher le QR code",
   "streak": "Série de bonnes réponses",
-  "pinDigit": "Chiffre {{position}} du code PIN"
+  "pinDigit": "Chiffre {{position}} du code PIN",
+  "text": {
+    "yourAnswer": "Saisis ta réponse",
+    "playersTyping": "Les joueurs saisissent leurs réponses"
+  }
 }

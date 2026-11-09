@@ -73,6 +73,18 @@ export const quizzValidator = z
     }
 
     quizz.questions.forEach((question, index) => {
+      if (question.type === QUESTION_TYPES.TEXT) {
+        if (question.answers.length === 0) {
+          ctx.addIssue({
+            code: "custom",
+            path: ["questions", index, "answers"],
+            message: "errors:quizz.textNoAnswer",
+          })
+        }
+
+        return
+      }
+
       if (question.solutions && question.solutions.length > 0) {
         return
       }

@@ -66,13 +66,19 @@
     "notePlaceholder": "Add an explanation shown when the answer is revealed",
     "estimation": {
       "correctAnswer": "Correct answer"
+    },
+    "text": {
+      "acceptedAnswers": "Accepted answers",
+      "acceptedAnswersHint": "Case, extra spaces and full-width characters are ignored. Any other difference counts as wrong.",
+      "surveyHint": "Players type a free answer. All answers are listed when the results are shown."
     }
   },
   "questionHasErrors": "This question has errors",
   "questionType": {
     "single": "Single choice",
     "multi": "Multiple choice",
-    "estimation": "Estimation"
+    "estimation": "Estimation",
+    "text": "Text answer"
   },
   "quizzSaved": "Quizz saved successfully",
   "quizzUpdated": "Quizz updated successfully",

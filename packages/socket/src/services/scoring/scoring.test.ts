@@ -1,9 +1,11 @@
 import { QUESTION_TYPES, SCORING_MODES } from "@razzia/common/constants"
+import { TEXT_NO_MATCH } from "@razzia/common/questions/text"
 import type { ScoringMode } from "@razzia/common/types/game"
 import { QUESTION_SCORING } from "@razzia/socket/services/scoring"
 import {
   createEstimationQuestion,
   createQuestion,
+  createTextQuestion,
 } from "@razzia/socket/test/fixtures"
 import { describe, expect, it } from "vitest"
 
@@ -62,6 +64,20 @@ describe("estimation scoring", () => {
   })
 
   it("scores nothing without an answer", () => {
+    expect(score(question, [])).toBe(0)
+  })
+})
+
+describe("text scoring", () => {
+  const score = QUESTION_SCORING[QUESTION_TYPES.TEXT]
+  const question = createTextQuestion()
+
+  it("scores any accepted answer", () => {
+    expect(score(question, [1])).toBe(1)
+  })
+
+  it("rejects answers that match nothing", () => {
+    expect(score(question, [TEXT_NO_MATCH])).toBe(0)
     expect(score(question, [])).toBe(0)
   })
 })

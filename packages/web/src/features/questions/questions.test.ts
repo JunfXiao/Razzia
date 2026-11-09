@@ -36,6 +36,18 @@ const question = (overrides: Partial<Question> = {}): Question => ({
 })
 
 describe("isAnswerCorrect", () => {
+  it("accepts a text answer matching an accepted answer", () => {
+    const text = question({
+      type: QUESTION_TYPES.TEXT,
+      answers: ["Paris"],
+      solutions: undefined,
+    })
+
+    expect(isAnswerCorrect(text, [0])).toBe(true)
+    expect(isAnswerCorrect(text, [-1])).toBe(false)
+    expect(isAnswerCorrect(text, null)).toBe(false)
+  })
+
   it("accepts any right choice", () => {
     expect(isAnswerCorrect(question(), [1, 2])).toBe(true)
     expect(isAnswerCorrect(question(), [2])).toBe(false)

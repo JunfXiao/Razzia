@@ -64,5 +64,9 @@
   },
   "showQrCode": "QR-Code anzeigen",
   "streak": "Antwortserie",
-  "pinDigit": "PIN-Ziffer {{position}}"
+  "pinDigit": "PIN-Ziffer {{position}}",
+  "text": {
+    "yourAnswer": "Gib deine Antwort ein",
+    "playersTyping": "Die Spieler tippen ihre Antworten"
+  }
 }

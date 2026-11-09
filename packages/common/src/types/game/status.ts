@@ -3,6 +3,7 @@ import type {
   QuestionMedia,
   QuestionOptions,
   QuestionType,
+  TextResponse,
 } from "@razzia/common/types/game"
 
 export const STATUS = {
@@ -65,6 +66,7 @@ interface ManagerExtraStatus {
   SHOW_RESPONSES: {
     question: string
     responses: Record<number, number>
+    textResponses?: TextResponse[]
     solutions?: number[]
     answers: string[]
     media?: QuestionMedia

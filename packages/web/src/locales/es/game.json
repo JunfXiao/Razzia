@@ -64,5 +64,9 @@
   },
   "showQrCode": "Mostrar código QR",
   "streak": "Racha de respuestas",
-  "pinDigit": "Dígito {{position}} del PIN"
+  "pinDigit": "Dígito {{position}} del PIN",
+  "text": {
+    "yourAnswer": "Escribe tu respuesta",
+    "playersTyping": "Los jugadores están escribiendo sus respuestas"
+  }
 }

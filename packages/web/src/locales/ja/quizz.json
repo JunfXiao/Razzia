@@ -66,13 +66,19 @@
     "notePlaceholder": "答えの発表時に表示される解説を追加",
     "estimation": {
       "correctAnswer": "正解"
+    },
+    "text": {
+      "acceptedAnswers": "正解として認める回答",
+      "acceptedAnswersHint": "大文字と小文字、余分なスペース、全角文字の違いは無視されます。それ以外の違いは不正解になります。",
+      "surveyHint": "プレイヤーは自由に回答を入力します。結果の表示時にすべての回答が一覧表示されます。"
     }
   },
   "questionHasErrors": "この質問にはエラーがあります",
   "questionType": {
     "single": "単一選択",
     "multi": "複数選択",
-    "estimation": "数値推定"
+    "estimation": "数値推定",
+    "text": "テキスト回答"
   },
   "quizzSaved": "クイズを保存しました",
   "quizzUpdated": "クイズを更新しました",

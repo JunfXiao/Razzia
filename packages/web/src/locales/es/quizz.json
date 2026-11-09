@@ -66,13 +66,19 @@
     "notePlaceholder": "Añade una explicación que se muestra al revelar la respuesta",
     "estimation": {
       "correctAnswer": "Respuesta correcta"
+    },
+    "text": {
+      "acceptedAnswers": "Respuestas aceptadas",
+      "acceptedAnswersHint": "Se ignoran las mayúsculas, los espacios adicionales y los caracteres de ancho completo. Cualquier otra diferencia cuenta como incorrecta.",
+      "surveyHint": "Los jugadores escriben una respuesta libre. Todas las respuestas se muestran con los resultados."
     }
   },
   "questionHasErrors": "Esta pregunta contiene errores",
   "questionType": {
     "single": "Opción única",
     "multi": "Opción múltiple",
-    "estimation": "Estimación"
+    "estimation": "Estimación",
+    "text": "Respuesta de texto"
   },
   "quizzSaved": "Cuestionario guardado con éxito",
   "quizzUpdated": "Cuestionario actualizado con éxito",

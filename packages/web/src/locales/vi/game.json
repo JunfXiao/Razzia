@@ -65,5 +65,9 @@
   },
   "showQrCode": "Hiện mã QR",
   "streak": "Chuỗi trả lời đúng",
-  "pinDigit": "Chữ số {{position}} của mã PIN"
+  "pinDigit": "Chữ số {{position}} của mã PIN",
+  "text": {
+    "yourAnswer": "Nhập câu trả lời của bạn",
+    "playersTyping": "Người chơi đang nhập câu trả lời"
+  }
 }

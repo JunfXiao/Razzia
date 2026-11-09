@@ -1,4 +1,4 @@
-import { QUIZZ_MODES } from "@razzia/common/constants"
+import { QUESTION_TYPES, QUIZZ_MODES } from "@razzia/common/constants"
 import { isEstimationOptions } from "@razzia/common/questions/options"
 import type { PlayerAnswerRecord } from "@razzia/common/types/game"
 import {
@@ -20,11 +20,12 @@ const ResultModalTableRow = ({ playerAnswer }: RowProps) => {
   const { result, questionResult, getPlayerPoints } = useResultModal()
   const { t } = useTranslation()
 
-  const { playerName, answerIds, correct, points } = playerAnswer
+  const { playerName, answerIds, text, correct, points } = playerAnswer
   const hasAnswer = answerIds !== null && answerIds.length > 0
 
   const isCorrect = correct ?? isAnswerCorrect(questionResult, answerIds)
   const isEstimation = isEstimationOptions(questionResult.options)
+  const isText = questionResult.type === QUESTION_TYPES.TEXT
 
   return (
     <tr>
@@ -35,7 +36,12 @@ const ResultModalTableRow = ({ playerAnswer }: RowProps) => {
             {formatValue(answerIds[0])}
           </span>
         )}
-        {hasAnswer && !isEstimation && (
+        {hasAnswer && isText && (
+          <span className="bg-accent text-accent-foreground inline-flex rounded-md px-2 py-1 text-xs font-bold break-all">
+            {text}
+          </span>
+        )}
+        {hasAnswer && !isEstimation && !isText && (
           <div className="flex flex-wrap gap-1">
             {answerIds.map((id) => (
               <span

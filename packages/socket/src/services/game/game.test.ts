@@ -18,6 +18,7 @@ import {
   createEstimationQuestion,
   createQuestion,
   createQuizz,
+  createTextQuestion,
 } from "@razzia/socket/test/fixtures"
 import fs from "fs"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
@@ -395,6 +396,49 @@ describe("quiz flow", () => {
     await vi.advanceTimersByTimeAsync(TICK_MS)
 
     expect(status(MANAGER)?.data).toMatchObject({ responses: { 100: 1 } })
+  })
+
+  it("keeps a text question's accepted answers away from players", async () => {
+    const { game, status, start } = setup(createQuizz([createTextQuestion()]))
+
+    await start()
+
+    expect(status(game.gameId)?.data).toMatchObject({ answers: [] })
+  })
+
+  it("grades text answers and groups them for the reveal", async () => {
+    const { game, sockets, status, start } = setup(
+      createQuizz([createTextQuestion()], QUIZZ_MODES.QUIZ),
+      ["Alice", "Bob", "Carol"],
+    )
+    const [alice, bob, carol] = sockets
+
+    await start()
+    game.selectAnswer(alice, [], "  paris ")
+    game.selectAnswer(bob, [], "PARIS")
+    game.selectAnswer(carol, [], "Lyon")
+    await vi.advanceTimersByTimeAsync(TICK_MS)
+
+    expect(status(MANAGER)?.name).toBe(STATUS.SHOW_RESPONSES)
+    expect(status(MANAGER)?.data).toMatchObject({
+      textResponses: [
+        { text: "paris", count: 2, correct: true },
+        { text: "Lyon", count: 1, correct: false },
+      ],
+    })
+    expect(status("alice")?.data).toMatchObject({ correct: true })
+    expect(status("carol")?.data).toMatchObject({ correct: false })
+  })
+
+  it("ignores blank text answers", async () => {
+    const { game, sockets, status, start } = setup(
+      createQuizz([createTextQuestion()]),
+    )
+
+    await start()
+    game.selectAnswer(sockets[0], [], "   ")
+
+    expect(status("alice")).toBeUndefined()
   })
 
   it("advances automatically when enabled", async () => {

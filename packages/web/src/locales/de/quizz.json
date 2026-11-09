@@ -66,13 +66,19 @@
     "notePlaceholder": "Erklärung hinzufügen, die beim Aufdecken der Antwort angezeigt wird",
     "estimation": {
       "correctAnswer": "Richtige Antwort"
+    },
+    "text": {
+      "acceptedAnswers": "Akzeptierte Antworten",
+      "acceptedAnswersHint": "Groß-/Kleinschreibung, zusätzliche Leerzeichen und Vollbreitzeichen werden ignoriert. Jede andere Abweichung gilt als falsch.",
+      "surveyHint": "Die Spieler tippen eine freie Antwort ein. Alle Antworten werden bei den Ergebnissen aufgelistet."
     }
   },
   "questionHasErrors": "Diese Frage enthält Fehler",
   "questionType": {
     "single": "Einzelauswahl",
     "multi": "Mehrfachauswahl",
-    "estimation": "Schätzung"
+    "estimation": "Schätzung",
+    "text": "Textantwort"
   },
   "quizzSaved": "Quiz erfolgreich gespeichert",
   "quizzUpdated": "Quiz erfolgreich aktualisiert",

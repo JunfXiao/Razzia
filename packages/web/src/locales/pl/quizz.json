@@ -66,13 +66,19 @@
     "notePlaceholder": "Dodaj wyjaśnienie wyświetlane po odsłonięciu odpowiedzi",
     "estimation": {
       "correctAnswer": "Poprawna odpowiedź"
+    },
+    "text": {
+      "acceptedAnswers": "Akceptowane odpowiedzi",
+      "acceptedAnswersHint": "Wielkość liter, dodatkowe spacje i znaki pełnej szerokości są ignorowane. Każda inna różnica oznacza błędną odpowiedź.",
+      "surveyHint": "Gracze wpisują dowolną odpowiedź. Wszystkie odpowiedzi są wyświetlane razem z wynikami."
     }
   },
   "questionHasErrors": "To pytanie zawiera błędy",
   "questionType": {
     "single": "Jednokrotny wybór",
     "multi": "Wielokrotny wybór",
-    "estimation": "Szacowanie"
+    "estimation": "Szacowanie",
+    "text": "Odpowiedź tekstowa"
   },
   "quizzSaved": "Quiz został zapisany",
   "quizzUpdated": "Quiz został zaktualizowany",

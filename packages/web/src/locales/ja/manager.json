@@ -42,6 +42,9 @@
       "withinMargin": "{{value}} ± {{margin}}",
       "outsideMargin": "許容範囲外",
       "average": "平均回答: {{value}}"
+    },
+    "text": {
+      "otherAnswers": "その他の回答"
     }
   },
   "tabs": {

@@ -64,5 +64,9 @@
   },
   "showQrCode": "QRコードを表示",
   "streak": "連続正解",
-  "pinDigit": "PIN の {{position}} 桁目"
+  "pinDigit": "PIN の {{position}} 桁目",
+  "text": {
+    "yourAnswer": "回答を入力",
+    "playersTyping": "プレイヤーが回答を入力しています"
+  }
 }

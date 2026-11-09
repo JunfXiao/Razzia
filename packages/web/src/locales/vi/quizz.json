@@ -66,13 +66,19 @@
     "notePlaceholder": "Thêm phần giải thích hiển thị khi công bố đáp án",
     "estimation": {
       "correctAnswer": "Đáp án đúng"
+    },
+    "text": {
+      "acceptedAnswers": "Các câu trả lời được chấp nhận",
+      "acceptedAnswersHint": "Chữ hoa/thường, khoảng trắng thừa và ký tự toàn chiều rộng được bỏ qua. Mọi khác biệt khác đều tính là sai.",
+      "surveyHint": "Người chơi nhập câu trả lời tự do. Tất cả câu trả lời được liệt kê khi hiển thị kết quả."
     }
   },
   "questionHasErrors": "Câu hỏi này có lỗi",
   "questionType": {
     "single": "Chọn một đáp án",
     "multi": "Chọn nhiều đáp án",
-    "estimation": "Ước lượng"
+    "estimation": "Ước lượng",
+    "text": "Câu trả lời dạng chữ"
   },
   "quizzSaved": "Đã lưu trò chơi thành công",
   "quizzUpdated": "Đã cập nhật trò chơi thành công",

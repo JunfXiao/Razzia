@@ -42,6 +42,9 @@
       "withinMargin": "{{value}} ± {{margin}}",
       "outsideMargin": "Ngoài biên độ",
       "average": "Câu trả lời trung bình: {{value}}"
+    },
+    "text": {
+      "otherAnswers": "Các câu trả lời khác"
     }
   },
   "tabs": {

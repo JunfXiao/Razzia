@@ -66,13 +66,19 @@
     "notePlaceholder": "Ajouter une explication affichée à la révélation de la réponse",
     "estimation": {
       "correctAnswer": "Bonne réponse"
+    },
+    "text": {
+      "acceptedAnswers": "Réponses acceptées",
+      "acceptedAnswersHint": "La casse, les espaces superflus et les caractères pleine chasse sont ignorés. Toute autre différence compte comme une erreur.",
+      "surveyHint": "Les joueurs saisissent une réponse libre. Toutes les réponses sont listées avec les résultats."
     }
   },
   "questionHasErrors": "Cette question contient des erreurs",
   "questionType": {
     "single": "Choix unique",
     "multi": "Choix multiple",
-    "estimation": "Estimation"
+    "estimation": "Estimation",
+    "text": "Réponse texte"
   },
   "quizzSaved": "Quizz enregistré avec succès",
   "quizzUpdated": "Quizz mis à jour avec succès",

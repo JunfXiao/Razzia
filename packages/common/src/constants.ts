@@ -72,7 +72,10 @@ export const QUESTION_TYPES = {
   SINGLE: "single",
   MULTI: "multi",
   ESTIMATION: "estimation",
+  TEXT: "text",
 } as const
+
+export const MAX_TEXT_ANSWER_LENGTH = 100
 
 export const ESTIMATION_INPUT_MODES = {
   SLIDER: "slider",

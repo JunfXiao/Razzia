@@ -4,9 +4,11 @@ import {
   MAX_POINTS,
   MEDIA_TYPES,
   NO_TIME_LIMIT,
+  QUESTION_TYPES,
   QUIZZ_MODES,
 } from "@razzia/common/constants"
 import { isEstimationOptions } from "@razzia/common/questions/options"
+import { matchTextAnswer } from "@razzia/common/questions/text"
 import type {
   Answer,
   GameResult,
@@ -28,6 +30,7 @@ import { CooldownTimer } from "@razzia/socket/services/game/cooldown-timer"
 import { PlayerManager } from "@razzia/socket/services/game/player-manager"
 import {
   countAnswers,
+  groupTextAnswers,
   scoreQuestion,
   type ScoredPlayer,
 } from "@razzia/socket/services/scoring/round"
@@ -115,6 +118,21 @@ export class RoundManager {
 
   private get question(): Question {
     return this.opts.quizz.questions[this.currentQuestion]
+  }
+
+  private isTextQuestion(): boolean {
+    return this.question.type === QUESTION_TYPES.TEXT
+  }
+
+  // A text question's answers are its solutions, so they stay on the server.
+  private get publicAnswers(): string[] {
+    return this.isTextQuestion() ? [] : this.question.answers
+  }
+
+  private get textResponses() {
+    return this.isTextQuestion()
+      ? groupTextAnswers(this.playersAnswers)
+      : undefined
   }
 
   private isAskingQuestion(): boolean {
@@ -281,7 +299,7 @@ export class RoundManager {
     })
 
     this.opts.broadcast(STATUS.SHOW_PREPARED, {
-      totalAnswers: this.question.answers.length,
+      totalAnswers: this.publicAnswers.length,
       questionNumber: this.currentQuestion + 1,
       questionType: this.question.type,
     })
@@ -317,7 +335,7 @@ export class RoundManager {
 
     this.opts.broadcast(STATUS.SELECT_ANSWER, {
       question: this.question.question,
-      answers: this.question.answers,
+      answers: this.publicAnswers,
       media: this.question.media,
       time: this.question.time,
       totalPlayer: this.opts.players.count(),
@@ -345,12 +363,12 @@ export class RoundManager {
       solutions: this.isSurvey() ? undefined : this.question.solutions,
       playerAnswers: players.map((player) => {
         const score = scored.find((s) => s.id === player.id)
+        const answer = this.playersAnswers.find((a) => a.playerId === player.id)
 
         return {
           playerName: player.username,
-          answerIds:
-            this.playersAnswers.find((a) => a.playerId === player.id)
-              ?.answerIds ?? null,
+          answerIds: answer?.answerIds ?? null,
+          ...(answer?.text !== undefined && { text: answer.text }),
           ...(score && {
             correct: score.lastCorrect,
             points: score.lastPoints,
@@ -369,6 +387,7 @@ export class RoundManager {
         ...this.question,
         solutions: undefined,
         responses: answerCounts,
+        textResponses: this.textResponses,
       })
 
       currentPlayers.forEach((player) => {
@@ -415,6 +434,7 @@ export class RoundManager {
     this.opts.send(this.opts.getManagerId(), STATUS.SHOW_RESPONSES, {
       ...this.question,
       responses: answerCounts,
+      textResponses: this.textResponses,
     })
 
     this.recordHistory(currentPlayers, sortedPlayers)
@@ -518,7 +538,11 @@ export class RoundManager {
     return [Math.min(options.max, Math.max(options.min, value))]
   }
 
-  selectAnswer(socket: Socket, answerIds: number[]): void {
+  private matchText(text?: string): number[] | null {
+    return text ? [matchTextAnswer(text, this.question.answers)] : null
+  }
+
+  selectAnswer(socket: Socket, answerIds: number[], rawText?: string): void {
     const player = this.opts.players.findById(socket.id)
 
     if (!player || !this.acceptingAnswers) {
@@ -529,7 +553,10 @@ export class RoundManager {
       return
     }
 
-    const submitted = this.normalizeAnswer(answerIds)
+    const text = this.isTextQuestion() ? rawText?.trim() : undefined
+    const submitted = this.isTextQuestion()
+      ? this.matchText(text)
+      : this.normalizeAnswer(answerIds)
 
     if (!submitted) {
       return
@@ -554,6 +581,7 @@ export class RoundManager {
     this.playersAnswers.push({
       playerId: player.id,
       answerIds: submitted,
+      ...(text !== undefined && { text }),
       points,
     })
 

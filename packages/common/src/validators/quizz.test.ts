@@ -190,3 +190,40 @@ describe("normalizeLegacyQuizz", () => {
     expect(normalizeLegacyQuizz("not a quizz")).toBe("not a quizz")
   })
 })
+
+describe("text questions", () => {
+  const textQuestion = (overrides: Partial<Question> = {}): Question => ({
+    type: QUESTION_TYPES.TEXT,
+    question: "Capital of France ?",
+    answers: ["Paris"],
+    cooldown: 5,
+    time: 15,
+    ...overrides,
+  })
+
+  const validate = (
+    question: Question,
+    gameMode: Quizz["gameMode"] = QUIZZ_MODES.QUIZ,
+  ) =>
+    quizzValidator.safeParse({
+      gameMode,
+      subject: "Subject",
+      questions: [question],
+    })
+
+  it("accepts accepted answers without solutions", () => {
+    expect(validate(textQuestion()).success).toBe(true)
+  })
+
+  it("requires an accepted answer in quiz mode", () => {
+    const result = validate(textQuestion({ answers: [] }))
+
+    expect(result.error?.issues[0]?.message).toBe("errors:quizz.textNoAnswer")
+  })
+
+  it("needs no accepted answer in survey mode", () => {
+    expect(
+      validate(textQuestion({ answers: [] }), QUIZZ_MODES.SURVEY).success,
+    ).toBe(true)
+  })
+})

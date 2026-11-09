@@ -1,4 +1,13 @@
-import type { Answer, Player, Question } from "@razzia/common/types/game"
+import {
+  normalizeTextAnswer,
+  TEXT_NO_MATCH,
+} from "@razzia/common/questions/text"
+import type {
+  Answer,
+  Player,
+  Question,
+  TextResponse,
+} from "@razzia/common/types/game"
 import { QUESTION_SCORING } from "@razzia/socket/services/scoring"
 
 export type ScoredPlayer = Player & {
@@ -14,6 +23,33 @@ export const countAnswers = (answers: Answer[]): Record<number, number> => {
 
     return acc
   }, {})
+}
+
+export const groupTextAnswers = (answers: Answer[]): TextResponse[] => {
+  const groups = new Map<string, TextResponse>()
+
+  answers.forEach(({ text, answerIds }) => {
+    if (text === undefined) {
+      return
+    }
+
+    const key = normalizeTextAnswer(text)
+    const group = groups.get(key)
+
+    if (group) {
+      group.count += 1
+
+      return
+    }
+
+    groups.set(key, {
+      text,
+      count: 1,
+      correct: answerIds[0] !== TEXT_NO_MATCH,
+    })
+  })
+
+  return [...groups.values()].sort((a, b) => b.count - a.count)
 }
 
 export const scoreQuestion = (

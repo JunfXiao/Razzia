@@ -42,6 +42,7 @@ export interface Player {
 export interface Answer {
   playerId: string
   answerIds: number[]
+  text?: string
   points: number
 }
 
@@ -102,6 +103,12 @@ export interface GameSettings {
   autoAdvance: AutoAdvanceSettings
 }
 
+export interface TextResponse {
+  text: string
+  count: number
+  correct: boolean
+}
+
 export interface GameUpdateQuestion {
   current: number
   total: number
@@ -110,6 +117,7 @@ export interface GameUpdateQuestion {
 export interface PlayerAnswerRecord {
   playerName: string
   answerIds: number[] | null
+  text?: string
   correct?: boolean
   points?: number
 }

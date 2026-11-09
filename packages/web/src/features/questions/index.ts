@@ -7,6 +7,7 @@ import type {
 import * as estimation from "@razzia/web/features/questions/estimation"
 import * as multi from "@razzia/web/features/questions/multi"
 import * as single from "@razzia/web/features/questions/single"
+import * as text from "@razzia/web/features/questions/text"
 import type {
   AnswerComponentProps,
   PreparedComponentProps,
@@ -32,6 +33,7 @@ export const QUESTION_REGISTRY: Record<QuestionType, QuestionRegistryEntry> = {
   single,
   multi,
   estimation,
+  text,
 }
 
 export const QUESTION_TYPE_LIST = Object.keys(

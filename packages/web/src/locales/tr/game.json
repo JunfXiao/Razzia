@@ -64,5 +64,9 @@
   },
   "showQrCode": "QR kodunu göster",
   "streak": "Doğru cevap serisi",
-  "pinDigit": "PIN'in {{position}}. rakamı"
+  "pinDigit": "PIN'in {{position}}. rakamı",
+  "text": {
+    "yourAnswer": "Cevabını yaz",
+    "playersTyping": "Oyuncular cevaplarını yazıyor"
+  }
 }

@@ -117,9 +117,44 @@ const ResultModalAnswers = () => {
     ]
   }
 
+  const textRows = (): AnswerRow[] => {
+    if (result.gameMode === QUIZZ_MODES.SURVEY) {
+      return [
+        {
+          label: t("manager:result.estimation.answered"),
+          count: answeredCount,
+          isCorrect: false,
+          color: "bg-primary",
+          answerLabel: "T",
+        },
+      ]
+    }
+
+    return [
+      {
+        label: questionResult.answers.join(" / "),
+        count: correctCount,
+        isCorrect: true,
+        color: "bg-correct",
+        answerLabel: "=",
+      },
+      {
+        label: t("manager:result.text.otherAnswers"),
+        count: answeredCount - correctCount,
+        isCorrect: false,
+        color: "bg-red-500",
+        answerLabel: "≠",
+      },
+    ]
+  }
+
   const answerRows: AnswerRow[] = (() => {
     if (questionResult.type === QUESTION_TYPES.ESTIMATION) {
       return estimationRows()
+    }
+
+    if (questionResult.type === QUESTION_TYPES.TEXT) {
+      return textRows()
     }
 
     return questionResult.answers.map((label, ai) => ({

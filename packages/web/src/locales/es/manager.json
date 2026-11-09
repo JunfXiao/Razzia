@@ -42,6 +42,9 @@
       "withinMargin": "{{value}} ± {{margin}}",
       "outsideMargin": "Fuera del margen",
       "average": "Respuesta promedio: {{value}}"
+    },
+    "text": {
+      "otherAnswers": "Otras respuestas"
     }
   },
   "tabs": {

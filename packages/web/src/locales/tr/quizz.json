@@ -66,13 +66,19 @@
     "notePlaceholder": "Cevap açıklandığında gösterilecek bir açıklama ekleyin",
     "estimation": {
       "correctAnswer": "Doğru cevap"
+    },
+    "text": {
+      "acceptedAnswers": "Kabul edilen cevaplar",
+      "acceptedAnswersHint": "Büyük/küçük harf, fazla boşluklar ve tam genişlikli karakterler yok sayılır. Diğer tüm farklar yanlış sayılır.",
+      "surveyHint": "Oyuncular serbest bir cevap yazar. Sonuçlar gösterilirken tüm cevaplar listelenir."
     }
   },
   "questionHasErrors": "Bu soruda hatalar var",
   "questionType": {
     "single": "Tek seçenekli",
     "multi": "Çoktan seçmeli",
-    "estimation": "Tahmin"
+    "estimation": "Tahmin",
+    "text": "Metin cevabı"
   },
   "quizzSaved": "Test başarıyla kaydedildi",
   "quizzUpdated": "Test başarıyla güncellendi",

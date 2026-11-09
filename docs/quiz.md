@@ -50,7 +50,7 @@ Quiz Options:
 - `gameMode`: `"quiz"` (default) or `"survey"`, see [Survey mode](#survey-mode)
 - `subject`: Title/topic of the quiz
 - `questions`: Array of question objects containing:
-  - `type`: `"single"` (exactly one answer), `"multi"` (one or more) or `"estimation"` (a number, see [Estimation questions](#estimation-questions)). Defaults to `"single"` when omitted
+  - `type`: `"single"` (exactly one answer), `"multi"` (one or more) or `"estimation"` (a number, see [Estimation questions](#estimation-questions)) or `"text"` (typed text, see [Text questions](#text-questions)). Defaults to `"single"` when omitted
   - `question`: The question text
   - `category`: Optional round name, see [Categories](#categories)
   - `note`: Optional explanation shown on the main screen when the answer is revealed, e.g. `"Red, green and blue are the primary colors of light"`
@@ -93,6 +93,25 @@ An `"estimation"` question asks for a number instead of offering answers to pick
 - `options.min` / `options.max`: Bounds of the accepted values, `max` must be greater than `min`
 - `options.step`: Precision of the slider (must be greater than 0)
 - `options.margin`: How far from the expected value an answer still counts as correct. An exact answer earns `maxPoints`, an answer at the edge of the margin earns half of it, and anything further away earns nothing (and the `penalty`, if any). A margin of `0` only accepts the exact value
+
+## Text questions
+
+A `"text"` question asks players to type their answer. Scoring works like a choice question, so faster correct answers earn more points.
+
+```json
+{
+  "type": "text",
+  "question": "What is the capital of France?",
+  "answers": ["Paris", "City of Paris"],
+  "cooldown": 5,
+  "time": 30
+}
+```
+
+- `answers`: Every accepted answer. They are never sent to players before the reveal. At least one is required in `"quiz"` mode; leave the array empty in `"survey"` mode
+- `solutions`: Not used
+- Matching ignores case, surrounding or repeated spaces and full-width characters. Any other difference, such as a typo, counts as wrong unless it is listed in `answers`
+- Answers are limited to 100 characters
 
 ## Categories
 

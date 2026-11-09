@@ -34,6 +34,16 @@ export const createEstimationQuestion = (
     ...overrides,
   })
 
+export const createTextQuestion = (
+  overrides: Partial<Question> = {},
+): Question =>
+  createQuestion({
+    type: QUESTION_TYPES.TEXT,
+    answers: ["Paris", "City of Paris"],
+    solutions: undefined,
+    ...overrides,
+  })
+
 export const createQuizz = (
   questions: Question[],
   gameMode: Quizz["gameMode"] = QUIZZ_MODES.QUIZ,

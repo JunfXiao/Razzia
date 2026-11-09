@@ -45,6 +45,9 @@
       "withinMargin": "{{value}} ± {{margin}}",
       "outsideMargin": "Poza marginesem",
       "average": "Średnia odpowiedź: {{value}}"
+    },
+    "text": {
+      "otherAnswers": "Inne odpowiedzi"
     }
   },
   "tabs": {

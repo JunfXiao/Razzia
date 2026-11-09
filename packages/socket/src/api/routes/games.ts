@@ -99,6 +99,16 @@ const routes = apiFactory
 
     return c.body(null, StatusCodes.NO_CONTENT)
   })
+  .post("/:gameId/leave", requireSession, (c) => {
+    const game = Registry.getInstance().getGameById(c.req.param("gameId"))
+    const player = game?.players.find((p) => p.clientId === c.get("claims").sub)
+
+    if (player) {
+      game?.removePlayer(player.id)
+    }
+
+    return c.body(null, StatusCodes.NO_CONTENT)
+  })
   .post("/check", zValidator("json", checkGameValidator, i18nHook), (c) => {
     const { inviteCode } = c.req.valid("json")
     const game = Registry.getInstance().getGameByInviteCode(inviteCode)

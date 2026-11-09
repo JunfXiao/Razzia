@@ -1,4 +1,4 @@
-import { api, unwrap } from "@razzia/web/lib/api"
+import { api, unwrap, unwrapEmpty } from "@razzia/web/lib/api"
 import { queryOptions } from "@tanstack/react-query"
 
 export const checkInviteCode = (inviteCode: string) =>
@@ -13,3 +13,6 @@ export const inviteCodeQuery = (inviteCode: string) =>
 
 export const joinGame = (json: { inviteCode: string; username?: string }) =>
   unwrap(api.games.join.$post({ json }))
+
+export const leaveGame = (gameId: string) =>
+  unwrapEmpty(api.games[":gameId"].leave.$post({ param: { gameId } }))

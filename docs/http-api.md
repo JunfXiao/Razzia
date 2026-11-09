@@ -137,6 +137,10 @@ Body `{ "inviteCode": string }`. It is a `POST` rather than a `GET` on purpose: 
 - `404 errors:game.notFound` — unknown invite code
 - `403 errors:game.locked` — the host has locked the room (`manager:setLock`, see [WebSocket protocol](websocket-protocol.md)). The game still exists, so a player who already holds a seat can reconnect to it.
 
+### `POST /api/games/:gameId/leave`
+
+Any signed session. Removes the caller's seat from the game, even after it has started, and answers `204`. The player can then join again from scratch.
+
 ### `POST /api/games/join`
 
 Any signed session (bearer required, no role). Body `{ "inviteCode": string, "username"?: string }`, answers `200 { gameId, ticket, username }`.

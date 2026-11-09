@@ -298,6 +298,28 @@ describe("games", () => {
     expect(await json(after)).toEqual({ game: null })
   })
 
+  it("lets a player give up their seat", async () => {
+    const { gameId } = await createGame()
+    const game = Registry.getInstance().getGameById(gameId)
+
+    if (!game) {
+      throw new Error("Game not registered")
+    }
+
+    const { token } = await mintToken("seat", SESSION_ROLES.PLAYER)
+
+    game.join(createFakeIo().createSocket("socket", "seat"), "Alice")
+    expect(game.players).toHaveLength(1)
+
+    const left = await request(`/games/${gameId}/leave`, {
+      method: "POST",
+      token,
+    })
+
+    expect(left.status).toBe(StatusCodes.NO_CONTENT)
+    expect(game.players).toHaveLength(0)
+  })
+
   it("only lets the game manager update the settings", async () => {
     const { gameId } = await createGame()
     const otherManager = (await mintToken("other", SESSION_ROLES.MANAGER)).token

@@ -71,5 +71,9 @@
   },
   "reviewAnswers": "Revisar las respuestas reveladas",
   "endGame": "Terminar partida",
-  "endGameConfirm": "¿Terminar esta partida para todos los jugadores? Las preguntas ya reveladas se conservan en Resultados."
+  "endGameConfirm": "¿Terminar esta partida para todos los jugadores? Las preguntas ya reveladas se conservan en Resultados.",
+  "restart": {
+    "button": "Empezar de nuevo",
+    "description": "Saldrás de esta partida y perderás tus puntos. Después podrás volver a entrar con el mismo PIN."
+  }
 }

@@ -72,5 +72,9 @@
   },
   "reviewAnswers": "Revoir les réponses dévoilées",
   "endGame": "Terminer la partie",
-  "endGameConfirm": "Terminer cette partie pour tous les joueurs ? Les questions déjà dévoilées restent dans les résultats."
+  "endGameConfirm": "Terminer cette partie pour tous les joueurs ? Les questions déjà dévoilées restent dans les résultats.",
+  "restart": {
+    "button": "Recommencer",
+    "description": "Tu vas quitter cette partie et perdre tes points. Tu pourras ensuite la rejoindre avec le même code PIN."
+  }
 }

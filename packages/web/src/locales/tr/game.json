@@ -71,5 +71,9 @@
   },
   "reviewAnswers": "Açıklanan cevapları gözden geçir",
   "endGame": "Oyunu bitir",
-  "endGameConfirm": "Bu oyun tüm oyuncular için bitirilsin mi? Açıklanan sorular Sonuçlar bölümünde kalır."
+  "endGameConfirm": "Bu oyun tüm oyuncular için bitirilsin mi? Açıklanan sorular Sonuçlar bölümünde kalır.",
+  "restart": {
+    "button": "Yeniden başla",
+    "description": "Bu oyundan çıkacak ve puanlarınızı kaybedeceksiniz. Ardından aynı PIN ile yeniden katılabilirsiniz."
+  }
 }

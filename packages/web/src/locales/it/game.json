@@ -72,5 +72,9 @@
   },
   "reviewAnswers": "Rivedi le risposte svelate",
   "endGame": "Termina partita",
-  "endGameConfirm": "Terminare questa partita per tutti i giocatori? Le domande già svelate restano nei risultati."
+  "endGameConfirm": "Terminare questa partita per tutti i giocatori? Le domande già svelate restano nei risultati.",
+  "restart": {
+    "button": "Ricomincia",
+    "description": "Uscirai da questa partita e perderai i punti. Poi potrai rientrare con lo stesso PIN."
+  }
 }

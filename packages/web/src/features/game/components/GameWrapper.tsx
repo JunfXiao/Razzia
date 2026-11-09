@@ -12,6 +12,7 @@ import EndGameButton from "@razzia/web/features/game/components/EndGameButton"
 import GameSettingsModal from "@razzia/web/features/game/components/GameSettingsModal"
 import JoinQrButton from "@razzia/web/features/game/components/JoinQrButton"
 import PlayersButton from "@razzia/web/features/game/components/PlayersButton"
+import RestartButton from "@razzia/web/features/game/components/RestartButton"
 import RevealReview from "@razzia/web/features/game/components/RevealReview"
 import RoomLockButton from "@razzia/web/features/game/components/RoomLockButton"
 import {
@@ -103,6 +104,11 @@ const GameWrapper = ({
             <h1 className="text-4xl font-bold text-white">
               {t("common:connecting")}
             </h1>
+            {!manager && (
+              <div className="mt-6">
+                <RestartButton />
+              </div>
+            )}
           </div>
         ) : (
           <>
@@ -208,7 +214,10 @@ const GameWrapper = ({
               </div>
             ) : (
               <div className="z-50 flex items-center justify-between bg-white px-4 py-2 text-lg font-bold text-white">
-                <p className="text-gray-800">{player?.username}</p>
+                <div className="flex items-center gap-3">
+                  <p className="text-gray-800">{player?.username}</p>
+                  <RestartButton />
+                </div>
                 {gameMode !== QUIZZ_MODES.SURVEY && (
                   <div className="rounded-lg bg-gray-800 px-3 py-1 text-lg">
                     {player?.points}

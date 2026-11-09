@@ -72,5 +72,9 @@
   },
   "reviewAnswers": "Xem lại các đáp án đã công bố",
   "endGame": "Kết thúc trò chơi",
-  "endGameConfirm": "Kết thúc trò chơi này cho tất cả người chơi? Các câu hỏi đã công bố vẫn được lưu trong Kết quả."
+  "endGameConfirm": "Kết thúc trò chơi này cho tất cả người chơi? Các câu hỏi đã công bố vẫn được lưu trong Kết quả.",
+  "restart": {
+    "button": "Bắt đầu lại",
+    "description": "Bạn sẽ rời trò chơi này và mất điểm. Sau đó bạn có thể tham gia lại bằng cùng mã PIN."
+  }
 }

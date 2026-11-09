@@ -71,5 +71,9 @@
   },
   "reviewAnswers": "Przejrzyj ujawnione odpowiedzi",
   "endGame": "Zakończ grę",
-  "endGameConfirm": "Zakończyć tę grę dla wszystkich graczy? Ujawnione już pytania pozostaną w wynikach."
+  "endGameConfirm": "Zakończyć tę grę dla wszystkich graczy? Ujawnione już pytania pozostaną w wynikach.",
+  "restart": {
+    "button": "Zacznij od nowa",
+    "description": "Opuścisz tę grę i stracisz punkty. Potem możesz dołączyć ponownie tym samym PIN-em."
+  }
 }

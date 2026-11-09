@@ -71,5 +71,9 @@
   },
   "reviewAnswers": "Aufgedeckte Antworten ansehen",
   "endGame": "Spiel beenden",
-  "endGameConfirm": "Dieses Spiel für alle Spieler beenden? Bereits aufgedeckte Fragen bleiben in den Ergebnissen erhalten."
+  "endGameConfirm": "Dieses Spiel für alle Spieler beenden? Bereits aufgedeckte Fragen bleiben in den Ergebnissen erhalten.",
+  "restart": {
+    "button": "Neu beginnen",
+    "description": "Du verlässt dieses Spiel und verlierst deine Punkte. Danach kannst du mit derselben PIN wieder beitreten."
+  }
 }

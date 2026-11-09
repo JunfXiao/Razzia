@@ -32,7 +32,9 @@
   "manager": {
     "failedToReadConfig": "Impossibile leggere la configurazione della sessione",
     "invalidPassword": "Password non valida",
-    "passwordNotConfigured": "La password del gestore non è configurata"
+    "passwordNotConfigured": "La password del gestore non è configurata",
+    "tooManyAttempts": "Troppi tentativi non riusciti. Riprova più tardi.",
+    "verificationFailed": "Controllo di sicurezza non riuscito. Riprova."
   },
   "notFound": {
     "back": "Torna alla home",

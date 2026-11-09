@@ -1,4 +1,5 @@
 import type { GameSettings } from "@razzia/common/types/game"
+import type { ManagerLogin } from "@razzia/common/validators/auth"
 import type { QuizzValidated } from "@razzia/common/validators/quizz"
 import { api, ApiError, unwrap, unwrapEmpty } from "@razzia/web/lib/api"
 import { queryOptions } from "@tanstack/react-query"
@@ -93,7 +94,14 @@ export const updateGameSettings = ({
   json: Partial<GameSettings>
 }) => unwrap(api.games[":gameId"].settings.$patch({ param: { gameId }, json }))
 
-export const managerLogin = (password: string) =>
-  unwrap(api.auth.manager.$post({ json: { password } }))
+export const authConfigQuery = () =>
+  queryOptions({
+    queryKey: ["authConfig"] as const,
+    queryFn: () => unwrap(api.auth.config.$get()),
+    staleTime: Infinity,
+  })
+
+export const managerLogin = (json: ManagerLogin) =>
+  unwrap(api.auth.manager.$post({ json }))
 
 export const managerLogout = () => unwrap(api.auth.logout.$post())

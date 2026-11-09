@@ -32,7 +32,9 @@
   "manager": {
     "failedToReadConfig": "Impossible de lire la configuration",
     "invalidPassword": "Mot de passe invalide",
-    "passwordNotConfigured": "Mot de passe manager non configuré"
+    "passwordNotConfigured": "Mot de passe manager non configuré",
+    "tooManyAttempts": "Trop de tentatives échouées. Réessayez plus tard.",
+    "verificationFailed": "La vérification de sécurité a échoué. Veuillez réessayer."
   },
   "notFound": {
     "back": "Retour à l'accueil",

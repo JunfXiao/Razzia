@@ -57,10 +57,14 @@ Keeping `clientId` on expiry is what preserves a player's seat across a refresh;
 
 Body `{ "password": string }`. Upgrades the caller's session to `manager`, keeping the same `clientId` when a bearer is sent. Returns the same shape as `/api/auth/session`.
 
-- `401 errors:manager.invalidPassword` — wrong password
+- `403 errors:manager.invalidPassword` — wrong password
 - `403 errors:manager.passwordNotConfigured` — `MANAGER_PASSWORD` is not set
+- `403 errors:manager.verificationFailed` — Turnstile is configured and the `turnstileToken` is missing or rejected
+- `429 errors:manager.tooManyAttempts` — five wrong passwords from one client within 15 minutes; `Retry-After` gives the seconds left
 
-There is **no rate limit**, matching the previous socket behaviour.
+### `GET /api/auth/config`
+
+Public. Returns `200 { turnstileSiteKey: string | null }` so the login form knows whether to show the Turnstile widget.
 
 ### `POST /api/auth/logout`
 

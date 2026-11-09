@@ -32,7 +32,9 @@
   "manager": {
     "failedToReadConfig": "Không đọc được cấu hình phiên",
     "invalidPassword": "Mật khẩu không hợp lệ",
-    "passwordNotConfigured": "Mật khẩu quản trị viên chưa được cấu hình"
+    "passwordNotConfigured": "Mật khẩu quản trị viên chưa được cấu hình",
+    "tooManyAttempts": "Có quá nhiều lần thử thất bại. Vui lòng thử lại sau.",
+    "verificationFailed": "Kiểm tra bảo mật không thành công. Vui lòng thử lại."
   },
   "notFound": {
     "back": "Về trang chủ",

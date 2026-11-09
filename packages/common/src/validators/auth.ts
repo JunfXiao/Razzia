@@ -1,6 +1,8 @@
 import { SESSION_ROLES } from "@razzia/common/constants"
 import z from "zod"
 
+const TURNSTILE_TOKEN_MAX_LENGTH = 2048
+
 export const usernameValidator = z
   .string()
   .min(1, "errors:auth.usernameTooShort")
@@ -27,7 +29,13 @@ export const joinTicketClaimsValidator = z.object({
 
 export const managerLoginValidator = z.object({
   password: z.string().min(1, "errors:manager.invalidPassword"),
+  turnstileToken: z
+    .string()
+    .max(TURNSTILE_TOKEN_MAX_LENGTH, "errors:manager.verificationFailed")
+    .optional(),
 })
+
+export type ManagerLogin = z.infer<typeof managerLoginValidator>
 
 export const sessionRequestValidator = z.object({
   token: z.string().optional(),

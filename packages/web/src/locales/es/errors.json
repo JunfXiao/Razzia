@@ -32,7 +32,9 @@
   "manager": {
     "failedToReadConfig": "Error al leer la configuración de la sesión",
     "invalidPassword": "Contraseña incorrecta",
-    "passwordNotConfigured": "La contraseña del administrador no está configurada"
+    "passwordNotConfigured": "La contraseña del administrador no está configurada",
+    "tooManyAttempts": "Demasiados intentos fallidos. Inténtalo de nuevo más tarde.",
+    "verificationFailed": "La comprobación de seguridad ha fallado. Inténtalo de nuevo."
   },
   "notFound": {
     "back": "Volver al inicio",

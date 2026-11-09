@@ -108,7 +108,7 @@ const QuizzLandingPage = () => {
           <Dialog.Overlay className="fixed inset-0 z-50 bg-black/70" />
           <Dialog.Content
             aria-describedby={undefined}
-            className="fixed top-1/2 left-1/2 z-50 flex w-[calc(100%-2rem)] max-w-80 -translate-x-1/2 -translate-y-1/2 flex-col"
+            className="fixed top-1/2 left-1/2 z-50 flex w-[calc(100%-2rem)] max-w-88 -translate-x-1/2 -translate-y-1/2 flex-col"
           >
             <Dialog.Title className="mb-3 text-center text-lg font-bold text-white">
               {t("game:landing.passwordTitle")}

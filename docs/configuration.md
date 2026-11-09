@@ -14,14 +14,21 @@ MANAGER_PASSWORD=your-password
 JWT_SECRET=
 ```
 
-| Variable           | Required | What it does                                                                                                           |
-| ------------------ | -------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `MANAGER_PASSWORD` | Yes      | Unlocks the manager interface. Until it is set, manager access is refused with `errors:manager.passwordNotConfigured`. |
-| `JWT_SECRET`       | No       | Signs session tokens. Must be at least 32 characters; a shorter value is ignored.                                      |
-| `WEB_PORT`         | No       | Without Docker only: port the app is served on. Defaults to `3000`.                                                    |
-| `SOCKET_PORT`      | No       | Without Docker only: port of the socket server, proxied behind the web port. Defaults to `3001`.                       |
+| Variable               | Required | What it does                                                                                                           |
+| ---------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `MANAGER_PASSWORD`     | Yes      | Unlocks the manager interface. Until it is set, manager access is refused with `errors:manager.passwordNotConfigured`. |
+| `JWT_SECRET`           | No       | Signs session tokens. Must be at least 32 characters; a shorter value is ignored.                                      |
+| `WEB_PORT`             | No       | Without Docker only: port the app is served on. Defaults to `3000`.                                                    |
+| `SOCKET_PORT`          | No       | Without Docker only: port of the socket server, proxied behind the web port. Defaults to `3001`.                       |
+| `TURNSTILE_SITE_KEY`   | No       | Cloudflare Turnstile site key. Set it together with `TURNSTILE_SECRET_KEY` to protect the manager login.               |
+| `TURNSTILE_SECRET_KEY` | No       | Cloudflare Turnstile secret key.                                                                                       |
+| `TRUSTED_IP_HEADER`    | No       | Header holding the real client IP behind a proxy, such as `CF-Connecting-IP`, so that login limits apply per client.   |
 
 `pnpm dev` and `pnpm start` load `.env` automatically. With Docker, `compose.yml` reads the same file through `env_file`, or you can set the variables inline with `environment:`. With a bare `docker run`, pass them with `-e MANAGER_PASSWORD=...`.
+
+### Protecting the manager login
+
+Five wrong passwords from one client lock that client out of the manager login for up to 15 minutes. Behind a reverse proxy, set `TRUSTED_IP_HEADER`; otherwise every visitor shares the proxy's address and one allowance. Only name a header that your proxy always overwrites, and make sure the app cannot be reached without passing through that proxy, because a client could otherwise forge the header.
 
 ### About `JWT_SECRET`
 

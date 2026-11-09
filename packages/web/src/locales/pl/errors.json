@@ -32,7 +32,9 @@
   "manager": {
     "failedToReadConfig": "Nie udało się odczytać konfiguracji sesji",
     "invalidPassword": "Nieprawidłowe hasło",
-    "passwordNotConfigured": "Hasło prowadzącego nie zostało skonfigurowane"
+    "passwordNotConfigured": "Hasło prowadzącego nie zostało skonfigurowane",
+    "tooManyAttempts": "Zbyt wiele nieudanych prób. Spróbuj ponownie później.",
+    "verificationFailed": "Weryfikacja bezpieczeństwa nie powiodła się. Spróbuj ponownie."
   },
   "notFound": {
     "back": "Wróć na stronę główną",

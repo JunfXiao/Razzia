@@ -187,6 +187,157 @@ describe("auth", () => {
   })
 })
 
+describe("manager login protection", () => {
+  const login = (
+    target: typeof app,
+    body: Record<string, string>,
+    address = "203.0.113.1",
+  ) =>
+    Promise.resolve(
+      target.request("/api/auth/manager", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "CF-Connecting-IP": address,
+        },
+        body: JSON.stringify(body),
+      }),
+    )
+
+  const importApp = async (env: Record<string, string>) => {
+    vi.resetModules()
+    Object.entries(env).forEach(([name, value]) => {
+      vi.stubEnv(name, value)
+    })
+
+    const { app: fresh } = await import("@razzia/socket/app")
+
+    return fresh
+  }
+
+  const failLogins = (target: typeof app, count: number) =>
+    Promise.all(
+      Array.from({ length: count }, () => login(target, { password: "wrong" })),
+    )
+
+  afterEach(() => {
+    vi.unstubAllEnvs()
+    vi.unstubAllGlobals()
+    vi.useRealTimers()
+  })
+
+  it("locks out one client after five wrong passwords", async () => {
+    vi.useFakeTimers()
+
+    const fresh = await importApp({ TRUSTED_IP_HEADER: "CF-Connecting-IP" })
+
+    const failures = await failLogins(fresh, 5)
+
+    expect(failures.map((failure) => failure.status)).toEqual(
+      Array<number>(5).fill(StatusCodes.FORBIDDEN),
+    )
+
+    const locked = await login(fresh, { password: "test-password" })
+
+    expect(locked.status).toBe(StatusCodes.TOO_MANY_REQUESTS)
+    expect(locked.headers.get("Retry-After")).toBe("900")
+    expect(await json(locked)).toEqual({
+      error: "errors:manager.tooManyAttempts",
+    })
+
+    const other = await login(
+      fresh,
+      { password: "test-password" },
+      "203.0.113.2",
+    )
+
+    expect(other.status).toBe(StatusCodes.OK)
+
+    vi.advanceTimersByTime(15 * 60 * 1000)
+
+    const unlocked = await login(fresh, { password: "test-password" })
+
+    expect(unlocked.status).toBe(StatusCodes.OK)
+  })
+
+  it("forgets earlier failures after a successful login", async () => {
+    const fresh = await importApp({ TRUSTED_IP_HEADER: "CF-Connecting-IP" })
+
+    await failLogins(fresh, 4)
+    await login(fresh, { password: "test-password" })
+    await failLogins(fresh, 4)
+
+    const right = await login(fresh, { password: "test-password" })
+
+    expect(right.status).toBe(StatusCodes.OK)
+  })
+
+  it("requires a valid Turnstile token once configured", async () => {
+    const verify = vi.fn(() =>
+      Promise.resolve(Response.json({ success: true })),
+    )
+
+    vi.stubGlobal("fetch", verify)
+
+    const fresh = await importApp({
+      TURNSTILE_SITE_KEY: "site-key",
+      TURNSTILE_SECRET_KEY: "secret-key",
+    })
+    const config = await fresh.request("/api/auth/config")
+
+    expect(await json(config)).toEqual({ turnstileSiteKey: "site-key" })
+
+    const missing = await login(fresh, { password: "test-password" })
+
+    expect(missing.status).toBe(StatusCodes.FORBIDDEN)
+    expect(await json(missing)).toEqual({
+      error: "errors:manager.verificationFailed",
+    })
+    expect(verify).not.toHaveBeenCalled()
+
+    const passed = await login(fresh, {
+      password: "test-password",
+      turnstileToken: "token",
+    })
+
+    expect(passed.status).toBe(StatusCodes.OK)
+    expect(verify).toHaveBeenCalledOnce()
+
+    verify.mockResolvedValueOnce(Response.json({ success: false }))
+
+    const rejected = await login(fresh, {
+      password: "test-password",
+      turnstileToken: "token",
+    })
+
+    expect(rejected.status).toBe(StatusCodes.FORBIDDEN)
+
+    verify.mockRejectedValueOnce(new Error("offline"))
+
+    const unreachable = await login(fresh, {
+      password: "test-password",
+      turnstileToken: "token",
+    })
+
+    expect(unreachable.status).toBe(StatusCodes.FORBIDDEN)
+  })
+
+  it("reports no Turnstile key by default", async () => {
+    expect(await json(await request("/auth/config"))).toEqual({
+      turnstileSiteKey: null,
+    })
+  })
+
+  it("refuses half a Turnstile configuration", async () => {
+    vi.resetModules()
+    vi.stubEnv("TURNSTILE_SITE_KEY", "site-key")
+
+    await expect(import("@razzia/socket/env")).rejects.toThrow(
+      "must be set together",
+    )
+  })
+})
+
 describe("manager routes", () => {
   it.each(["/quizz", "/results", "/media"])(
     "%s rejects players and anonymous users",
@@ -270,7 +421,7 @@ describe("games", () => {
       token: managerToken,
       body: { quizzId },
     })
-    const { gameId } = (await json(created)) as { gameId: string }
+    const { gameId } = await json<{ gameId: string }>(created)
     const game = Registry.getInstance().getGameById(gameId)
 
     if (!game) {

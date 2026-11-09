@@ -32,7 +32,9 @@
   "manager": {
     "failedToReadConfig": "Oturum yapılandırması okunamadı",
     "invalidPassword": "Geçersiz şifre",
-    "passwordNotConfigured": "Yönetici şifresi ayarlanmamış"
+    "passwordNotConfigured": "Yönetici şifresi ayarlanmamış",
+    "tooManyAttempts": "Çok fazla başarısız deneme. Lütfen daha sonra tekrar deneyin.",
+    "verificationFailed": "Güvenlik denetimi başarısız oldu. Lütfen tekrar deneyin."
   },
   "notFound": {
     "back": "Ana sayfaya dön",

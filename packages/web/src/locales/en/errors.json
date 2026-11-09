@@ -32,7 +32,9 @@
   "manager": {
     "failedToReadConfig": "Failed to read session config",
     "invalidPassword": "Invalid password",
-    "passwordNotConfigured": "Manager password is not configured"
+    "passwordNotConfigured": "Manager password is not configured",
+    "tooManyAttempts": "Too many failed attempts. Please try again later.",
+    "verificationFailed": "Security check failed. Please try again."
   },
   "notFound": {
     "back": "Go back home",

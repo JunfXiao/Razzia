@@ -32,7 +32,9 @@
   "manager": {
     "failedToReadConfig": "Sitzungskonfiguration konnte nicht gelesen werden",
     "invalidPassword": "Ungültiges Passwort",
-    "passwordNotConfigured": "Manager-Passwort ist nicht konfiguriert"
+    "passwordNotConfigured": "Manager-Passwort ist nicht konfiguriert",
+    "tooManyAttempts": "Zu viele Fehlversuche. Bitte versuche es später erneut.",
+    "verificationFailed": "Sicherheitsprüfung fehlgeschlagen. Bitte versuche es erneut."
   },
   "notFound": {
     "back": "Zurück zur Startseite",

@@ -5,15 +5,27 @@ import {
   managerLoginValidator,
   sessionRequestValidator,
 } from "@razzia/common/validators/auth"
+import { clientAddress } from "@razzia/socket/api/client-address"
 import { readClaims } from "@razzia/socket/api/middleware"
 import { i18nHook } from "@razzia/socket/api/validation"
-import { managerPassword } from "@razzia/socket/env"
+import {
+  managerPassword,
+  turnstileSecretKey,
+  turnstileSiteKey,
+} from "@razzia/socket/env"
 import {
   mintToken,
   newClientId,
   verifyIgnoringExpiry,
   verifyToken,
 } from "@razzia/socket/services/auth"
+import {
+  clearLoginFailures,
+  loginRetryAfter,
+  recordLoginFailure,
+} from "@razzia/socket/services/login-throttle"
+import { verifyTurnstileToken } from "@razzia/socket/services/turnstile"
+import { createHash, timingSafeEqual } from "crypto"
 import { Hono, type Context } from "hono"
 import { JwtTokenExpired } from "hono/utils/jwt/types"
 import { StatusCodes } from "http-status-codes"
@@ -36,10 +48,16 @@ const readRequestToken = async (c: Context): Promise<string | undefined> => {
     : undefined
 }
 
+const digest = (value: string) => createHash("sha256").update(value).digest()
+
+const passwordMatches = (candidate: string, expected: string) =>
+  timingSafeEqual(digest(candidate), digest(expected))
+
 const freshPlayerSession = (): Promise<SessionResponse> =>
   mintToken(newClientId(), SESSION_ROLES.PLAYER)
 
 const routes = new Hono()
+  .get("/config", (c) => c.json({ turnstileSiteKey: turnstileSiteKey ?? null }))
   .post("/session", async (c) => {
     const token = await readRequestToken(c)
 
@@ -74,7 +92,7 @@ const routes = new Hono()
     "/manager",
     zValidator("json", managerLoginValidator, i18nHook),
     async (c) => {
-      const { password } = c.req.valid("json")
+      const { password, turnstileToken } = c.req.valid("json")
 
       if (!managerPassword) {
         return c.json(
@@ -83,12 +101,41 @@ const routes = new Hono()
         )
       }
 
-      if (password !== managerPassword) {
+      const client = clientAddress(c)
+      const retryAfter = loginRetryAfter(client)
+
+      if (retryAfter > 0) {
+        c.header("Retry-After", String(retryAfter))
+
+        return c.json(
+          { error: "errors:manager.tooManyAttempts" },
+          StatusCodes.TOO_MANY_REQUESTS,
+        )
+      }
+
+      if (
+        turnstileSecretKey &&
+        !(
+          turnstileToken &&
+          (await verifyTurnstileToken(turnstileSecretKey, turnstileToken))
+        )
+      ) {
+        return c.json(
+          { error: "errors:manager.verificationFailed" },
+          StatusCodes.FORBIDDEN,
+        )
+      }
+
+      if (!passwordMatches(password, managerPassword)) {
+        recordLoginFailure(client)
+
         return c.json(
           { error: "errors:manager.invalidPassword" },
           StatusCodes.FORBIDDEN,
         )
       }
+
+      clearLoginFailures(client)
 
       const claims = await readClaims(c)
 

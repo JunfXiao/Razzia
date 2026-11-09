@@ -10,7 +10,7 @@
     "export": "Quiz als JSON exportieren",
     "import": "Quiz aus JSON importieren",
     "none": "Noch kein Quiz erstellt",
-    "startGame": "Spiel starten",
+    "startGame": "Sitzung starten",
     "edit": "Quiz bearbeiten",
     "copyLink": "Link zur Seite dieses Quiz kopieren",
     "linkCopied": "Link kopiert",
@@ -21,7 +21,7 @@
     "deleteConfirm": "Ergebnis für \"{{name}}\" löschen? Dies kann nicht rückgängig gemacht werden.",
     "deleted": "Ergebnis gelöscht",
     "noAnswer": "Keine Antwort",
-    "none": "Noch keine Ergebnisse, beende ein Spiel, um Berichte hier zu sehen",
+    "none": "Noch keine Ergebnisse, beende eine Sitzung, um Berichte hier zu sehen",
     "paginationOf": " von ",
     "stats": {
       "correctAnswers": "Richtige Antworten",
@@ -53,8 +53,8 @@
     "results": "Ergebnisse"
   },
   "activeGame": {
-    "title": "Spiel läuft",
-    "return": "Zurück zum Spiel",
-    "end": "Aktuelles Spiel beenden"
+    "title": "Sitzung läuft",
+    "return": "Zurück zur Sitzung",
+    "end": "Aktuelle Sitzung beenden"
   }
 }

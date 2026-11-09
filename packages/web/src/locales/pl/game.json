@@ -2,7 +2,7 @@
   "answerNoted": "Dzięki, zapisano odpowiedź",
   "confirm": "Potwierdź",
   "correct": "Brawo!",
-  "gamePinLabel": "PIN gry:",
+  "gamePinLabel": "PIN sesji:",
   "generatedUsernameNotice": "Po dołączeniu otrzymasz losowy pseudonim.",
   "hud": {
     "answers": "Odpowiedzi",
@@ -15,7 +15,7 @@
   "question": {
     "show": "Pokaż pytanie"
   },
-  "joinInstruction": "Dołącz do gry na",
+  "joinInstruction": "Dołącz do sesji na",
   "leaderboard": "Ranking",
   "lock": {
     "lock": "Zablokuj pokój",
@@ -28,7 +28,7 @@
   "questionPrefix": "Pytanie nr ",
   "rank_ordinal_other": "{{count}}. miejsce",
   "reconnect": "Połącz ponownie",
-  "reconnectTitle": "Byłeś w trakcie gry",
+  "reconnectTitle": "Byłeś w trakcie sesji",
   "resultBehind": ", tuż za ",
   "resultTop": "Zajmujesz ",
   "settings": {
@@ -46,7 +46,7 @@
       "label": "Tylko odpowiedzi",
       "hint": "Gracze widzą tylko przyciski odpowiedzi oraz przycisk do ponownego przeczytania pytania."
     },
-    "title": "Ustawienia gry"
+    "title": "Ustawienia sesji"
   },
   "startGame": "Start",
   "summary": {
@@ -70,11 +70,11 @@
     "playersTyping": "Gracze wpisują odpowiedzi"
   },
   "reviewAnswers": "Przejrzyj ujawnione odpowiedzi",
-  "endGame": "Zakończ grę",
-  "endGameConfirm": "Zakończyć tę grę dla wszystkich graczy? Ujawnione już pytania pozostaną w wynikach.",
+  "endGame": "Zakończ sesję",
+  "endGameConfirm": "Zakończyć tę sesję dla wszystkich graczy? Ujawnione już pytania pozostaną w wynikach.",
   "restart": {
     "button": "Zacznij od nowa",
-    "description": "Opuścisz tę grę i stracisz punkty. Potem możesz dołączyć ponownie tym samym PIN-em."
+    "description": "Opuścisz tę sesję i stracisz punkty. Potem możesz dołączyć ponownie tym samym PIN-em."
   },
   "landing": {
     "waiting": "Czekamy, aż prowadzący rozpocznie",

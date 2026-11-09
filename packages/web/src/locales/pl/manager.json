@@ -10,7 +10,7 @@
     "export": "Eksportuj quiz do JSON",
     "import": "Importuj quiz z JSON",
     "none": "Nie utworzono jeszcze żadnego quizu",
-    "startGame": "Rozpocznij grę",
+    "startGame": "Rozpocznij sesję",
     "edit": "Edytuj quiz",
     "copyLink": "Skopiuj link do strony tego quizu",
     "linkCopied": "Skopiowano link",
@@ -21,7 +21,7 @@
     "deleteConfirm": "Usunąć wynik dla „{{name}}”? Tej operacji nie można cofnąć.",
     "deleted": "Wynik został usunięty",
     "noAnswer": "Brak odpowiedzi",
-    "none": "Brak wyników – zakończ grę, aby zobaczyć tu raporty",
+    "none": "Brak wyników – zakończ sesję, aby zobaczyć tu raporty",
     "paginationOf": " z ",
     "stats": {
       "correctAnswers": "Poprawne odpowiedzi",
@@ -56,8 +56,8 @@
     "results": "Wyniki"
   },
   "activeGame": {
-    "title": "Gra w toku",
-    "return": "Wróć do gry",
-    "end": "Zakończ bieżącą grę"
+    "title": "Sesja w toku",
+    "return": "Wróć do sesji",
+    "end": "Zakończ bieżącą sesję"
   }
 }

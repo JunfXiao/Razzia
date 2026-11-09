@@ -10,7 +10,7 @@
     "export": "Testi JSON olarak dışa aktar",
     "import": "Testi JSON'dan içe aktar",
     "none": "Henüz oluşturulmuş bir test yok",
-    "startGame": "Oyunu başlat",
+    "startGame": "Oturumu başlat",
     "edit": "Testi düzenle",
     "copyLink": "Bu testin sayfasının bağlantısını kopyala",
     "linkCopied": "Bağlantı kopyalandı",
@@ -21,7 +21,7 @@
     "deleteConfirm": "\"{{name}}\" için sonuç silinsin mi? Bu işlem geri alınamaz.",
     "deleted": "Sonuç silindi",
     "noAnswer": "Cevap yok",
-    "none": "Henüz sonuç yok, raporları burada görmek için bir oyunu tamamlayın",
+    "none": "Henüz sonuç yok, raporları burada görmek için bir oturumu tamamlayın",
     "paginationOf": " / ",
     "stats": {
       "correctAnswers": "Doğru cevaplar",
@@ -53,8 +53,8 @@
     "results": "Sonuçlar"
   },
   "activeGame": {
-    "title": "Devam eden oyun",
-    "return": "Oyuna dön",
-    "end": "Mevcut oyunu bitir"
+    "title": "Devam eden oturum",
+    "return": "Oturuma dön",
+    "end": "Mevcut oturumu bitir"
   }
 }

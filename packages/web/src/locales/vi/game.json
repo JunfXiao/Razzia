@@ -2,7 +2,7 @@
   "answerNoted": "Cảm ơn, đã ghi nhận",
   "confirm": "Xác nhận",
   "correct": "Chính xác!",
-  "gamePinLabel": "Mã PIN trò chơi:",
+  "gamePinLabel": "Mã PIN phiên:",
   "generatedUsernameNotice": "Bạn sẽ được đặt một biệt danh ngẫu nhiên khi tham gia.",
   "hud": {
     "answers": "Câu trả lời",
@@ -15,7 +15,7 @@
   "question": {
     "show": "Hiện câu hỏi"
   },
-  "joinInstruction": "Tham gia trò chơi tại",
+  "joinInstruction": "Tham gia phiên tại",
   "leaderboard": "Bảng xếp hạng",
   "lock": {
     "lock": "Khóa phòng",
@@ -29,7 +29,7 @@
   "rank_ordinal_one": "hạng {{count}}",
   "rank_ordinal_other": "hạng {{count}}",
   "reconnect": "Kết nối lại",
-  "reconnectTitle": "Bạn đang ở trong một trò chơi",
+  "reconnectTitle": "Bạn đang ở trong một phiên",
   "resultBehind": ", sau ",
   "resultTop": "Bạn xếp ",
   "settings": {
@@ -47,9 +47,9 @@
       "label": "Chỉ hiện đáp án",
       "hint": "Người chơi chỉ thấy các nút đáp án, kèm một nút để đọc lại câu hỏi."
     },
-    "title": "Cài đặt trò chơi"
+    "title": "Cài đặt phiên"
   },
-  "startGame": "Bắt đầu trò chơi",
+  "startGame": "Bắt đầu phiên",
   "summary": {
     "title": "Khảo sát đã kết thúc",
     "participants": "Người tham gia",
@@ -71,11 +71,11 @@
     "playersTyping": "Người chơi đang nhập câu trả lời"
   },
   "reviewAnswers": "Xem lại các đáp án đã công bố",
-  "endGame": "Kết thúc trò chơi",
-  "endGameConfirm": "Kết thúc trò chơi này cho tất cả người chơi? Các câu hỏi đã công bố vẫn được lưu trong Kết quả.",
+  "endGame": "Kết thúc phiên",
+  "endGameConfirm": "Kết thúc phiên này cho tất cả người chơi? Các câu hỏi đã công bố vẫn được lưu trong Kết quả.",
   "restart": {
     "button": "Bắt đầu lại",
-    "description": "Bạn sẽ rời trò chơi này và mất điểm. Sau đó bạn có thể tham gia lại bằng cùng mã PIN."
+    "description": "Bạn sẽ rời phiên này và mất điểm. Sau đó bạn có thể tham gia lại bằng cùng mã PIN."
   },
   "landing": {
     "waiting": "Đang chờ người chủ trì bắt đầu",

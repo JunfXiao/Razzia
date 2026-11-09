@@ -14,23 +14,23 @@
     "usernameTooShort": "ユーザー名を入力してください"
   },
   "game": {
-    "alreadyStarted": "ゲームはすでに開始されています",
-    "expired": "ゲームの有効期限が切れました",
+    "alreadyStarted": "セッションはすでに開始されています",
+    "expired": "セッションの有効期限が切れました",
     "invalidAutoAdvanceDelay": "待ち時間は3秒から600秒の間で指定してください",
     "kickedByManager": "管理者によって退室させられました",
-    "locked": "ゲームはロック中",
+    "locked": "セッションはロック中",
     "managerAlreadyConnected": "管理者はすでに接続されています",
-    "managerCannotJoin": "自分のゲームには参加できません",
+    "managerCannotJoin": "自分のセッションには参加できません",
     "managerDisconnected": "管理者が切断されました",
     "noPlayersConnected": "接続中のプレイヤーがいません",
-    "notFound": "ゲームが見つかりません",
+    "notFound": "セッションが見つかりません",
     "playerAlreadyConnected": "プレイヤーはすでに接続されています",
-    "alreadyRunning": "すでにゲームが進行中です。ゲームに戻るか、先に終了してください。",
-    "endedByManager": "ホストがゲームを終了しました"
+    "alreadyRunning": "すでにセッションが進行中です。セッションに戻るか、先に終了してください。",
+    "endedByManager": "ホストがセッションを終了しました"
   },
   "invalidRequest": "リクエストが無効です",
   "manager": {
-    "failedToReadConfig": "ゲーム設定の読み込みに失敗しました",
+    "failedToReadConfig": "セッション設定の読み込みに失敗しました",
     "invalidPassword": "パスワードが無効です",
     "passwordNotConfigured": "管理者パスワードが設定されていません"
   },

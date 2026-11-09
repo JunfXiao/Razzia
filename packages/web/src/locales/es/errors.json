@@ -14,23 +14,23 @@
     "usernameTooShort": "El nombre de usuario no puede estar vacío"
   },
   "game": {
-    "alreadyStarted": "La partida ya ha comenzado",
-    "expired": "Partida expirada",
+    "alreadyStarted": "La sesión ya ha comenzado",
+    "expired": "Sesión expirada",
     "invalidAutoAdvanceDelay": "El retraso debe estar entre 3 y 600 segundos",
     "kickedByManager": "Has sido expulsado por el administrador",
-    "locked": "Partida bloqueada",
+    "locked": "Sesión bloqueada",
     "managerAlreadyConnected": "El administrador ya está conectado",
-    "managerCannotJoin": "No puedes unirte a tu propio juego",
+    "managerCannotJoin": "No puedes unirte a tu propia sesión",
     "managerDisconnected": "El administrador se ha desconectado",
     "noPlayersConnected": "No hay jugadores conectados",
-    "notFound": "Partida no encontrada",
+    "notFound": "Sesión no encontrada",
     "playerAlreadyConnected": "El jugador ya está conectado",
-    "alreadyRunning": "Ya hay una partida en curso. Vuelve a ella o termínala primero.",
-    "endedByManager": "El anfitrión ha terminado la partida"
+    "alreadyRunning": "Ya hay una sesión en curso. Vuelve a ella o termínala primero.",
+    "endedByManager": "El anfitrión ha terminado la sesión"
   },
   "invalidRequest": "Solicitud inválida",
   "manager": {
-    "failedToReadConfig": "Error al leer la configuración del juego",
+    "failedToReadConfig": "Error al leer la configuración de la sesión",
     "invalidPassword": "Contraseña incorrecta",
     "passwordNotConfigured": "La contraseña del administrador no está configurada"
   },

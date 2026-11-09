@@ -10,7 +10,7 @@
     "export": "Exportar cuestionario como JSON",
     "import": "Importar cuestionario desde JSON",
     "none": "Aún no se ha creado ningún cuestionario",
-    "startGame": "Iniciar juego",
+    "startGame": "Comenzar sesión",
     "edit": "Editar cuestionario",
     "copyLink": "Copiar el enlace a la página de este cuestionario",
     "linkCopied": "Enlace copiado",
@@ -21,7 +21,7 @@
     "deleteConfirm": "¿Eliminar el resultado de \"{{name}}\"? Esta acción no se puede deshacer.",
     "deleted": "Resultado eliminado",
     "noAnswer": "Sin respuesta",
-    "none": "Aún no hay resultados, termina una partida para ver los informes aquí",
+    "none": "Aún no hay resultados, termina una sesión para ver los informes aquí",
     "paginationOf": " de ",
     "stats": {
       "correctAnswers": "Respuestas correctas",
@@ -53,8 +53,8 @@
     "results": "Resultados"
   },
   "activeGame": {
-    "title": "Partida en curso",
-    "return": "Volver a la partida",
-    "end": "Terminar la partida actual"
+    "title": "Sesión en curso",
+    "return": "Volver a la sesión",
+    "end": "Terminar la sesión actual"
   }
 }

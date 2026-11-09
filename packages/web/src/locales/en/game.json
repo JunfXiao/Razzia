@@ -2,7 +2,7 @@
   "answerNoted": "Thanks, that's noted",
   "confirm": "Confirm",
   "correct": "Nice!",
-  "gamePinLabel": "Game PIN:",
+  "gamePinLabel": "Session PIN:",
   "generatedUsernameNotice": "You will be given a random nickname when you join.",
   "hud": {
     "answers": "Answers",
@@ -15,7 +15,7 @@
   "question": {
     "show": "Show the question"
   },
-  "joinInstruction": "Join the game at",
+  "joinInstruction": "Join the session at",
   "leaderboard": "Leaderboard",
   "lock": {
     "lock": "Lock the room",
@@ -31,7 +31,7 @@
   "rank_ordinal_few": "{{count}}rd place",
   "rank_ordinal_other": "{{count}}th place",
   "reconnect": "Reconnect",
-  "reconnectTitle": "You were in a game",
+  "reconnectTitle": "You were in a session",
   "resultBehind": ", behind ",
   "resultTop": "You finished ",
   "settings": {
@@ -49,7 +49,7 @@
       "label": "Answers only",
       "hint": "Players only see the answer buttons, with a button to read the question again."
     },
-    "title": "Game settings"
+    "title": "Session settings"
   },
   "startGame": "Start",
   "summary": {
@@ -73,11 +73,11 @@
     "playersTyping": "Players are typing their answers"
   },
   "reviewAnswers": "Review revealed answers",
-  "endGame": "End game",
-  "endGameConfirm": "End this game for all players? Questions already revealed are kept in Results.",
+  "endGame": "End session",
+  "endGameConfirm": "End this session for all players? Questions already revealed are kept in Results.",
   "restart": {
     "button": "Start over",
-    "description": "You will leave this game and lose your points. You can then join again with the same PIN."
+    "description": "You will leave this session and lose your points. You can then join again with the same PIN."
   },
   "landing": {
     "waiting": "Waiting for the host to start",

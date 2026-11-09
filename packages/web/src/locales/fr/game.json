@@ -2,7 +2,7 @@
   "answerNoted": "Merci, c'est noté",
   "confirm": "Valider",
   "correct": "Bravo !",
-  "gamePinLabel": "PIN de la partie :",
+  "gamePinLabel": "PIN de la session :",
   "generatedUsernameNotice": "Un pseudo aléatoire te sera attribué en rejoignant.",
   "hud": {
     "answers": "Réponses",
@@ -15,7 +15,7 @@
   "question": {
     "show": "Afficher la question"
   },
-  "joinInstruction": "Rejoins la partie sur",
+  "joinInstruction": "Rejoins la session sur",
   "leaderboard": "Classement",
   "lock": {
     "lock": "Verrouiller la salle",
@@ -29,7 +29,7 @@
   "rank_ordinal_one": "{{count}}er",
   "rank_ordinal_other": "{{count}}ème place",
   "reconnect": "Reconnecter",
-  "reconnectTitle": "Vous étiez dans une partie",
+  "reconnectTitle": "Vous étiez dans une session",
   "resultBehind": ", derrière ",
   "resultTop": "Tu es ",
   "settings": {
@@ -47,7 +47,7 @@
       "label": "Réponses seules",
       "hint": "Les joueurs ne voient que les boutons de réponse, avec un bouton pour relire la question."
     },
-    "title": "Réglages de la partie"
+    "title": "Réglages de la session"
   },
   "startGame": "Démarrer",
   "summary": {
@@ -71,11 +71,11 @@
     "playersTyping": "Les joueurs saisissent leurs réponses"
   },
   "reviewAnswers": "Revoir les réponses dévoilées",
-  "endGame": "Terminer la partie",
-  "endGameConfirm": "Terminer cette partie pour tous les joueurs ? Les questions déjà dévoilées restent dans les résultats.",
+  "endGame": "Terminer la session",
+  "endGameConfirm": "Terminer cette session pour tous les joueurs ? Les questions déjà dévoilées restent dans les résultats.",
   "restart": {
     "button": "Recommencer",
-    "description": "Tu vas quitter cette partie et perdre tes points. Tu pourras ensuite la rejoindre avec le même code PIN."
+    "description": "Tu vas quitter cette session et perdre tes points. Tu pourras ensuite la rejoindre avec le même code PIN."
   },
   "landing": {
     "waiting": "En attente du lancement par l'hôte",

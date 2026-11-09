@@ -14,19 +14,19 @@
     "usernameTooShort": "Le pseudo ne peut pas être vide"
   },
   "game": {
-    "alreadyStarted": "La partie a déjà commencé",
-    "expired": "La partie a expiré",
+    "alreadyStarted": "La session a déjà commencé",
+    "expired": "La session a expiré",
     "invalidAutoAdvanceDelay": "Le délai doit être compris entre 3 et 600 secondes",
     "kickedByManager": "Vous avez été expulsé par le manager",
-    "locked": "Partie verrouillée",
+    "locked": "Session verrouillée",
     "managerAlreadyConnected": "Un manager est déjà connecté",
-    "managerCannotJoin": "Vous ne pouvez pas rejoindre votre propre partie",
+    "managerCannotJoin": "Vous ne pouvez pas rejoindre votre propre session",
     "managerDisconnected": "Le manager s'est déconnecté",
     "noPlayersConnected": "Aucun joueur connecté",
-    "notFound": "Partie introuvable",
+    "notFound": "Session introuvable",
     "playerAlreadyConnected": "Ce joueur est déjà connecté",
-    "alreadyRunning": "Une partie est déjà en cours. Retournes-y ou termine-la d'abord.",
-    "endedByManager": "L'hôte a terminé la partie"
+    "alreadyRunning": "Une session est déjà en cours. Retournes-y ou termine-la d'abord.",
+    "endedByManager": "L'hôte a terminé la session"
   },
   "invalidRequest": "Requête invalide",
   "manager": {

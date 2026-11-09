@@ -3,15 +3,15 @@
   "logout": "Đăng xuất",
   "passwordPlaceholder": "Mật khẩu",
   "quizz": {
-    "create": "Tạo trò chơi",
-    "delete": "Xóa trò chơi",
-    "deleteConfirm": "Bạn có chắc muốn xóa \"{{name}}\"? Trò chơi này sẽ bị xóa vĩnh viễn.",
-    "deleted": "Đã xóa trò chơi",
-    "export": "Xuất trò chơi dạng JSON",
-    "import": "Nhập trò chơi từ JSON",
-    "none": "Chưa có trò chơi nào",
-    "startGame": "Bắt đầu trò chơi",
-    "edit": "Sửa trò chơi",
+    "create": "Tạo bộ câu hỏi",
+    "delete": "Xóa bộ câu hỏi",
+    "deleteConfirm": "Bạn có chắc muốn xóa \"{{name}}\"? Bộ câu hỏi này sẽ bị xóa vĩnh viễn.",
+    "deleted": "Đã xóa bộ câu hỏi",
+    "export": "Xuất bộ câu hỏi dạng JSON",
+    "import": "Nhập bộ câu hỏi từ JSON",
+    "none": "Chưa có bộ câu hỏi nào",
+    "startGame": "Bắt đầu phiên",
+    "edit": "Sửa bộ câu hỏi",
     "copyLink": "Sao chép liên kết đến trang của bộ câu hỏi này",
     "linkCopied": "Đã sao chép liên kết",
     "linkCopyFailed": "Không thể sao chép liên kết: {{link}}"
@@ -21,7 +21,7 @@
     "deleteConfirm": "Xóa kết quả của \"{{name}}\"? Kết quả này sẽ bị xóa vĩnh viễn.",
     "deleted": "Đã xóa kết quả",
     "noAnswer": "Không có câu trả lời",
-    "none": "Chưa có kết quả, hoàn thành một trò chơi để xem báo cáo tại đây",
+    "none": "Chưa có kết quả, hoàn thành một phiên để xem báo cáo tại đây",
     "paginationOf": " / ",
     "stats": {
       "correctAnswers": "Câu trả lời đúng",
@@ -53,8 +53,8 @@
     "results": "Kết quả"
   },
   "activeGame": {
-    "title": "Trò chơi đang diễn ra",
-    "return": "Quay lại trò chơi",
-    "end": "Kết thúc trò chơi hiện tại"
+    "title": "Phiên đang diễn ra",
+    "return": "Quay lại phiên",
+    "end": "Kết thúc phiên hiện tại"
   }
 }

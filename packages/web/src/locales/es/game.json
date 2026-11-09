@@ -2,7 +2,7 @@
   "answerNoted": "Gracias, anotado",
   "confirm": "Confirmar",
   "correct": "¡Bien!",
-  "gamePinLabel": "PIN del juego:",
+  "gamePinLabel": "PIN de la sesión:",
   "generatedUsernameNotice": "Recibirás un apodo aleatorio al entrar.",
   "hud": {
     "answers": "Respuestas",
@@ -15,7 +15,7 @@
   "question": {
     "show": "Ver la pregunta"
   },
-  "joinInstruction": "Únete al juego en",
+  "joinInstruction": "Únete a la sesión en",
   "leaderboard": "Clasificación",
   "lock": {
     "lock": "Bloquear la sala",
@@ -28,7 +28,7 @@
   "questionPrefix": "Pregunta #",
   "rank_ordinal_other": "{{count}}.º puesto",
   "reconnect": "Reconectar",
-  "reconnectTitle": "Estabas en una partida",
+  "reconnectTitle": "Estabas en una sesión",
   "resultBehind": ", detrás de ",
   "resultTop": "Terminaste ",
   "settings": {
@@ -46,7 +46,7 @@
       "label": "Solo respuestas",
       "hint": "Los jugadores solo ven los botones de respuesta, con un botón para volver a leer la pregunta."
     },
-    "title": "Ajustes de la partida"
+    "title": "Ajustes de la sesión"
   },
   "startGame": "Iniciar",
   "summary": {
@@ -70,11 +70,11 @@
     "playersTyping": "Los jugadores están escribiendo sus respuestas"
   },
   "reviewAnswers": "Revisar las respuestas reveladas",
-  "endGame": "Terminar partida",
-  "endGameConfirm": "¿Terminar esta partida para todos los jugadores? Las preguntas ya reveladas se conservan en Resultados.",
+  "endGame": "Terminar sesión",
+  "endGameConfirm": "¿Terminar esta sesión para todos los jugadores? Las preguntas ya reveladas se conservan en Resultados.",
   "restart": {
     "button": "Empezar de nuevo",
-    "description": "Saldrás de esta partida y perderás tus puntos. Después podrás volver a entrar con el mismo PIN."
+    "description": "Saldrás de esta sesión y perderás tus puntos. Después podrás volver a entrar con el mismo PIN."
   },
   "landing": {
     "waiting": "Esperando a que el anfitrión empiece",

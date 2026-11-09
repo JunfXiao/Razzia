@@ -2,7 +2,7 @@
   "answerNoted": "Danke, notiert",
   "confirm": "Bestätigen",
   "correct": "Richtig!",
-  "gamePinLabel": "Spiel-PIN:",
+  "gamePinLabel": "Sitzungs-PIN:",
   "generatedUsernameNotice": "Du bekommst beim Beitreten einen zufälligen Spitznamen.",
   "hud": {
     "answers": "Antworten",
@@ -15,7 +15,7 @@
   "question": {
     "show": "Frage anzeigen"
   },
-  "joinInstruction": "Tritt dem Spiel bei auf",
+  "joinInstruction": "Tritt der Sitzung bei auf",
   "leaderboard": "Bestenliste",
   "lock": {
     "lock": "Raum sperren",
@@ -28,7 +28,7 @@
   "questionPrefix": "Frage #",
   "rank_ordinal_other": "{{count}}. Platz",
   "reconnect": "Erneut verbinden",
-  "reconnectTitle": "Du warst in einem Spiel",
+  "reconnectTitle": "Du warst in einer Sitzung",
   "resultBehind": ", hinter ",
   "resultTop": "Du hast ",
   "settings": {
@@ -46,7 +46,7 @@
       "label": "Nur Antworten",
       "hint": "Die Spieler sehen nur die Antwortknöpfe, mit einem Knopf, um die Frage erneut zu lesen."
     },
-    "title": "Spieleinstellungen"
+    "title": "Sitzungseinstellungen"
   },
   "startGame": "Starten",
   "summary": {
@@ -70,11 +70,11 @@
     "playersTyping": "Die Spieler tippen ihre Antworten"
   },
   "reviewAnswers": "Aufgedeckte Antworten ansehen",
-  "endGame": "Spiel beenden",
-  "endGameConfirm": "Dieses Spiel für alle Spieler beenden? Bereits aufgedeckte Fragen bleiben in den Ergebnissen erhalten.",
+  "endGame": "Sitzung beenden",
+  "endGameConfirm": "Diese Sitzung für alle Spieler beenden? Bereits aufgedeckte Fragen bleiben in den Ergebnissen erhalten.",
   "restart": {
     "button": "Neu beginnen",
-    "description": "Du verlässt dieses Spiel und verlierst deine Punkte. Danach kannst du mit derselben PIN wieder beitreten."
+    "description": "Du verlässt diese Sitzung und verlierst deine Punkte. Danach kannst du mit derselben PIN wieder beitreten."
   },
   "landing": {
     "waiting": "Warten, bis der Host startet",

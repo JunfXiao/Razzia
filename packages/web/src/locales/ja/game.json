@@ -2,7 +2,7 @@
   "answerNoted": "ありがとう、記録しました",
   "confirm": "確認",
   "correct": "正解！",
-  "gamePinLabel": "ゲームPIN:",
+  "gamePinLabel": "セッションPIN:",
   "generatedUsernameNotice": "参加するとランダムなニックネームが割り当てられます。",
   "hud": {
     "answers": "回答数",
@@ -15,7 +15,7 @@
   "question": {
     "show": "問題を表示"
   },
-  "joinInstruction": "以下でゲームに参加してください",
+  "joinInstruction": "以下でセッションに参加してください",
   "leaderboard": "リーダーボード",
   "lock": {
     "lock": "ルームをロック",
@@ -28,7 +28,7 @@
   "questionPrefix": "問題 #",
   "rank_ordinal_other": "{{count}}位",
   "reconnect": "再接続",
-  "reconnectTitle": "ゲームに参加していました",
+  "reconnectTitle": "セッションに参加していました",
   "resultBehind": "、差は ",
   "resultTop": "あなたの順位は ",
   "settings": {
@@ -46,7 +46,7 @@
       "label": "回答のみ",
       "hint": "プレイヤーには回答ボタンだけが表示され、問題はボタンで読み直せます。"
     },
-    "title": "ゲーム設定"
+    "title": "セッション設定"
   },
   "startGame": "開始",
   "summary": {
@@ -70,11 +70,11 @@
     "playersTyping": "プレイヤーが回答を入力しています"
   },
   "reviewAnswers": "公開済みの回答を見返す",
-  "endGame": "ゲームを終了",
-  "endGameConfirm": "全プレイヤーのこのゲームを終了しますか？公開済みの問題は結果に保存されます。",
+  "endGame": "セッションを終了",
+  "endGameConfirm": "全プレイヤーのこのセッションを終了しますか？公開済みの問題は結果に保存されます。",
   "restart": {
     "button": "やり直す",
-    "description": "このゲームから退出し、ポイントは失われます。その後、同じ PIN で再度参加できます。"
+    "description": "このセッションから退出し、ポイントは失われます。その後、同じ PIN で再度参加できます。"
   },
   "landing": {
     "waiting": "ホストの開始を待っています",

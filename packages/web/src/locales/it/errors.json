@@ -14,23 +14,23 @@
     "usernameTooShort": "Il nome utente non può essere vuoto"
   },
   "game": {
-    "alreadyStarted": "Partita già iniziata",
-    "expired": "Partita terminata",
+    "alreadyStarted": "Sessione già iniziata",
+    "expired": "Sessione scaduta",
     "invalidAutoAdvanceDelay": "Il ritardo deve essere tra 3 e 600 secondi",
     "kickedByManager": "Sei stato espulso dal gestore",
-    "locked": "Partita bloccata",
+    "locked": "Sessione bloccata",
     "managerAlreadyConnected": "Gestore già connesso",
-    "managerCannotJoin": "Non puoi unirti alla tua stessa partita",
+    "managerCannotJoin": "Non puoi unirti alla tua stessa sessione",
     "managerDisconnected": "Gestore disconnesso",
     "noPlayersConnected": "Nessun giocatore connesso",
-    "notFound": "Partita non trovata",
+    "notFound": "Sessione non trovata",
     "playerAlreadyConnected": "Giocatore già connesso",
-    "alreadyRunning": "Una partita è già in corso. Torna alla partita o terminala prima.",
-    "endedByManager": "L'host ha terminato la partita"
+    "alreadyRunning": "Una sessione è già in corso. Torna alla sessione o terminala prima.",
+    "endedByManager": "L'host ha terminato la sessione"
   },
   "invalidRequest": "Richiesta non valida",
   "manager": {
-    "failedToReadConfig": "Impossibile leggere la configurazione del gioco",
+    "failedToReadConfig": "Impossibile leggere la configurazione della sessione",
     "invalidPassword": "Password non valida",
     "passwordNotConfigured": "La password del gestore non è configurata"
   },

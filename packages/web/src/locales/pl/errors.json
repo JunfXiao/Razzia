@@ -14,23 +14,23 @@
     "usernameTooShort": "Nazwa użytkownika nie może być pusta"
   },
   "game": {
-    "alreadyStarted": "Gra już się rozpoczęła",
-    "expired": "Gra wygasła",
+    "alreadyStarted": "Sesja już się rozpoczęła",
+    "expired": "Sesja wygasła",
     "invalidAutoAdvanceDelay": "Opóźnienie musi wynosić od 3 do 600 sekund",
-    "kickedByManager": "Prowadzący usunął cię z gry",
-    "locked": "Gra jest zablokowana",
+    "kickedByManager": "Prowadzący usunął cię z sesji",
+    "locked": "Sesja jest zablokowana",
     "managerAlreadyConnected": "Prowadzący jest już połączony",
-    "managerCannotJoin": "Nie możesz dołączyć do własnej gry",
+    "managerCannotJoin": "Nie możesz dołączyć do własnej sesji",
     "managerDisconnected": "Prowadzący się rozłączył",
     "noPlayersConnected": "Brak połączonych graczy",
-    "notFound": "Nie znaleziono gry",
+    "notFound": "Nie znaleziono sesji",
     "playerAlreadyConnected": "Gracz jest już połączony",
-    "alreadyRunning": "Gra już trwa. Wróć do niej lub najpierw ją zakończ.",
-    "endedByManager": "Prowadzący zakończył grę"
+    "alreadyRunning": "Sesja już trwa. Wróć do niej lub najpierw ją zakończ.",
+    "endedByManager": "Prowadzący zakończył sesję"
   },
   "invalidRequest": "Nieprawidłowe żądanie",
   "manager": {
-    "failedToReadConfig": "Nie udało się odczytać konfiguracji gry",
+    "failedToReadConfig": "Nie udało się odczytać konfiguracji sesji",
     "invalidPassword": "Nieprawidłowe hasło",
     "passwordNotConfigured": "Hasło prowadzącego nie zostało skonfigurowane"
   },

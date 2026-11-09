@@ -114,7 +114,7 @@
     "title": "Background and logo",
     "background": "Background",
     "logo": "Logo",
-    "hint": "Used for this quizz only, on the join screen and during the game.",
+    "hint": "Used for this quizz only, on the join screen and during the session.",
     "none": "None",
     "color": "Color",
     "image": "Image",

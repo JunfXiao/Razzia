@@ -2,7 +2,7 @@
   "answerNoted": "Teşekkürler, cevabınız alındı",
   "confirm": "Onayla",
   "correct": "Harika!",
-  "gamePinLabel": "Oyun PIN'i:",
+  "gamePinLabel": "Oturum PIN'i:",
   "generatedUsernameNotice": "Katıldığınızda size rastgele bir takma ad atanacaktır.",
   "hud": {
     "answers": "Cevaplar",
@@ -15,7 +15,7 @@
   "question": {
     "show": "Soruyu göster"
   },
-  "joinInstruction": "Oyuna buradan katılın:",
+  "joinInstruction": "Oturuma buradan katılın:",
   "leaderboard": "Liderlik Tablosu",
   "lock": {
     "lock": "Odayı kilitle",
@@ -28,7 +28,7 @@
   "questionPrefix": "Soru #",
   "rank_ordinal_other": "{{count}}. sıra",
   "reconnect": "Yeniden bağlan",
-  "reconnectTitle": "Bir oyundaydınız",
+  "reconnectTitle": "Bir oturumdaydınız",
   "resultBehind": ", hemen arkasında: ",
   "resultTop": "Tamamladığınız sıra: ",
   "settings": {
@@ -46,7 +46,7 @@
       "label": "Yalnızca cevaplar",
       "hint": "Oyuncular yalnızca cevap butonlarını görür; soruyu tekrar okumak için bir buton bulunur."
     },
-    "title": "Oyun ayarları"
+    "title": "Oturum ayarları"
   },
   "startGame": "Başlat",
   "summary": {
@@ -70,11 +70,11 @@
     "playersTyping": "Oyuncular cevaplarını yazıyor"
   },
   "reviewAnswers": "Açıklanan cevapları gözden geçir",
-  "endGame": "Oyunu bitir",
-  "endGameConfirm": "Bu oyun tüm oyuncular için bitirilsin mi? Açıklanan sorular Sonuçlar bölümünde kalır.",
+  "endGame": "Oturumu bitir",
+  "endGameConfirm": "Bu oturum tüm oyuncular için bitirilsin mi? Açıklanan sorular Sonuçlar bölümünde kalır.",
   "restart": {
     "button": "Yeniden başla",
-    "description": "Bu oyundan çıkacak ve puanlarınızı kaybedeceksiniz. Ardından aynı PIN ile yeniden katılabilirsiniz."
+    "description": "Bu oturumdan çıkacak ve puanlarınızı kaybedeceksiniz. Ardından aynı PIN ile yeniden katılabilirsiniz."
   },
   "landing": {
     "waiting": "Sunucunun başlatması bekleniyor",

@@ -10,7 +10,7 @@
     "export": "Esporta quiz come JSON",
     "import": "Importa quiz da JSON",
     "none": "Nessun quiz creato ancora",
-    "startGame": "Inizia il gioco",
+    "startGame": "Inizia la sessione",
     "edit": "Modifica quiz",
     "copyLink": "Copia il link alla pagina di questo quiz",
     "linkCopied": "Link copiato",
@@ -21,7 +21,7 @@
     "deleteConfirm": "Eliminare il risultato per \"{{name}}\"? Questa azione non può essere annullata.",
     "deleted": "Risultato eliminato",
     "noAnswer": "Nessuna risposta",
-    "none": "Nessun risultato ancora, termina una partita per vedere i rapporti qui",
+    "none": "Nessun risultato ancora, termina una sessione per vedere i rapporti qui",
     "paginationOf": " di ",
     "stats": {
       "correctAnswers": "Risposte corrette",
@@ -53,8 +53,8 @@
     "results": "Risultati"
   },
   "activeGame": {
-    "title": "Partita in corso",
-    "return": "Torna alla partita",
-    "end": "Termina la partita in corso"
+    "title": "Sessione in corso",
+    "return": "Torna alla sessione",
+    "end": "Termina la sessione in corso"
   }
 }

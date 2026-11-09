@@ -14,23 +14,23 @@
     "usernameTooShort": "Kullanıcı adı boş olamaz"
   },
   "game": {
-    "alreadyStarted": "Oyun zaten başladı",
-    "expired": "Oyunun süresi doldu",
+    "alreadyStarted": "Oturum zaten başladı",
+    "expired": "Oturumun süresi doldu",
     "invalidAutoAdvanceDelay": "Gecikme süresi 3 ile 600 saniye arasında olmalıdır",
-    "kickedByManager": "Yönetici tarafından oyundan atıldınız",
-    "locked": "Oyun kilitli",
+    "kickedByManager": "Yönetici tarafından oturumdan atıldınız",
+    "locked": "Oturum kilitli",
     "managerAlreadyConnected": "Yönetici zaten bağlı",
-    "managerCannotJoin": "Kendi oyununuza katılamazsınız",
+    "managerCannotJoin": "Kendi oturumunuza katılamazsınız",
     "managerDisconnected": "Yöneticinin bağlantısı kesildi",
     "noPlayersConnected": "Bağlı oyuncu yok",
-    "notFound": "Oyun bulunamadı",
+    "notFound": "Oturum bulunamadı",
     "playerAlreadyConnected": "Oyuncu zaten bağlı",
-    "alreadyRunning": "Zaten devam eden bir oyun var. Oyuna dönün veya önce oyunu bitirin.",
-    "endedByManager": "Sunucu oyunu bitirdi"
+    "alreadyRunning": "Zaten devam eden bir oturum var. Oturuma dönün veya önce oturumu bitirin.",
+    "endedByManager": "Sunucu oturumu bitirdi"
   },
   "invalidRequest": "Geçersiz istek",
   "manager": {
-    "failedToReadConfig": "Oyun yapılandırması okunamadı",
+    "failedToReadConfig": "Oturum yapılandırması okunamadı",
     "invalidPassword": "Geçersiz şifre",
     "passwordNotConfigured": "Yönetici şifresi ayarlanmamış"
   },

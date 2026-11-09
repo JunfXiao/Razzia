@@ -114,7 +114,7 @@
     "title": "Fondo y logotipo",
     "background": "Fondo",
     "logo": "Logotipo",
-    "hint": "Solo para este cuestionario, en la pantalla de acceso y durante la partida.",
+    "hint": "Solo para este cuestionario, en la pantalla de acceso y durante la sesión.",
     "none": "Ninguno",
     "color": "Color",
     "image": "Imagen",

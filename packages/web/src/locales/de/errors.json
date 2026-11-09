@@ -14,23 +14,23 @@
     "usernameTooShort": "Der Benutzername darf nicht leer sein"
   },
   "game": {
-    "alreadyStarted": "Spiel bereits gestartet",
-    "expired": "Spiel abgelaufen",
+    "alreadyStarted": "Sitzung bereits gestartet",
+    "expired": "Sitzung abgelaufen",
     "invalidAutoAdvanceDelay": "Verzögerung muss zwischen 3 und 600 Sekunden liegen",
     "kickedByManager": "Du wurdest vom Manager entfernt",
-    "locked": "Spiel gesperrt",
+    "locked": "Sitzung gesperrt",
     "managerAlreadyConnected": "Manager bereits verbunden",
-    "managerCannotJoin": "Du kannst deinem eigenen Spiel nicht beitreten",
+    "managerCannotJoin": "Du kannst deiner eigenen Sitzung nicht beitreten",
     "managerDisconnected": "Manager getrennt",
     "noPlayersConnected": "Keine Spieler verbunden",
-    "notFound": "Spiel nicht gefunden",
+    "notFound": "Sitzung nicht gefunden",
     "playerAlreadyConnected": "Spieler bereits verbunden",
-    "alreadyRunning": "Es läuft bereits ein Spiel. Kehre dorthin zurück oder beende es zuerst.",
-    "endedByManager": "Der Host hat das Spiel beendet"
+    "alreadyRunning": "Es läuft bereits eine Sitzung. Kehre dorthin zurück oder beende sie zuerst.",
+    "endedByManager": "Der Host hat die Sitzung beendet"
   },
   "invalidRequest": "Ungültige Anfrage",
   "manager": {
-    "failedToReadConfig": "Spielkonfiguration konnte nicht gelesen werden",
+    "failedToReadConfig": "Sitzungskonfiguration konnte nicht gelesen werden",
     "invalidPassword": "Ungültiges Passwort",
     "passwordNotConfigured": "Manager-Passwort ist nicht konfiguriert"
   },

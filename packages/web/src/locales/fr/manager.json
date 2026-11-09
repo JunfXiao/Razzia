@@ -10,7 +10,7 @@
     "export": "Exporter le quizz (JSON)",
     "import": "Importer un quizz (JSON)",
     "none": "Aucun quizz créé",
-    "startGame": "Démarrer la partie",
+    "startGame": "Démarrer la session",
     "edit": "Modifier le quizz",
     "copyLink": "Copier le lien vers la page de ce quiz",
     "linkCopied": "Lien copié",
@@ -21,7 +21,7 @@
     "deleteConfirm": "Supprimer le résultat \"{{name}}\" ? Cette action est irréversible.",
     "deleted": "Résultat supprimé",
     "noAnswer": "Sans réponse",
-    "none": "Aucun résultat pour l'instant, terminez une partie pour voir les rapports",
+    "none": "Aucun résultat pour l'instant, terminez une session pour voir les rapports",
     "paginationOf": " sur ",
     "stats": {
       "correctAnswers": "Bonnes réponses",
@@ -53,8 +53,8 @@
     "results": "Résultats"
   },
   "activeGame": {
-    "title": "Partie en cours",
-    "return": "Retour à la partie",
-    "end": "Terminer la partie en cours"
+    "title": "Session en cours",
+    "return": "Retour à la session",
+    "end": "Terminer la session en cours"
   }
 }

@@ -1,5 +1,8 @@
+import { getAppConfig } from "@razzia/web/app-config"
 import type { ReactEventHandler } from "react"
 import { z } from "zod"
+
+const DEFAULT_APP_NAME = "Razzia"
 
 const brandingSchema = z.object({
   appName: z.string().optional(),
@@ -16,6 +19,10 @@ export type BrandingTheme = z.infer<typeof brandingSchema>
 let current: BrandingTheme | null = null
 
 export const getBranding = (): BrandingTheme | null => current
+
+/** `APP_NAME` from the server environment wins over the theme's `appName`. */
+export const getAppName = (): string =>
+  getAppConfig()?.appName ?? current?.appName ?? DEFAULT_APP_NAME
 
 export const loadBranding = async (): Promise<BrandingTheme | null> => {
   try {
@@ -38,6 +45,8 @@ export const loadBranding = async (): Promise<BrandingTheme | null> => {
 }
 
 export const applyBranding = (theme: BrandingTheme | null): void => {
+  document.title = getAppName()
+
   if (!theme) {
     return
   }
@@ -66,10 +75,6 @@ export const applyBranding = (theme: BrandingTheme | null): void => {
       "--font-display",
       `"${theme.font.family}", sans-serif`,
     )
-  }
-
-  if (theme.appName) {
-    document.title = theme.appName
   }
 
   if (theme.favicon) {

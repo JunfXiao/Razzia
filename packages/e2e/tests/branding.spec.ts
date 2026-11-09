@@ -28,6 +28,23 @@ test("applies the instance branding", async ({ page }) => {
   expect(await cssVariable("--font-display")).toBe('"Courier New", sans-serif')
 })
 
+test("applies the app name and footer text of the server", async ({ page }) => {
+  await page.route("**/branding/theme.json", (route) =>
+    route.fulfill({ json: { appName: "My Quiz" } }),
+  )
+  await page.route("**/api/config", (route) =>
+    route.fulfill({
+      json: { appName: "Server Quiz", footerText: "Footer line" },
+    }),
+  )
+
+  await page.goto("/")
+
+  await expect(page).toHaveTitle("Server Quiz")
+  await expect(page.getByRole("img", { name: "Server Quiz" })).toBeVisible()
+  await expect(page.getByText("Footer line")).toBeVisible()
+})
+
 test("keeps the default look without branding", async ({ page }) => {
   await page.route("**/branding/theme.json", (route) =>
     route.fulfill({ status: 404 }),

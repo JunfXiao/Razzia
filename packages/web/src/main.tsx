@@ -1,4 +1,5 @@
 import "@fontsource-variable/rubik/wght.css"
+import { loadAppConfig } from "@razzia/web/app-config"
 import { applyBranding, loadBranding } from "@razzia/web/branding"
 import Toaster from "@razzia/web/components/Toaster"
 import { socketClient } from "@razzia/web/features/game/contexts/socket-context"
@@ -23,7 +24,9 @@ if (!root) {
   throw new Error("Root element not found")
 }
 
-applyBranding(await loadBranding())
+const [branding] = await Promise.all([loadBranding(), loadAppConfig()])
+
+applyBranding(branding)
 
 createRoot(root).render(
   <StrictMode>

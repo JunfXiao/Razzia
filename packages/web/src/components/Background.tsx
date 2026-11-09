@@ -1,5 +1,6 @@
+import { getAppConfig } from "@razzia/web/app-config"
 import defaultLogo from "@razzia/web/assets/logo.svg"
-import { getBranding, imageFallback } from "@razzia/web/branding"
+import { getAppName, getBranding, imageFallback } from "@razzia/web/branding"
 import GithubIcon from "@razzia/web/components/GithubIcon"
 import { useGameBrandingStore } from "@razzia/web/features/game/stores/branding"
 import type { PropsWithChildren } from "react"
@@ -11,7 +12,8 @@ const Background = ({ children }: PropsWithChildren) => {
   const background = gameBranding?.background
   const backgroundColor = gameBranding?.backgroundColor
   const logoText = gameBranding?.logo ? undefined : gameBranding?.logoText
-  const appName = branding?.appName ?? "Razzia"
+  const appName = getAppName()
+  const footerText = getAppConfig()?.footerText
 
   return (
     <section
@@ -44,16 +46,21 @@ const Background = ({ children }: PropsWithChildren) => {
       )}
       {children}
 
-      <a
-        href="https://github.com/Ralex91/Razzia"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-1.5 text-sm font-semibold text-white/50 transition-colors hover:text-white/80"
-      >
-        <GithubIcon size={14} />
-        {/* oxlint-disable-next-line no-undef */}
-        Razzia - v{__APP_VERSION__}
-      </a>
+      <footer className="pointer-events-none absolute inset-x-0 bottom-4 flex flex-col items-center gap-1 px-4 text-center text-sm font-semibold text-white/50 *:pointer-events-auto">
+        <a
+          href="https://github.com/Ralex91/Razzia"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1.5 transition-colors hover:text-white/80"
+        >
+          <GithubIcon size={14} />
+          {/* oxlint-disable-next-line no-undef */}
+          Razzia - v{__APP_VERSION__}
+        </a>
+        {footerText && (
+          <p className="max-w-full text-xs wrap-break-word">{footerText}</p>
+        )}
+      </footer>
     </section>
   )
 }

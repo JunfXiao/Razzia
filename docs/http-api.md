@@ -60,7 +60,7 @@ Body `{ "password": string }`. Upgrades the caller's session to `manager`, keepi
 - `403 errors:manager.invalidPassword` — wrong password
 - `403 errors:manager.passwordNotConfigured` — `MANAGER_PASSWORD` is not set
 - `403 errors:manager.verificationFailed` — Turnstile is configured and the `turnstileToken` is missing or rejected
-- `429 errors:manager.tooManyAttempts` — five wrong passwords from one client within 15 minutes; `Retry-After` gives the seconds left
+- `429 errors:manager.tooManyAttempts` — too many wrong passwords from one client within 15 minutes (`LOGIN_MAX_FAILURES`, default 5); `Retry-After` gives the seconds left
 
 ### `GET /api/auth/config`
 

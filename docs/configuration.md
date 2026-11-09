@@ -23,12 +23,13 @@ JWT_SECRET=
 | `TURNSTILE_SITE_KEY`   | No       | Cloudflare Turnstile site key. Set it together with `TURNSTILE_SECRET_KEY` to protect the manager login.               |
 | `TURNSTILE_SECRET_KEY` | No       | Cloudflare Turnstile secret key.                                                                                       |
 | `TRUSTED_IP_HEADER`    | No       | Header holding the real client IP behind a proxy, such as `CF-Connecting-IP`, so that login limits apply per client.   |
+| `LOGIN_MAX_FAILURES`   | No       | Wrong passwords allowed per client within 15 minutes before a lockout. Defaults to `5`; `0` turns the lockout off.     |
 
 `pnpm dev` and `pnpm start` load `.env` automatically. With Docker, `compose.yml` reads the same file through `env_file`, or you can set the variables inline with `environment:`. With a bare `docker run`, pass them with `-e MANAGER_PASSWORD=...`.
 
 ### Protecting the manager login
 
-Five wrong passwords from one client lock that client out of the manager login for up to 15 minutes. Behind a reverse proxy, set `TRUSTED_IP_HEADER`; otherwise every visitor shares the proxy's address and one allowance. Only name a header that your proxy always overwrites, and make sure the app cannot be reached without passing through that proxy, because a client could otherwise forge the header.
+By default, five wrong passwords from one client lock that client out of the manager login for up to 15 minutes. `LOGIN_MAX_FAILURES` changes that number, and `0` turns the lockout off. Behind a reverse proxy, set `TRUSTED_IP_HEADER`; otherwise every visitor shares the proxy's address and one allowance. Only name a header that your proxy always overwrites, and make sure the app cannot be reached without passing through that proxy, because a client could otherwise forge the header.
 
 ### About `JWT_SECRET`
 

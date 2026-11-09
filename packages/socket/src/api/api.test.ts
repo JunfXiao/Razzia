@@ -260,6 +260,41 @@ describe("manager login protection", () => {
     expect(unlocked.status).toBe(StatusCodes.OK)
   })
 
+  it("follows the configured failure limit", async () => {
+    const fresh = await importApp({
+      TRUSTED_IP_HEADER: "CF-Connecting-IP",
+      LOGIN_MAX_FAILURES: "2",
+    })
+
+    await failLogins(fresh, 2)
+
+    const locked = await login(fresh, { password: "test-password" })
+
+    expect(locked.status).toBe(StatusCodes.TOO_MANY_REQUESTS)
+  })
+
+  it("never locks anyone out when the limit is 0", async () => {
+    const fresh = await importApp({
+      TRUSTED_IP_HEADER: "CF-Connecting-IP",
+      LOGIN_MAX_FAILURES: "0",
+    })
+
+    await failLogins(fresh, 20)
+
+    const right = await login(fresh, { password: "test-password" })
+
+    expect(right.status).toBe(StatusCodes.OK)
+  })
+
+  it("refuses a negative failure limit", async () => {
+    vi.resetModules()
+    vi.stubEnv("LOGIN_MAX_FAILURES", "-1")
+
+    await expect(import("@razzia/socket/env")).rejects.toThrow(
+      "cannot be negative",
+    )
+  })
+
   it("forgets earlier failures after a successful login", async () => {
     const fresh = await importApp({ TRUSTED_IP_HEADER: "CF-Connecting-IP" })
 

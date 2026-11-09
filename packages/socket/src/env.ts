@@ -2,6 +2,7 @@ import { randomBytes } from "crypto"
 import z from "zod"
 
 const MIN_SECRET_LENGTH = 32
+const DEFAULT_LOGIN_MAX_FAILURES = 5
 
 const optional = (schema: z.ZodString) =>
   z.preprocess((value) => (value === "" ? undefined : value), schema.optional())
@@ -29,6 +30,14 @@ const envSchema = z
     TURNSTILE_SITE_KEY: optional(z.string().min(1)),
     TURNSTILE_SECRET_KEY: optional(z.string().min(1)),
     TRUSTED_IP_HEADER: optional(z.string().min(1)),
+    LOGIN_MAX_FAILURES: z.preprocess(
+      (value) => (value === "" ? undefined : value),
+      z.coerce
+        .number()
+        .int("LOGIN_MAX_FAILURES must be a whole number")
+        .min(0, "LOGIN_MAX_FAILURES cannot be negative")
+        .default(DEFAULT_LOGIN_MAX_FAILURES),
+    ),
   })
   .refine(
     (env) =>
@@ -55,6 +64,9 @@ export const turnstileSiteKey = parsed.data.TURNSTILE_SITE_KEY
 export const turnstileSecretKey = parsed.data.TURNSTILE_SECRET_KEY
 
 export const trustedIpHeader = parsed.data.TRUSTED_IP_HEADER
+
+/** Wrong passwords allowed per client; 0 turns the lockout off. */
+export const loginMaxFailures = parsed.data.LOGIN_MAX_FAILURES
 
 export const jwtSecret =
   parsed.data.JWT_SECRET ?? randomBytes(32).toString("hex")

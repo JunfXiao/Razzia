@@ -1,4 +1,5 @@
-const MAX_FAILURES = 5
+import { loginMaxFailures } from "@razzia/socket/env"
+
 const WINDOW_MS = 15 * 60 * 1000
 const MAX_TRACKED_CLIENTS = 10_000
 
@@ -25,12 +26,16 @@ const currentFailures = (client: string): Failures | undefined => {
 export const loginRetryAfter = (client: string): number => {
   const entry = currentFailures(client)
 
-  return entry && entry.count >= MAX_FAILURES
+  return entry && loginMaxFailures > 0 && entry.count >= loginMaxFailures
     ? Math.ceil((entry.expiresAt - Date.now()) / 1000)
     : 0
 }
 
 export const recordLoginFailure = (client: string): void => {
+  if (loginMaxFailures === 0) {
+    return
+  }
+
   const entry = currentFailures(client)
 
   if (entry) {

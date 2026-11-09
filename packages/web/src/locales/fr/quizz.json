@@ -127,5 +127,11 @@
     "surveyDescription": "Recueille des avis. Il n'y a ni bonnes réponses ni points, et les résultats montrent la répartition des réponses.",
     "name": "Nom",
     "continue": "Continuer"
+  },
+  "saveErrors": {
+    "title": "Ce quiz ne peut pas encore être enregistré",
+    "description": "Corrige les points suivants, puis enregistre à nouveau. Sélectionne un élément pour y accéder.",
+    "general": "Réglages du quiz",
+    "question": "Question {{number}}"
   }
 }

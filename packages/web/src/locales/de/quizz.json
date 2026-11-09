@@ -127,5 +127,11 @@
     "surveyDescription": "Sammle Meinungen. Es gibt keine richtigen Antworten oder Punkte, die Ergebnisse zeigen die Verteilung der Antworten.",
     "name": "Name",
     "continue": "Weiter"
+  },
+  "saveErrors": {
+    "title": "Dieses Quiz kann noch nicht gespeichert werden",
+    "description": "Behebe die folgenden Punkte und speichere erneut. Wähle einen Eintrag aus, um dorthin zu springen.",
+    "general": "Quiz-Einstellungen",
+    "question": "Frage {{number}}"
   }
 }

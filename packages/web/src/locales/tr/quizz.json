@@ -127,5 +127,11 @@
     "surveyDescription": "Görüş toplayın. Doğru cevap veya puan yoktur, sonuçlar cevapların dağılımını gösterir.",
     "name": "Ad",
     "continue": "Devam"
+  },
+  "saveErrors": {
+    "title": "Bu test henüz kaydedilemiyor",
+    "description": "Aşağıdakileri düzeltip yeniden kaydedin. Gitmek için bir öğe seçin.",
+    "general": "Test ayarları",
+    "question": "Soru {{number}}"
   }
 }

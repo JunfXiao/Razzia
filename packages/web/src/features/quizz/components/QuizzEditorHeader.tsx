@@ -10,14 +10,20 @@ import {
   updateQuizz,
 } from "@razzia/web/features/manager/queries"
 import QuizzBrandingButton from "@razzia/web/features/quizz/components/QuizzBrandingButton"
+import SaveErrorsDialog from "@razzia/web/features/quizz/components/SaveErrorsDialog"
 import {
   useQuizzEditor,
   type QuizzFormValues,
 } from "@razzia/web/features/quizz/contexts/quizz-editor-context"
+import {
+  collectSaveIssues,
+  type SaveIssue,
+} from "@razzia/web/features/quizz/saveErrors"
 import { ApiError } from "@razzia/web/lib/api"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { useNavigate } from "@tanstack/react-router"
 import clsx from "clsx"
+import { useState } from "react"
 import { Controller, useFormContext } from "react-hook-form"
 import toast from "react-hot-toast"
 import { useTranslation } from "react-i18next"
@@ -34,15 +40,20 @@ const QuizzEditorHeader = () => {
   const navigate = useNavigate()
   const queryClient = useQueryClient()
   const { t } = useTranslation()
+  const [issues, setIssues] = useState<SaveIssue[]>([])
 
   const handleExit = () => {
     navigate({ to: "/manager/config" })
   }
 
   const onError = (error: Error) => {
-    toast.error(
-      t(error instanceof ApiError ? error.key : "errors:quizz.failedToSave"),
-    )
+    setIssues([
+      {
+        questionIndex: null,
+        message:
+          error instanceof ApiError ? error.key : "errors:quizz.failedToSave",
+      },
+    ])
   }
 
   const onSaved = (messageKey: string) => {
@@ -74,6 +85,8 @@ const QuizzEditorHeader = () => {
       create(values)
     },
     (invalid) => {
+      setIssues(collectSaveIssues(invalid))
+
       if (!Array.isArray(invalid.questions)) {
         return
       }
@@ -87,63 +100,70 @@ const QuizzEditorHeader = () => {
   )
 
   return (
-    <header className="bg-background z-20 flex h-14 items-center justify-between gap-4 px-4 shadow-sm">
-      <div className="flex items-center gap-4">
-        <Controller
-          control={control}
-          name="subject"
-          render={({ field, fieldState }) => (
-            <div className="flex items-center gap-6">
-              <Input
-                {...field}
-                variant="sm"
-                aria-invalid={fieldState.invalid}
-                aria-describedby={
-                  fieldState.invalid ? `${field.name}-error` : undefined
-                }
-                className={clsx(
-                  "w-64",
-                  fieldState.invalid && "ring-2 ring-red-500",
-                )}
-                placeholder={t("quizz:titleQuizzPlaceholder")}
-              />
-              <FieldError
-                id={`${field.name}-error`}
-                errors={[fieldState.error]}
-              />
-            </div>
-          )}
-        />
+    <>
+      <SaveErrorsDialog
+        issues={issues}
+        onClose={() => setIssues([])}
+        onSelectQuestion={setCurrentIndex}
+      />
+      <header className="bg-background z-20 flex h-14 items-center justify-between gap-4 px-4 shadow-sm">
+        <div className="flex items-center gap-4">
+          <Controller
+            control={control}
+            name="subject"
+            render={({ field, fieldState }) => (
+              <div className="flex items-center gap-6">
+                <Input
+                  {...field}
+                  variant="sm"
+                  aria-invalid={fieldState.invalid}
+                  aria-describedby={
+                    fieldState.invalid ? `${field.name}-error` : undefined
+                  }
+                  className={clsx(
+                    "w-64",
+                    fieldState.invalid && "ring-2 ring-red-500",
+                  )}
+                  placeholder={t("quizz:titleQuizzPlaceholder")}
+                />
+                <FieldError
+                  id={`${field.name}-error`}
+                  errors={[fieldState.error]}
+                />
+              </div>
+            )}
+          />
 
-        <Controller
-          control={control}
-          name="gameMode"
-          render={({ field }) => (
-            <ToggleGroup
-              value={field.value}
-              onChange={field.onChange}
-              items={QUIZZ_MODE_LIST.map((gameMode) => ({
-                value: gameMode,
-                label: t(`quizz:gameMode.${gameMode}`),
-              }))}
-            />
-          )}
-        />
-      </div>
+          <Controller
+            control={control}
+            name="gameMode"
+            render={({ field }) => (
+              <ToggleGroup
+                value={field.value}
+                onChange={field.onChange}
+                items={QUIZZ_MODE_LIST.map((gameMode) => ({
+                  value: gameMode,
+                  label: t(`quizz:gameMode.${gameMode}`),
+                }))}
+              />
+            )}
+          />
+        </div>
 
-      <div className="flex gap-2">
-        <QuizzBrandingButton />
-        <Button
-          className="text-md bg-accent text-accent-foreground px-4 py-2 font-semibold"
-          onClick={handleExit}
-        >
-          {t("common:exit")}
-        </Button>
-        <Button className="bg-primary text-md px-4 py-2" onClick={handleSave}>
-          {t("common:save")}
-        </Button>
-      </div>
-    </header>
+        <div className="flex gap-2">
+          <QuizzBrandingButton />
+          <Button
+            className="text-md bg-accent text-accent-foreground px-4 py-2 font-semibold"
+            onClick={handleExit}
+          >
+            {t("common:exit")}
+          </Button>
+          <Button className="bg-primary text-md px-4 py-2" onClick={handleSave}>
+            {t("common:save")}
+          </Button>
+        </div>
+      </header>
+    </>
   )
 }
 

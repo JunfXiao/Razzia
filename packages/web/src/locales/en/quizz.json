@@ -127,5 +127,11 @@
     "surveyDescription": "Collect opinions. There are no correct answers or points, and the results show how answers are distributed.",
     "name": "Name",
     "continue": "Continue"
+  },
+  "saveErrors": {
+    "title": "This quizz can't be saved yet",
+    "description": "Fix the following, then save again. Select an item to go to it.",
+    "general": "Quizz settings",
+    "question": "Question {{number}}"
   }
 }

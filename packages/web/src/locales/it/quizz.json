@@ -127,5 +127,11 @@
     "surveyDescription": "Raccogli opinioni. Non ci sono risposte corrette né punti, e i risultati mostrano la distribuzione delle risposte.",
     "name": "Nome",
     "continue": "Continua"
+  },
+  "saveErrors": {
+    "title": "Questo quiz non può ancora essere salvato",
+    "description": "Correggi quanto segue e salva di nuovo. Seleziona una voce per raggiungerla.",
+    "general": "Impostazioni del quiz",
+    "question": "Domanda {{number}}"
   }
 }

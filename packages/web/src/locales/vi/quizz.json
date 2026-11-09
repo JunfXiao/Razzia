@@ -127,5 +127,11 @@
     "surveyDescription": "Thu thập ý kiến. Không có đáp án đúng hay điểm, kết quả cho thấy phân bố các câu trả lời.",
     "name": "Tên",
     "continue": "Tiếp tục"
+  },
+  "saveErrors": {
+    "title": "Chưa thể lưu bộ câu hỏi này",
+    "description": "Hãy sửa các mục sau rồi lưu lại. Chọn một mục để chuyển đến đó.",
+    "general": "Cài đặt bộ câu hỏi",
+    "question": "Câu hỏi {{number}}"
   }
 }

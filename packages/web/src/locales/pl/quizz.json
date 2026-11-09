@@ -127,5 +127,11 @@
     "surveyDescription": "Zbieraj opinie. Nie ma poprawnych odpowiedzi ani punktów, a wyniki pokazują rozkład odpowiedzi.",
     "name": "Nazwa",
     "continue": "Dalej"
+  },
+  "saveErrors": {
+    "title": "Tego quizu nie można jeszcze zapisać",
+    "description": "Popraw poniższe elementy i zapisz ponownie. Wybierz element, aby do niego przejść.",
+    "general": "Ustawienia quizu",
+    "question": "Pytanie {{number}}"
   }
 }

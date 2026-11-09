@@ -127,5 +127,11 @@
     "surveyDescription": "Recoge opiniones. No hay respuestas correctas ni puntos, y los resultados muestran cómo se distribuyen las respuestas.",
     "name": "Nombre",
     "continue": "Continuar"
+  },
+  "saveErrors": {
+    "title": "Este cuestionario aún no se puede guardar",
+    "description": "Corrige lo siguiente y vuelve a guardar. Selecciona un elemento para ir a él.",
+    "general": "Ajustes del cuestionario",
+    "question": "Pregunta {{number}}"
   }
 }

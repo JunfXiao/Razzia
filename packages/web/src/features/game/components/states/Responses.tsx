@@ -118,8 +118,16 @@ const Responses = ({ data, silent = false }: Props) => {
             className="mt-1 grid w-full max-w-7xl gap-4 px-2 text-center font-bold text-white drop-shadow-md"
             style={{ gridTemplateColumns: `repeat(${answers.length}, 1fr)` }}
           >
-            {answers.map((_, key) => (
-              <span key={key}>{ANSWERS_LABELS[key]}</span>
+            {answers.map((answer, key) => (
+              <div key={key} className="min-w-0">
+                <span className="block">{ANSWERS_LABELS[key]}</span>
+                <span
+                  className="block truncate text-xs font-medium"
+                  title={answer}
+                >
+                  {answer}
+                </span>
+              </div>
             ))}
           </div>
         )}

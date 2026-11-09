@@ -45,7 +45,8 @@
     },
     "text": {
       "otherAnswers": "その他の回答"
-    }
+    },
+    "exportCsv": "CSV でエクスポート"
   },
   "tabs": {
     "play": "プレイ",

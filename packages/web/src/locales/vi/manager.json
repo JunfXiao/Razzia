@@ -45,7 +45,8 @@
     },
     "text": {
       "otherAnswers": "Các câu trả lời khác"
-    }
+    },
+    "exportCsv": "Xuất CSV"
   },
   "tabs": {
     "play": "Trò chơi",

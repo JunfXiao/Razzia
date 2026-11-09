@@ -45,7 +45,8 @@
     },
     "text": {
       "otherAnswers": "Autres réponses"
-    }
+    },
+    "exportCsv": "Exporter en CSV"
   },
   "tabs": {
     "play": "Jouer",

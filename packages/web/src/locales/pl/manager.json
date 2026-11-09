@@ -48,7 +48,8 @@
     },
     "text": {
       "otherAnswers": "Inne odpowiedzi"
-    }
+    },
+    "exportCsv": "Eksportuj do CSV"
   },
   "tabs": {
     "play": "Graj",

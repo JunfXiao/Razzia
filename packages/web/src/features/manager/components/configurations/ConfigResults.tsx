@@ -7,9 +7,10 @@ import {
   resultQuery,
   resultsListQuery,
 } from "@razzia/web/features/manager/queries"
+import { downloadResultCsv } from "@razzia/web/features/manager/resultCsv"
 import { ApiError } from "@razzia/web/lib/api"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
-import { Trash2 } from "lucide-react"
+import { Download, Trash2 } from "lucide-react"
 import { useState } from "react"
 import toast from "react-hot-toast"
 import { useTranslation } from "react-i18next"
@@ -33,6 +34,16 @@ const ConfigResults = () => {
   const { data: selectedResult } = useQuery({
     ...resultQuery(selectedId ?? ""),
     enabled: Boolean(selectedId),
+  })
+
+  const { mutate: exportCsv } = useMutation({
+    mutationFn: (id: string) => queryClient.query(resultQuery(id)),
+    onSuccess: downloadResultCsv,
+    onError: (error) => {
+      toast.error(
+        t(error instanceof ApiError ? error.key : "errors:result.notFound"),
+      )
+    },
   })
 
   const { mutate: remove } = useMutation({
@@ -79,6 +90,14 @@ const ConfigResults = () => {
                 {formatDate(r.date)} -{" "}
                 {t("manager:result.playerCount", { count: r.playerCount })}
               </p>
+            </button>
+            <button
+              className="hover:bg-muted ml-2 shrink-0 rounded-sm p-2"
+              title={t("manager:result.exportCsv")}
+              aria-label={t("manager:result.exportCsv")}
+              onClick={() => exportCsv(r.id)}
+            >
+              <Download className="text-muted-foreground size-4" />
             </button>
             <AlertDialog
               trigger={

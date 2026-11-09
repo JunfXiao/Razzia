@@ -45,7 +45,8 @@
     },
     "text": {
       "otherAnswers": "Diğer cevaplar"
-    }
+    },
+    "exportCsv": "CSV olarak dışa aktar"
   },
   "tabs": {
     "play": "Oyna",

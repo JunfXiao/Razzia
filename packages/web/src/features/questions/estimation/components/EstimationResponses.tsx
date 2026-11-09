@@ -1,4 +1,5 @@
 import { estimationAccuracy } from "@razzia/common/questions/estimation"
+import EstimationDistribution from "@razzia/web/features/questions/estimation/components/EstimationDistribution"
 import {
   formatValue,
   getEstimationOptions,
@@ -25,7 +26,7 @@ const EstimationResponses = ({
   const solution = solutions?.at(0)
 
   if (solution === undefined) {
-    return null
+    return <EstimationDistribution responses={responses} options={estimation} />
   }
 
   const rangeFrom = Math.max(min, solution - margin)

@@ -8,6 +8,7 @@ import type {
 } from "@razzia/common/types/game"
 import { calculatePercentages } from "@razzia/web/features/game/utils/score"
 import {
+  buildHistogram,
   getRangeRatio,
   snapToStep,
 } from "@razzia/web/features/questions/estimation/utils"
@@ -33,6 +34,25 @@ const question = (overrides: Partial<Question> = {}): Question => ({
   cooldown: 5,
   time: 10,
   ...overrides,
+})
+
+describe("buildHistogram", () => {
+  it("uses one bin per step when the range is small", () => {
+    const bins = buildHistogram(
+      { 1: 2, 3: 1 },
+      estimationOptions({ min: 0, max: 4, step: 1 }),
+    )
+
+    expect(bins.map(({ count }) => count)).toEqual([0, 2, 0, 1, 0])
+  })
+
+  it("groups wide ranges and keeps the maximum in the last bin", () => {
+    const bins = buildHistogram({ 0: 1, 100: 3 }, estimationOptions())
+
+    expect(bins).toHaveLength(20)
+    expect(bins[0].count).toBe(1)
+    expect(bins[19].count).toBe(3)
+  })
 })
 
 describe("isAnswerCorrect", () => {

@@ -26,6 +26,12 @@ This holds for **every** response the server can produce, including the ones no 
 
 The one bodyless response is `204 No Content`, returned by the `DELETE` routes — that is what the status means.
 
+## Instance config
+
+### `GET /api/config`
+
+Public. Returns `200 { appName: string | null, footerText: string | null }`, read from the `APP_NAME` and `FOOTER_TEXT` [environment variables](configuration.md). The web UI loads it at startup to set the app name and the footer line.
+
 ## Authentication
 
 Identity is a **JWT signed by the server** (see [`JWT_SECRET`](configuration.md)). Two roles exist: `player` (30-day tokens) and `manager` (12-hour tokens).

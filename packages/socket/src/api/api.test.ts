@@ -187,6 +187,43 @@ describe("auth", () => {
   })
 })
 
+describe("app config", () => {
+  afterEach(() => {
+    vi.unstubAllEnvs()
+  })
+
+  const readConfig = async (env: Record<string, string>) => {
+    vi.resetModules()
+    Object.entries(env).forEach(([name, value]) => {
+      vi.stubEnv(name, value)
+    })
+
+    const { app: fresh } = await import("@razzia/socket/app")
+
+    return json(await fresh.request("/api/config"))
+  }
+
+  it("reports nothing by default", async () => {
+    expect(await json(await request("/config"))).toEqual({
+      appName: null,
+      footerText: null,
+    })
+  })
+
+  it("serves the app name and footer text from the environment", async () => {
+    expect(
+      await readConfig({ APP_NAME: " My Quiz ", FOOTER_TEXT: "Footer line" }),
+    ).toEqual({ appName: "My Quiz", footerText: "Footer line" })
+  })
+
+  it("treats blank values as unset", async () => {
+    expect(await readConfig({ APP_NAME: "   ", FOOTER_TEXT: "" })).toEqual({
+      appName: null,
+      footerText: null,
+    })
+  })
+})
+
 describe("manager login protection", () => {
   const login = (
     target: typeof app,

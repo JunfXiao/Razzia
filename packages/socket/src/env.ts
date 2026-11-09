@@ -7,6 +7,12 @@ const DEFAULT_LOGIN_MAX_FAILURES = 5
 const optional = (schema: z.ZodString) =>
   z.preprocess((value) => (value === "" ? undefined : value), schema.optional())
 
+/** Free text shown in the interface; blank counts as unset. */
+const displayText = z.preprocess(
+  (value) => (typeof value === "string" ? value.trim() || undefined : value),
+  z.string().optional(),
+)
+
 const envSchema = z
   .object({
     MANAGER_PASSWORD: optional(
@@ -38,6 +44,8 @@ const envSchema = z
         .min(0, "LOGIN_MAX_FAILURES cannot be negative")
         .default(DEFAULT_LOGIN_MAX_FAILURES),
     ),
+    APP_NAME: displayText,
+    FOOTER_TEXT: displayText,
   })
   .refine(
     (env) =>
@@ -67,6 +75,12 @@ export const trustedIpHeader = parsed.data.TRUSTED_IP_HEADER
 
 /** Wrong passwords allowed per client; 0 turns the lockout off. */
 export const loginMaxFailures = parsed.data.LOGIN_MAX_FAILURES
+
+/** Overrides the default app name and the `appName` of the branding theme. */
+export const appName = parsed.data.APP_NAME
+
+/** Extra line shown in the page footer. */
+export const footerText = parsed.data.FOOTER_TEXT
 
 export const jwtSecret =
   parsed.data.JWT_SECRET ?? randomBytes(32).toString("hex")

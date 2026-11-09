@@ -14,22 +14,35 @@ export class ApiError extends Error {
   }
 }
 
-const authFetch: typeof fetch = async (input, init) => {
+const sendWithSession: typeof fetch = async (input, init) => {
   const { token } = await ensureSession()
   const headers = new Headers(init?.headers)
 
   headers.set("Authorization", `Bearer ${token}`)
 
-  const response = await fetch(input, { ...init, headers })
-  const status: StatusCodes = response.status
+  return fetch(input, { ...init, headers })
+}
 
-  if (status === StatusCodes.UNAUTHORIZED) {
+const authFetch: typeof fetch = async (input, init) => {
+  const response = await sendWithSession(input, init)
+
+  if ((response.status as StatusCodes) !== StatusCodes.UNAUTHORIZED) {
+    return response
+  }
+
+  // A stored session dies when the server changes its signing secret, so
+  // replace it and retry once before reporting a failure.
+  clearToken()
+
+  const retried = await sendWithSession(input, init)
+
+  if ((retried.status as StatusCodes) === StatusCodes.UNAUTHORIZED) {
     clearToken()
 
     throw new ApiError(StatusCodes.UNAUTHORIZED, "errors:auth.unauthorized")
   }
 
-  return response
+  return retried
 }
 
 export const api = hc<ApiType>("/api", { fetch: authFetch })

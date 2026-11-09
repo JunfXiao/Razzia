@@ -56,7 +56,7 @@ const questionSchema = z.object({
   category: z.string().optional(),
   note: z.string().optional(),
   media: questionMediaValidator.optional(),
-  answers: z.array(z.string().min(1, "errors:quizz.answerEmpty")),
+  answers: z.array(z.string()),
   solutions: z.array(z.number()).optional(),
   cooldown: z
     .number()
@@ -106,6 +106,16 @@ export const quizzValidator = z
             message: "errors:quizz.textNoAnswer",
           })
         }
+
+        question.answers.forEach((answer, answerIndex) => {
+          if (answer.length === 0) {
+            ctx.addIssue({
+              code: "custom",
+              path: ["questions", index, "answers", answerIndex],
+              message: "errors:quizz.answerEmpty",
+            })
+          }
+        })
 
         return
       }

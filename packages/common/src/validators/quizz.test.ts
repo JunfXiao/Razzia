@@ -317,3 +317,32 @@ describe("estimation solutions in survey mode", () => {
     ).toBe("errors:quizz.estimationSolutionOutOfRange")
   })
 })
+
+describe("blank answers", () => {
+  const textQuestion = (answers: string[]): Question => ({
+    type: QUESTION_TYPES.TEXT,
+    question: "Q ?",
+    answers,
+    cooldown: 5,
+    time: 15,
+  })
+
+  it("ignores a blank accepted answer hidden in survey mode", () => {
+    expect(issues(quizz([textQuestion([""])], QUIZZ_MODES.SURVEY))).toEqual([])
+  })
+
+  it("rejects a blank accepted answer in quiz mode", () => {
+    expect(issues(quizz([textQuestion(["Paris", ""])]))).toEqual([
+      "errors:quizz.answerEmpty",
+    ])
+  })
+
+  it("rejects a blank choice in both modes", () => {
+    const question = choiceQuestion({ answers: ["A", ""] })
+
+    expect(issues(quizz([question]))).toEqual(["errors:quizz.answerEmpty"])
+    expect(issues(quizz([question], QUIZZ_MODES.SURVEY))).toEqual([
+      "errors:quizz.answerEmpty",
+    ])
+  })
+})

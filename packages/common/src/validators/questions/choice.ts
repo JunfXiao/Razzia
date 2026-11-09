@@ -22,6 +22,12 @@ export const refineChoiceQuestion: QuestionRefinement = (
     addIssue(["answers"], "errors:quizz.tooManyAnswers")
   }
 
+  answers.forEach((answer, index) => {
+    if (answer.length === 0) {
+      addIssue(["answers", index], "errors:quizz.answerEmpty")
+    }
+  })
+
   const hasInvalidSolution = solutions?.some(
     (solution) => !Number.isInteger(solution) || solution < 0,
   )

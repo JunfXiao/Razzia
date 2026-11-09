@@ -57,7 +57,7 @@
   "usernamePlaceholder": "Kullanıcı adınızı girin",
   "waitingForAnswers": "Oyuncuların cevap vermesi bekleniyor",
   "waitingForPlayers": "Oyuncular bekleniyor",
-  "wrong": "Maalesef yanlış",
+  "wrong": "Bu sefer olmadı",
   "estimation": {
     "yourAnswer": "Cevabınız",
     "rangeHint": "{{min}} ile {{max}} arasında"

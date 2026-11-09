@@ -57,7 +57,7 @@
   "usernamePlaceholder": "Twoja nazwa",
   "waitingForAnswers": "Czekamy na odpowiedzi graczy",
   "waitingForPlayers": "Czekamy na graczy",
-  "wrong": "Niestety",
+  "wrong": "Tym razem nie",
   "estimation": {
     "yourAnswer": "Twoja odpowiedź",
     "rangeHint": "Od {{min}} do {{max}}"

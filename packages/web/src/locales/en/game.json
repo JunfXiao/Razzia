@@ -60,7 +60,7 @@
   "usernamePlaceholder": "Username here",
   "waitingForAnswers": "Waiting for the players to answer",
   "waitingForPlayers": "Waiting for players",
-  "wrong": "Too bad",
+  "wrong": "Not this time",
   "estimation": {
     "yourAnswer": "Your answer",
     "rangeHint": "Between {{min}} and {{max}}"

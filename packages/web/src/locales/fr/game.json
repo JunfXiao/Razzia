@@ -58,7 +58,7 @@
   "usernamePlaceholder": "Pseudo",
   "waitingForAnswers": "En attente des réponses des joueurs",
   "waitingForPlayers": "En attente des joueurs",
-  "wrong": "Dommage",
+  "wrong": "Pas cette fois",
   "estimation": {
     "yourAnswer": "Ta réponse",
     "rangeHint": "Entre {{min}} et {{max}}"

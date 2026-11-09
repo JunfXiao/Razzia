@@ -58,7 +58,7 @@
   "usernamePlaceholder": "Nhập tên người dùng",
   "waitingForAnswers": "Đang chờ người chơi trả lời",
   "waitingForPlayers": "Đang chờ người chơi",
-  "wrong": "Sai rồi",
+  "wrong": "Lần này chưa đúng",
   "estimation": {
     "yourAnswer": "Câu trả lời của bạn",
     "rangeHint": "Từ {{min}} đến {{max}}"

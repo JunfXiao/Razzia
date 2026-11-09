@@ -84,7 +84,8 @@ const Responses = ({ data }: Props) => {
               style={{ height: percentages[key] }}
             >
               <span className="w-full bg-black/10 text-center text-lg font-bold text-white drop-shadow-md">
-                {percentages[key] ?? "0%"} ({responses[key] || 0})
+                {key in percentages ? percentages[key] : "0%"} (
+                {responses[key] || 0})
               </span>
             </div>
           ))}

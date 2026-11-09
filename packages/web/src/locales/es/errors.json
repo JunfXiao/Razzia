@@ -24,7 +24,9 @@
     "managerDisconnected": "El administrador se ha desconectado",
     "noPlayersConnected": "No hay jugadores conectados",
     "notFound": "Partida no encontrada",
-    "playerAlreadyConnected": "El jugador ya está conectado"
+    "playerAlreadyConnected": "El jugador ya está conectado",
+    "alreadyRunning": "Ya hay una partida en curso. Vuelve a ella o termínala primero.",
+    "endedByManager": "El anfitrión ha terminado la partida"
   },
   "invalidRequest": "Solicitud inválida",
   "manager": {

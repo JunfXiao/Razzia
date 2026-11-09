@@ -51,5 +51,10 @@
     "play": "プレイ",
     "quizz": "クイズ",
     "results": "結果"
+  },
+  "activeGame": {
+    "title": "進行中のゲーム",
+    "return": "ゲームに戻る",
+    "end": "現在のゲームを終了"
   }
 }

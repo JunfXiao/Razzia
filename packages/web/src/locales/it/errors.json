@@ -24,7 +24,9 @@
     "managerDisconnected": "Gestore disconnesso",
     "noPlayersConnected": "Nessun giocatore connesso",
     "notFound": "Partita non trovata",
-    "playerAlreadyConnected": "Giocatore già connesso"
+    "playerAlreadyConnected": "Giocatore già connesso",
+    "alreadyRunning": "Una partita è già in corso. Torna alla partita o terminala prima.",
+    "endedByManager": "L'host ha terminato la partita"
   },
   "invalidRequest": "Richiesta non valida",
   "manager": {

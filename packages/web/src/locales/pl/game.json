@@ -69,5 +69,7 @@
     "yourAnswer": "Wpisz swoją odpowiedź",
     "playersTyping": "Gracze wpisują odpowiedzi"
   },
-  "reviewAnswers": "Przejrzyj ujawnione odpowiedzi"
+  "reviewAnswers": "Przejrzyj ujawnione odpowiedzi",
+  "endGame": "Zakończ grę",
+  "endGameConfirm": "Zakończyć tę grę dla wszystkich graczy? Ujawnione już pytania pozostaną w wynikach."
 }

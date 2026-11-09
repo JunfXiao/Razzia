@@ -70,5 +70,7 @@
     "yourAnswer": "Scrivi la tua risposta",
     "playersTyping": "I giocatori stanno scrivendo le risposte"
   },
-  "reviewAnswers": "Rivedi le risposte svelate"
+  "reviewAnswers": "Rivedi le risposte svelate",
+  "endGame": "Termina partita",
+  "endGameConfirm": "Terminare questa partita per tutti i giocatori? Le domande già svelate restano nei risultati."
 }

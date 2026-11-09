@@ -24,7 +24,9 @@
     "managerDisconnected": "Quản trị viên đã ngắt kết nối",
     "noPlayersConnected": "Không có người chơi nào kết nối",
     "notFound": "Không tìm thấy trò chơi",
-    "playerAlreadyConnected": "Người chơi đã kết nối"
+    "playerAlreadyConnected": "Người chơi đã kết nối",
+    "alreadyRunning": "Đang có một trò chơi diễn ra. Hãy quay lại hoặc kết thúc trò chơi đó trước.",
+    "endedByManager": "Người dẫn đã kết thúc trò chơi"
   },
   "invalidRequest": "Yêu cầu không hợp lệ",
   "manager": {

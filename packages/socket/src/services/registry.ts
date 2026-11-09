@@ -12,6 +12,7 @@ class Registry {
   private emptyGames: EmptyGame[] = []
   private cleanupInterval: ReturnType<typeof setTimeout> | null = null
   private readonly EMPTY_GAME_TIMEOUT_MINUTES = 5
+  private readonly RUNNING_GAME_TIMEOUT_MINUTES = 120
   private readonly CLEANUP_INTERVAL_MS = 60_000
 
   private constructor() {
@@ -47,6 +48,12 @@ class Registry {
   getManagerGame(gmageId: string, clientId: string): Game | undefined {
     return this.games.find(
       (g) => g.gameId === gmageId && g.manager.clientId === clientId,
+    )
+  }
+
+  getRunningGame(managerClientId: string): Game | undefined {
+    return this.games.find(
+      (g) => g.manager.clientId === managerClientId && g.started,
     )
   }
 
@@ -122,7 +129,9 @@ class Registry {
     const stillEmpty = this.emptyGames.filter(
       (g) =>
         now.diff(dayjs.unix(g.since), "minute") <
-        this.EMPTY_GAME_TIMEOUT_MINUTES,
+        (g.game.started
+          ? this.RUNNING_GAME_TIMEOUT_MINUTES
+          : this.EMPTY_GAME_TIMEOUT_MINUTES),
     )
 
     if (stillEmpty.length === this.emptyGames.length) {
@@ -133,6 +142,10 @@ class Registry {
     const removedGameIds = removed.map((r) => r.game.gameId)
 
     removed.forEach((g) => {
+      if (g.game.started) {
+        g.game.end("errors:game.expired")
+      }
+
       g.game.dispose()
     })
     this.games = this.games.filter((g) => !removedGameIds.includes(g.gameId))

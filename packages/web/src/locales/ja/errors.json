@@ -24,7 +24,9 @@
     "managerDisconnected": "管理者が切断されました",
     "noPlayersConnected": "接続中のプレイヤーがいません",
     "notFound": "ゲームが見つかりません",
-    "playerAlreadyConnected": "プレイヤーはすでに接続されています"
+    "playerAlreadyConnected": "プレイヤーはすでに接続されています",
+    "alreadyRunning": "すでにゲームが進行中です。ゲームに戻るか、先に終了してください。",
+    "endedByManager": "ホストがゲームを終了しました"
   },
   "invalidRequest": "リクエストが無効です",
   "manager": {

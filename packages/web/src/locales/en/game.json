@@ -72,5 +72,7 @@
     "yourAnswer": "Type your answer",
     "playersTyping": "Players are typing their answers"
   },
-  "reviewAnswers": "Review revealed answers"
+  "reviewAnswers": "Review revealed answers",
+  "endGame": "End game",
+  "endGameConfirm": "End this game for all players? Questions already revealed are kept in Results."
 }

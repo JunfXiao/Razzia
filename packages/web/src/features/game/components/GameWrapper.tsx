@@ -8,6 +8,7 @@ import Button from "@razzia/web/components/Button"
 import GameBackground from "@razzia/web/components/GameBackground"
 import Loader from "@razzia/web/components/Loader"
 import Tooltip from "@razzia/web/components/Tooltip"
+import EndGameButton from "@razzia/web/features/game/components/EndGameButton"
 import GameSettingsModal from "@razzia/web/features/game/components/GameSettingsModal"
 import JoinQrButton from "@razzia/web/features/game/components/JoinQrButton"
 import PlayersButton from "@razzia/web/features/game/components/PlayersButton"
@@ -176,6 +177,10 @@ const GameWrapper = ({
                 {statusName === STATUS.SHOW_ROOM && <GameSettingsModal />}
 
                 <RevealReview />
+
+                {statusName !== STATUS.SHOW_ROOM &&
+                  statusName !== STATUS.FINISHED &&
+                  statusName !== STATUS.SUMMARY && <EndGameButton />}
 
                 <Tooltip
                   content={t(

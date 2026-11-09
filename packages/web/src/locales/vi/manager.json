@@ -51,5 +51,10 @@
     "play": "Trò chơi",
     "quizz": "Cấu hình",
     "results": "Kết quả"
+  },
+  "activeGame": {
+    "title": "Trò chơi đang diễn ra",
+    "return": "Quay lại trò chơi",
+    "end": "Kết thúc trò chơi hiện tại"
   }
 }

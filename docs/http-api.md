@@ -72,20 +72,22 @@ Logout is **stateless**: the old manager token stays cryptographically valid unt
 
 All of these require a bearer whose role is `manager`, and answer `401 errors:auth.unauthorized` otherwise.
 
-| Route                     | Success                            | Errors                       |
-| ------------------------- | ---------------------------------- | ---------------------------- |
-| `GET /api/quizz`          | `200 { quizz: [{ id, subject }] }` | —                            |
-| `GET /api/quizz/:id`      | `200` the full quiz                | `404 errors:quizz.notFound`  |
-| `POST /api/quizz`         | `201 { id }`                       | `400` validation key         |
-| `PATCH /api/quizz/:id`    | `200 { id }`                       | `400` validation key, `404`  |
-| `DELETE /api/quizz/:id`   | `204`                              | `404 errors:quizz.notFound`  |
-| `GET /api/results`        | `200 { results: [meta] }`          | —                            |
-| `GET /api/results/:id`    | `200` the full result              | `404 errors:result.notFound` |
-| `DELETE /api/results/:id` | `204`                              | `404 errors:result.notFound` |
-| `POST /api/games`         | `201 { gameId, inviteCode }`       | `404 errors:quizz.notFound`  |
-| `GET /api/media`          | `200 { media: [media] }`           | —                            |
-| `POST /api/media`         | `201` the stored media             | `400`, `413`, `415`          |
-| `DELETE /api/media/:name` | `204`                              | `400`, `404`                 |
+| Route                       | Success                                                 | Errors                                                        |
+| --------------------------- | ------------------------------------------------------- | ------------------------------------------------------------- |
+| `GET /api/quizz`            | `200 { quizz: [{ id, subject }] }`                      | —                                                             |
+| `GET /api/quizz/:id`        | `200` the full quiz                                     | `404 errors:quizz.notFound`                                   |
+| `POST /api/quizz`           | `201 { id }`                                            | `400` validation key                                          |
+| `PATCH /api/quizz/:id`      | `200 { id }`                                            | `400` validation key, `404`                                   |
+| `DELETE /api/quizz/:id`     | `204`                                                   | `404 errors:quizz.notFound`                                   |
+| `GET /api/results`          | `200 { results: [meta] }`                               | —                                                             |
+| `GET /api/results/:id`      | `200` the full result                                   | `404 errors:result.notFound`                                  |
+| `DELETE /api/results/:id`   | `204`                                                   | `404 errors:result.notFound`                                  |
+| `GET /api/games/active`     | `200 { game: { gameId, inviteCode, subject } \| null }` | —                                                             |
+| `POST /api/games`           | `201 { gameId, inviteCode }`                            | `404 errors:quizz.notFound`, `409 errors:game.alreadyRunning` |
+| `DELETE /api/games/:gameId` | `204`, players get `game:reset`                         | `404 errors:game.notFound`                                    |
+| `GET /api/media`            | `200 { media: [media] }`                                | —                                                             |
+| `POST /api/media`           | `201` the stored media                                  | `400`, `413`, `415`                                           |
+| `DELETE /api/media/:name`   | `204`                                                   | `400`, `404`                                                  |
 
 The quiz body is validated against the same schema as the files in `config/quizz` — see [Quiz](quiz.md).
 

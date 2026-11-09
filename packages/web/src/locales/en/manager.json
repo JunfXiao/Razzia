@@ -51,5 +51,10 @@
     "play": "Play",
     "quizz": "Quizz",
     "results": "Results"
+  },
+  "activeGame": {
+    "title": "Game in progress",
+    "return": "Return to game",
+    "end": "End current game"
   }
 }

@@ -494,6 +494,36 @@ describe("quiz flow", () => {
   })
 })
 
+describe("ending a game", () => {
+  it("resets everyone and keeps the revealed questions", async () => {
+    const { game, sockets, start, events } = setup(
+      createQuizz([createQuestion(), createQuestion()]),
+    )
+
+    await start()
+    game.selectAnswer(sockets[0], [0])
+    game.advance()
+    await vi.advanceTimersByTimeAsync(TICK_MS)
+
+    game.end()
+
+    expect(game.started).toBe(false)
+    expect(events(game.gameId, EVENTS.GAME.RESET).at(-1)?.data).toBe(
+      "errors:game.endedByManager",
+    )
+    expect(getResultsMeta()).toHaveLength(1)
+  })
+
+  it("saves nothing when no question was revealed", async () => {
+    const { game, start } = setup(createQuizz([createQuestion()]))
+
+    await start()
+    game.end()
+
+    expect(getResultsMeta()).toHaveLength(0)
+  })
+})
+
 describe("game result", () => {
   it("records the real correctness and points of every answer", async () => {
     const question = createQuestion({

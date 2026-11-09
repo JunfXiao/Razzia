@@ -253,6 +253,51 @@ describe("games", () => {
     expect(Registry.getInstance().getGameById(gameId)).toBeDefined()
   })
 
+  it("allows one running game and lets its manager end it", async () => {
+    const { gameId, inviteCode } = await createGame()
+    const game = Registry.getInstance().getGameById(gameId)
+
+    if (!game) {
+      throw new Error("Game not registered")
+    }
+
+    vi.spyOn(game, "started", "get").mockReturnValue(true)
+
+    const active = await request("/games/active", { token: managerToken })
+
+    expect(await json(active)).toMatchObject({
+      game: { gameId, inviteCode },
+    })
+
+    const { id: quizzId } = saveQuizz(createQuizz([createQuestion()]))
+    const second = await request("/games", {
+      method: "POST",
+      token: managerToken,
+      body: { quizzId },
+    })
+
+    expect(second.status).toBe(StatusCodes.CONFLICT)
+
+    const otherManager = (await mintToken("other", SESSION_ROLES.MANAGER)).token
+    const forbidden = await request(`/games/${gameId}`, {
+      method: "DELETE",
+      token: otherManager,
+    })
+
+    expect(forbidden.status).toBe(StatusCodes.NOT_FOUND)
+
+    const ended = await request(`/games/${gameId}`, {
+      method: "DELETE",
+      token: managerToken,
+    })
+
+    expect(ended.status).toBe(StatusCodes.NO_CONTENT)
+
+    const after = await request("/games/active", { token: managerToken })
+
+    expect(await json(after)).toEqual({ game: null })
+  })
+
   it("only lets the game manager update the settings", async () => {
     const { gameId } = await createGame()
     const otherManager = (await mintToken("other", SESSION_ROLES.MANAGER)).token

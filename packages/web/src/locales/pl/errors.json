@@ -24,7 +24,9 @@
     "managerDisconnected": "Prowadzący się rozłączył",
     "noPlayersConnected": "Brak połączonych graczy",
     "notFound": "Nie znaleziono gry",
-    "playerAlreadyConnected": "Gracz jest już połączony"
+    "playerAlreadyConnected": "Gracz jest już połączony",
+    "alreadyRunning": "Gra już trwa. Wróć do niej lub najpierw ją zakończ.",
+    "endedByManager": "Prowadzący zakończył grę"
   },
   "invalidRequest": "Nieprawidłowe żądanie",
   "manager": {

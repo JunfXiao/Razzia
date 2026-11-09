@@ -24,7 +24,9 @@
     "managerDisconnected": "Manager disconnected",
     "noPlayersConnected": "No players connected",
     "notFound": "Game not found",
-    "playerAlreadyConnected": "Player already connected"
+    "playerAlreadyConnected": "Player already connected",
+    "alreadyRunning": "A game is already running. Return to it or end it first.",
+    "endedByManager": "The host ended the game"
   },
   "invalidRequest": "Invalid request",
   "manager": {

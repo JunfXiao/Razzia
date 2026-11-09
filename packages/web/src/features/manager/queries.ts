@@ -13,6 +13,14 @@ export const resultKeys = {
   detail: (id: string) => ["results", id] as const,
 }
 
+export const activeGameKey = ["activeGame"] as const
+
+export const activeGameQuery = () =>
+  queryOptions({
+    queryKey: activeGameKey,
+    queryFn: () => unwrap(api.games.active.$get()),
+  })
+
 export const quizzListQuery = () =>
   queryOptions({
     queryKey: quizzKeys.all,
@@ -56,6 +64,9 @@ export const deleteResult = (id: string) =>
 
 export const createGame = (quizzId: string) =>
   unwrap(api.games.$post({ json: { quizzId } }))
+
+export const endGame = (gameId: string) =>
+  unwrapEmpty(api.games[":gameId"].$delete({ param: { gameId } }))
 
 export const updateGameSettings = ({
   gameId,

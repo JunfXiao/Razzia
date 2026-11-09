@@ -51,5 +51,10 @@
     "play": "Oyna",
     "quizz": "Test",
     "results": "Sonuçlar"
+  },
+  "activeGame": {
+    "title": "Devam eden oyun",
+    "return": "Oyuna dön",
+    "end": "Mevcut oyunu bitir"
   }
 }

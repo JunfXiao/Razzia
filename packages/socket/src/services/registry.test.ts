@@ -45,6 +45,25 @@ describe("Registry", () => {
     expect(dispose).toHaveBeenCalled()
   })
 
+  it("keeps a running game for two hours, then ends it", async () => {
+    const registry = await loadRegistry()
+    const end = vi.fn()
+    const { game } = createGame("running")
+
+    Object.assign(game, { started: true, end })
+    registry.addGame(game)
+    registry.markGameAsEmpty(game)
+
+    await vi.advanceTimersByTimeAsync(EMPTY_GAME_TIMEOUT_MS * 2)
+
+    expect(registry.getGameById("running")).toBe(game)
+
+    await vi.advanceTimersByTimeAsync(120 * 60_000)
+
+    expect(registry.getGameById("running")).toBeUndefined()
+    expect(end).toHaveBeenCalledWith("errors:game.expired")
+  })
+
   it("keeps a game reactivated before the timeout", async () => {
     const registry = await loadRegistry()
     const { game } = createGame("reactivated")

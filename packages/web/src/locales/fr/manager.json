@@ -51,5 +51,10 @@
     "play": "Jouer",
     "quizz": "Quizz",
     "results": "Résultats"
+  },
+  "activeGame": {
+    "title": "Partie en cours",
+    "return": "Retour à la partie",
+    "end": "Terminer la partie en cours"
   }
 }

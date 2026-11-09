@@ -17,12 +17,33 @@ import { StatusCodes } from "http-status-codes"
 
 const routes = apiFactory
   .createApp()
+  .get("/active", requireManager, (c) => {
+    const game = Registry.getInstance().getRunningGame(c.get("claims").sub)
+
+    return c.json({
+      game: game
+        ? {
+            gameId: game.gameId,
+            inviteCode: game.inviteCode,
+            subject: game.subject,
+          }
+        : null,
+    })
+  })
   .post(
     "/",
     requireManager,
     zValidator("json", createGameValidator, i18nHook),
     (c) => {
       const { quizzId } = c.req.valid("json")
+
+      if (Registry.getInstance().getRunningGame(c.get("claims").sub)) {
+        return c.json(
+          { error: "errors:game.alreadyRunning" },
+          StatusCodes.CONFLICT,
+        )
+      }
+
       const quizz = getQuizz().find((q) => q.id === quizzId)
 
       if (!quizz) {
@@ -62,6 +83,22 @@ const routes = apiFactory
       return c.json({ settings: game.settings })
     },
   )
+  .delete("/:gameId", requireManager, (c) => {
+    const registry = Registry.getInstance()
+    const game = registry.getManagerGame(
+      c.req.param("gameId"),
+      c.get("claims").sub,
+    )
+
+    if (!game) {
+      return c.json({ error: "errors:game.notFound" }, StatusCodes.NOT_FOUND)
+    }
+
+    game.end()
+    registry.removeGame(game.gameId)
+
+    return c.body(null, StatusCodes.NO_CONTENT)
+  })
   .post("/check", zValidator("json", checkGameValidator, i18nHook), (c) => {
     const { inviteCode } = c.req.valid("json")
     const game = Registry.getInstance().getGameByInviteCode(inviteCode)

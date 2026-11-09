@@ -24,7 +24,9 @@
     "managerDisconnected": "Le manager s'est déconnecté",
     "noPlayersConnected": "Aucun joueur connecté",
     "notFound": "Partie introuvable",
-    "playerAlreadyConnected": "Ce joueur est déjà connecté"
+    "playerAlreadyConnected": "Ce joueur est déjà connecté",
+    "alreadyRunning": "Une partie est déjà en cours. Retournes-y ou termine-la d'abord.",
+    "endedByManager": "L'hôte a terminé la partie"
   },
   "invalidRequest": "Requête invalide",
   "manager": {

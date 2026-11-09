@@ -482,10 +482,21 @@ export class RoundManager {
     })
   }
 
-  private finish(): void {
+  /** Ends the game early, keeping whatever was revealed so far. */
+  stop(): void {
+    if (!this.started) {
+      return
+    }
+
     this.started = false
     this.clearAutoAdvance()
 
+    if (this.questionsHistory.length > 0) {
+      this.saveResult()
+    }
+  }
+
+  private saveResult(): void {
     const finalPlayers = this.isSurvey()
       ? this.opts.players.getAll()
       : this.leaderboard
@@ -502,6 +513,12 @@ export class RoundManager {
       })),
       questions: this.questionsHistory,
     })
+  }
+
+  private finish(): void {
+    this.started = false
+    this.clearAutoAdvance()
+    this.saveResult()
 
     if (this.isSurvey()) {
       this.finishSurvey()

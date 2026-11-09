@@ -69,5 +69,7 @@
     "yourAnswer": "Cevabını yaz",
     "playersTyping": "Oyuncular cevaplarını yazıyor"
   },
-  "reviewAnswers": "Açıklanan cevapları gözden geçir"
+  "reviewAnswers": "Açıklanan cevapları gözden geçir",
+  "endGame": "Oyunu bitir",
+  "endGameConfirm": "Bu oyun tüm oyuncular için bitirilsin mi? Açıklanan sorular Sonuçlar bölümünde kalır."
 }

@@ -69,5 +69,7 @@
     "yourAnswer": "Escribe tu respuesta",
     "playersTyping": "Los jugadores están escribiendo sus respuestas"
   },
-  "reviewAnswers": "Revisar las respuestas reveladas"
+  "reviewAnswers": "Revisar las respuestas reveladas",
+  "endGame": "Terminar partida",
+  "endGameConfirm": "¿Terminar esta partida para todos los jugadores? Las preguntas ya reveladas se conservan en Resultados."
 }

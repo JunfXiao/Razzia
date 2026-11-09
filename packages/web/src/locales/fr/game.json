@@ -70,5 +70,7 @@
     "yourAnswer": "Saisis ta réponse",
     "playersTyping": "Les joueurs saisissent leurs réponses"
   },
-  "reviewAnswers": "Revoir les réponses dévoilées"
+  "reviewAnswers": "Revoir les réponses dévoilées",
+  "endGame": "Terminer la partie",
+  "endGameConfirm": "Terminer cette partie pour tous les joueurs ? Les questions déjà dévoilées restent dans les résultats."
 }

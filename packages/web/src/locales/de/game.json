@@ -69,5 +69,7 @@
     "yourAnswer": "Gib deine Antwort ein",
     "playersTyping": "Die Spieler tippen ihre Antworten"
   },
-  "reviewAnswers": "Aufgedeckte Antworten ansehen"
+  "reviewAnswers": "Aufgedeckte Antworten ansehen",
+  "endGame": "Spiel beenden",
+  "endGameConfirm": "Dieses Spiel für alle Spieler beenden? Bereits aufgedeckte Fragen bleiben in den Ergebnissen erhalten."
 }

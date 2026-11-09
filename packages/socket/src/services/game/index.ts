@@ -30,6 +30,7 @@ class Game {
   readonly gameId: string
   readonly inviteCode: string
   readonly gameMode: QuizzMode
+  readonly subject: string
 
   private _settings: GameSettings = createDefaultGameSettings()
   private _locked = false
@@ -63,6 +64,7 @@ class Game {
     this.gameId = uuid()
     this.inviteCode = createInviteCode()
     this.gameMode = quizz.gameMode
+    this.subject = quizz.subject
     this._manager = {
       id: "",
       clientId: managerClientId,
@@ -384,6 +386,11 @@ class Game {
 
   advance() {
     this.round.advance()
+  }
+
+  end(reason = "errors:game.endedByManager") {
+    this.round.stop()
+    this.io.to(this.gameId).emit(EVENTS.GAME.RESET, reason)
   }
 }
 

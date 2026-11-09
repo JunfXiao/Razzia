@@ -69,5 +69,7 @@
     "yourAnswer": "回答を入力",
     "playersTyping": "プレイヤーが回答を入力しています"
   },
-  "reviewAnswers": "公開済みの回答を見返す"
+  "reviewAnswers": "公開済みの回答を見返す",
+  "endGame": "ゲームを終了",
+  "endGameConfirm": "全プレイヤーのこのゲームを終了しますか？公開済みの問題は結果に保存されます。"
 }

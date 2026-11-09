@@ -3,12 +3,15 @@ import Button from "@razzia/web/components/Button"
 import Skeleton, { SkeletonRows } from "@razzia/web/components/Skeleton"
 import { useManagerStore } from "@razzia/web/features/game/stores/manager"
 import { createStatus } from "@razzia/web/features/game/utils/createStatus"
+import ConfigActiveGame from "@razzia/web/features/manager/components/configurations/ConfigActiveGame"
 import {
+  activeGameKey,
+  activeGameQuery,
   createGame,
   quizzListQuery,
 } from "@razzia/web/features/manager/queries"
 import { ApiError } from "@razzia/web/lib/api"
-import { useMutation, useQuery } from "@tanstack/react-query"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { useNavigate } from "@tanstack/react-router"
 import clsx from "clsx"
 import { Check } from "lucide-react"
@@ -18,6 +21,9 @@ import { useTranslation } from "react-i18next"
 
 const ConfigSelectQuizz = () => {
   const { data, isPending } = useQuery(quizzListQuery())
+  const { data: activeData, isPending: isActivePending } =
+    useQuery(activeGameQuery())
+  const queryClient = useQueryClient()
   const { updateManager } = useManagerStore()
   const [selected, setSelected] = useState<string | null>(null)
   const navigate = useNavigate()
@@ -37,6 +43,7 @@ const ConfigSelectQuizz = () => {
       navigate({ to: "/party/manager/$gameId", params: { gameId } })
     },
     onError: (error) => {
+      void queryClient.invalidateQueries({ queryKey: activeGameKey })
       toast.error(
         t(error instanceof ApiError ? error.key : "errors:quizz.notFound"),
       )
@@ -61,7 +68,11 @@ const ConfigSelectQuizz = () => {
     start(selected)
   }
 
-  if (isPending) {
+  if (activeData?.game) {
+    return <ConfigActiveGame game={activeData.game} />
+  }
+
+  if (isPending || isActivePending) {
     return (
       <div className="flex min-h-0 flex-1 flex-col">
         <Skeleton className="mb-4 h-11 shrink-0" />

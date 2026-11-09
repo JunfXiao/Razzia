@@ -10,6 +10,9 @@ const tokenFor = (sub: string) => {
   return `header.${payload}.signature`
 }
 
+const STALE_TOKEN = tokenFor("stale")
+const FRESH_TOKEN = tokenFor("fresh")
+
 const json = (body: unknown, status: number = StatusCodes.OK) =>
   new Response(JSON.stringify(body), { status })
 
@@ -21,9 +24,7 @@ const stubFetch = (gameStatuses: number[]) => {
     "fetch",
     vi.fn((input: string, init?: RequestInit) => {
       if (input.includes("/auth/session")) {
-        return Promise.resolve(
-          json({ token: tokenFor("fresh"), clientId: "fresh" }),
-        )
+        return Promise.resolve(json({ token: FRESH_TOKEN, clientId: "fresh" }))
       }
 
       authorizations.push(new Headers(init?.headers).get("Authorization"))
@@ -46,19 +47,19 @@ afterEach(() => {
 
 describe("authenticated requests", () => {
   it("replaces a rejected session and retries once", async () => {
-    setToken(tokenFor("stale"))
+    setToken(STALE_TOKEN)
 
     const authorizations = stubFetch([StatusCodes.UNAUTHORIZED, StatusCodes.OK])
 
     await expect(join()).resolves.toEqual({ gameId: "1" })
     expect(authorizations).toEqual([
-      `Bearer ${tokenFor("stale")}`,
-      `Bearer ${tokenFor("fresh")}`,
+      `Bearer ${STALE_TOKEN}`,
+      `Bearer ${FRESH_TOKEN}`,
     ])
   })
 
   it("reports the failure when the new session is rejected too", async () => {
-    setToken(tokenFor("stale"))
+    setToken(STALE_TOKEN)
     stubFetch([StatusCodes.UNAUTHORIZED, StatusCodes.UNAUTHORIZED])
 
     await expect(join()).rejects.toBeInstanceOf(ApiError)

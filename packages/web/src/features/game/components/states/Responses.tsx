@@ -1,6 +1,7 @@
 import type { ManagerStatusDataMap } from "@razzia/common/types/game/status"
 import AnswerButton from "@razzia/web/features/game/components/AnswerButton"
 import AnswerNote from "@razzia/web/features/game/components/AnswerNote"
+import MarqueeText from "@razzia/web/features/game/components/MarqueeText"
 import {
   ANSWERS_COLORS,
   ANSWERS_LABELS,
@@ -121,12 +122,7 @@ const Responses = ({ data, silent = false }: Props) => {
             {answers.map((answer, key) => (
               <div key={key} className="min-w-0">
                 <span className="block">{ANSWERS_LABELS[key]}</span>
-                <span
-                  className="block truncate text-xs font-medium"
-                  title={answer}
-                >
-                  {answer}
-                </span>
+                <MarqueeText text={answer} className="text-xs font-medium" />
               </div>
             ))}
           </div>

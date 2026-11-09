@@ -10,11 +10,11 @@
     "export": "Testi JSON olarak dışa aktar",
     "import": "Testi JSON'dan içe aktar",
     "none": "Henüz oluşturulmuş bir test yok",
-    "notFound": "Test bulunamadı",
-    "pleaseCreate": "Lütfen önce bir test oluşturun",
-    "pleaseSelect": "Lütfen bir test seçin",
     "startGame": "Oyunu başlat",
-    "edit": "Testi düzenle"
+    "edit": "Testi düzenle",
+    "copyLink": "Bu testin sayfasının bağlantısını kopyala",
+    "linkCopied": "Bağlantı kopyalandı",
+    "linkCopyFailed": "Bağlantı kopyalanamadı: {{link}}"
   },
   "result": {
     "delete": "Sonucu sil",
@@ -49,7 +49,6 @@
     "exportCsv": "CSV olarak dışa aktar"
   },
   "tabs": {
-    "play": "Oyna",
     "quizz": "Test",
     "results": "Sonuçlar"
   },

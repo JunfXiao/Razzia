@@ -75,5 +75,10 @@
   "restart": {
     "button": "Yeniden başla",
     "description": "Bu oyundan çıkacak ve puanlarınızı kaybedeceksiniz. Ardından aynı PIN ile yeniden katılabilirsiniz."
+  },
+  "landing": {
+    "waiting": "Sunucunun başlatması bekleniyor",
+    "hostStart": "Sunucu olarak başlat",
+    "passwordTitle": "Başlatmak için yönetici parolasını girin"
   }
 }

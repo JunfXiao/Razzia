@@ -75,5 +75,10 @@
   "restart": {
     "button": "Empezar de nuevo",
     "description": "Saldrás de esta partida y perderás tus puntos. Después podrás volver a entrar con el mismo PIN."
+  },
+  "landing": {
+    "waiting": "Esperando a que el anfitrión empiece",
+    "hostStart": "Iniciar como anfitrión",
+    "passwordTitle": "Introduce la contraseña de administrador para empezar"
   }
 }

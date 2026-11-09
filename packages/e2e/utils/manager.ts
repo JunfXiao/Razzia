@@ -13,8 +13,11 @@ export const loginManager = async (page: Page) => {
 
 export const createGame = async (page: Page, subject = BASIC_QUIZZ) => {
   await loginManager(page)
-  await page.getByRole("button", { name: subject }).click()
-  await page.getByRole("button", { name: t("manager:quizz.startGame") }).click()
+  await page
+    .getByRole("listitem")
+    .filter({ hasText: subject })
+    .getByRole("button", { name: t("manager:quizz.startGame") })
+    .click()
 
   const pin = page.getByText(/^\d{6}$/u)
 

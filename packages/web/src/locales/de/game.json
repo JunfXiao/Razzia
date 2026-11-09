@@ -75,5 +75,10 @@
   "restart": {
     "button": "Neu beginnen",
     "description": "Du verlässt dieses Spiel und verlierst deine Punkte. Danach kannst du mit derselben PIN wieder beitreten."
+  },
+  "landing": {
+    "waiting": "Warten, bis der Host startet",
+    "hostStart": "Als Host starten",
+    "passwordTitle": "Admin-Passwort zum Starten eingeben"
   }
 }

@@ -2,19 +2,25 @@ import type { QuizzValidated } from "@razzia/common/validators/quizz"
 import AlertDialog from "@razzia/web/components/AlertDialog"
 import Button from "@razzia/web/components/Button"
 import { SkeletonRows } from "@razzia/web/components/Skeleton"
+import ConfigActiveGame from "@razzia/web/features/manager/components/configurations/ConfigActiveGame"
 import {
+  activeGameQuery,
   createQuizz,
   deleteQuizz,
   quizzKeys,
   quizzListQuery,
 } from "@razzia/web/features/manager/queries"
+import { useStartGame } from "@razzia/web/features/manager/useStartGame"
 import { api, ApiError, unwrap } from "@razzia/web/lib/api"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { useNavigate } from "@tanstack/react-router"
-import { Download, SquarePen, Trash2, Upload } from "lucide-react"
+import { Download, Link2, Play, SquarePen, Trash2, Upload } from "lucide-react"
 import { type ChangeEvent, useRef } from "react"
 import toast from "react-hot-toast"
 import { useTranslation } from "react-i18next"
+
+const ROW_ACTION =
+  "text-accent-foreground hover:bg-accent-foreground/10 rounded-sm p-2"
 
 const downloadJson = (data: unknown, filename: string) => {
   const blob = new Blob([JSON.stringify(data, null, 2)], {
@@ -30,8 +36,11 @@ const downloadJson = (data: unknown, filename: string) => {
   URL.revokeObjectURL(url)
 }
 
-const ConfigManageQuizz = () => {
+const ConfigQuizz = () => {
   const { data, isPending } = useQuery(quizzListQuery())
+  const { data: activeData, isPending: isActivePending } =
+    useQuery(activeGameQuery())
+  const { mutate: start, isPending: isStarting } = useStartGame()
   const queryClient = useQueryClient()
   const navigate = useNavigate()
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -74,6 +83,18 @@ const ConfigManageQuizz = () => {
     }
   }
 
+  const handleCopyLink = (id: string) => async () => {
+    const link = new URL(`/q/${id}`, window.location.origin).href
+
+    try {
+      await navigator.clipboard.writeText(link)
+      toast.success(t("manager:quizz.linkCopied"))
+    } catch {
+      // The clipboard API only exists on secure origins.
+      toast.error(t("manager:quizz.linkCopyFailed", { link }))
+    }
+  }
+
   const handleImport = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
 
@@ -98,9 +119,13 @@ const ConfigManageQuizz = () => {
   }
 
   const quizz = data?.quizz ?? []
+  const activeGame = activeData?.game ?? null
+  const canStart = !isActivePending && !activeGame
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
+      {activeGame && <ConfigActiveGame game={activeGame} />}
+
       <div className="mb-4 flex shrink-0 gap-2">
         <Button
           className="flex-1"
@@ -123,18 +148,40 @@ const ConfigManageQuizz = () => {
           onChange={handleImport}
         />
       </div>
-      <div className="min-h-0 flex-1 space-y-2 overflow-auto p-0.5">
+
+      <ul className="min-h-0 flex-1 space-y-2 overflow-auto p-0.5">
         {isPending && <SkeletonRows className="h-12" />}
 
         {quizz.map((q) => (
-          <div
+          <li
             key={q.id}
-            className="border-accent flex h-12 w-full items-center justify-between rounded-md border-2 p-3 pr-1.5"
+            className="border-accent flex h-12 w-full items-center justify-between gap-2 rounded-md border-2 p-3 pr-1.5"
           >
-            <p className="text-foreground truncate font-medium">{q.subject}</p>
-            <div className="flex gap-0.5">
+            <p className="text-foreground min-w-0 truncate font-medium">
+              {q.subject}
+            </p>
+            <div className="flex shrink-0 gap-0.5">
+              {canStart && (
+                <button
+                  className="text-primary hover:bg-primary/10 rounded-sm p-2 disabled:opacity-50"
+                  title={t("manager:quizz.startGame")}
+                  disabled={isStarting}
+                  onClick={() => start(q.id)}
+                >
+                  <Play className="size-4" />
+                </button>
+              )}
+
               <button
-                className="text-accent-foreground hover:bg-accent-foreground/10 rounded-sm p-2"
+                className={ROW_ACTION}
+                title={t("manager:quizz.copyLink")}
+                onClick={() => handleCopyLink(q.id)()}
+              >
+                <Link2 className="size-4" />
+              </button>
+
+              <button
+                className={ROW_ACTION}
                 title={t("manager:quizz.edit")}
                 onClick={() =>
                   navigate({
@@ -147,7 +194,7 @@ const ConfigManageQuizz = () => {
               </button>
 
               <button
-                className="text-accent-foreground hover:bg-accent-foreground/10 rounded-sm p-2"
+                className={ROW_ACTION}
                 onClick={() => handleExport(q.id)()}
                 title={t("manager:quizz.export")}
               >
@@ -171,16 +218,16 @@ const ConfigManageQuizz = () => {
                 onConfirm={() => remove(q.id)}
               />
             </div>
-          </div>
+          </li>
         ))}
         {!isPending && quizz.length === 0 && (
-          <p className="text-muted-foreground my-8 text-center">
+          <li className="text-muted-foreground my-8 text-center">
             {t("manager:quizz.none")}
-          </p>
+          </li>
         )}
-      </div>
+      </ul>
     </div>
   )
 }
 
-export default ConfigManageQuizz
+export default ConfigQuizz

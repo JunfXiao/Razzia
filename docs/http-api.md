@@ -125,10 +125,11 @@ The `autoAdvance` object is nested, so sending it replaces all three of its fiel
 
 ## Public routes
 
-| Route                   | Success                               | Notes                                       |
-| ----------------------- | ------------------------------------- | ------------------------------------------- |
-| `GET /api/health`       | `200 { status: "ok" }`                | Liveness probe                              |
-| `POST /api/games/check` | `200 { generatedUsernames: boolean }` | Checks a 6-digit invite code before joining |
+| Route                           | Success                               | Notes                                                                  |
+| ------------------------------- | ------------------------------------- | ---------------------------------------------------------------------- |
+| `GET /api/health`               | `200 { status: "ok" }`                | Liveness probe                                                         |
+| `GET /api/games/quizz/:quizzId` | `200 { subject, branding, active }`   | Backs the quizz landing page; `active` includes a lobby, never the PIN |
+| `POST /api/games/check`         | `200 { generatedUsernames: boolean }` | Checks a 6-digit invite code before joining                            |
 
 Body `{ "inviteCode": string }`. It is a `POST` rather than a `GET` on purpose: the invite code is a room key, and a body keeps it out of access logs, browser history and `Referer` headers — and out of proxy caches, which matters because the answer changes as games start and end.
 

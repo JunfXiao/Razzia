@@ -10,11 +10,11 @@
     "export": "JSONとしてクイズをエクスポート",
     "import": "JSONからクイズをインポート",
     "none": "まだクイズは作成されていません",
-    "notFound": "クイズが見つかりません",
-    "pleaseCreate": "先にクイズを作成してください",
-    "pleaseSelect": "クイズを選択してください",
     "startGame": "ゲーム開始",
-    "edit": "クイズを編集"
+    "edit": "クイズを編集",
+    "copyLink": "このクイズのページへのリンクをコピー",
+    "linkCopied": "リンクをコピーしました",
+    "linkCopyFailed": "リンクをコピーできませんでした: {{link}}"
   },
   "result": {
     "delete": "結果を削除",
@@ -49,7 +49,6 @@
     "exportCsv": "CSV でエクスポート"
   },
   "tabs": {
-    "play": "プレイ",
     "quizz": "クイズ",
     "results": "結果"
   },

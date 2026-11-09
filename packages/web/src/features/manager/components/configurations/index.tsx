@@ -1,9 +1,8 @@
 import Card from "@razzia/web/components/Card"
 import LanguageSwitcher from "@razzia/web/components/LanguageSwitcher"
 import { useManagerStore } from "@razzia/web/features/game/stores/manager"
-import ConfigManageQuizz from "@razzia/web/features/manager/components/configurations/ConfigManageQuizz"
+import ConfigQuizz from "@razzia/web/features/manager/components/configurations/ConfigQuizz"
 import ConfigResults from "@razzia/web/features/manager/components/configurations/ConfigResults"
-import ConfigSelectQuizz from "@razzia/web/features/manager/components/configurations/ConfigSelectQuizz"
 import ConfigTabButton from "@razzia/web/features/manager/components/configurations/ConfigTabButton"
 import { managerLogout } from "@razzia/web/features/manager/queries"
 import { setToken } from "@razzia/web/lib/session"
@@ -15,12 +14,8 @@ import { useTranslation } from "react-i18next"
 
 const tabs = [
   {
-    nameKey: "manager:tabs.play",
-    component: ConfigSelectQuizz,
-  },
-  {
     nameKey: "manager:tabs.quizz",
-    component: ConfigManageQuizz,
+    component: ConfigQuizz,
   },
   {
     nameKey: "manager:tabs.results",

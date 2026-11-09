@@ -10,11 +10,11 @@
     "export": "Exportar cuestionario como JSON",
     "import": "Importar cuestionario desde JSON",
     "none": "Aún no se ha creado ningún cuestionario",
-    "notFound": "No se encontró ningún cuestionario",
-    "pleaseCreate": "Por favor crea un cuestionario primero",
-    "pleaseSelect": "Por favor selecciona un cuestionario",
     "startGame": "Iniciar juego",
-    "edit": "Editar cuestionario"
+    "edit": "Editar cuestionario",
+    "copyLink": "Copiar el enlace a la página de este cuestionario",
+    "linkCopied": "Enlace copiado",
+    "linkCopyFailed": "No se pudo copiar el enlace: {{link}}"
   },
   "result": {
     "delete": "Eliminar resultado",
@@ -49,7 +49,6 @@
     "exportCsv": "Exportar como CSV"
   },
   "tabs": {
-    "play": "Jugar",
     "quizz": "Cuestionario",
     "results": "Resultados"
   },

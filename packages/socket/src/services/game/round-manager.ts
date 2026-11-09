@@ -75,6 +75,7 @@ export class RoundManager {
   private readonly opts: RoundManagerOptions
   private readonly steps: RoundStep[]
   private started = false
+  private finished = false
   private currentQuestion = 0
   private currentStep = -1
   private playersAnswers: Answer[] = []
@@ -116,6 +117,10 @@ export class RoundManager {
 
   isStarted(): boolean {
     return this.started
+  }
+
+  isFinished(): boolean {
+    return this.finished
   }
 
   private get question(): Question {
@@ -496,6 +501,7 @@ export class RoundManager {
     }
 
     this.started = false
+    this.finished = true
     this.clearAutoAdvance()
 
     if (this.questionsHistory.length > 0) {
@@ -524,6 +530,7 @@ export class RoundManager {
 
   private finish(): void {
     this.started = false
+    this.finished = true
     this.clearAutoAdvance()
     this.saveResult()
 

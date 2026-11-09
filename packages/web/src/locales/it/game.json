@@ -76,5 +76,10 @@
   "restart": {
     "button": "Ricomincia",
     "description": "Uscirai da questa partita e perderai i punti. Poi potrai rientrare con lo stesso PIN."
+  },
+  "landing": {
+    "waiting": "In attesa che l'host inizi",
+    "hostStart": "Avvia come host",
+    "passwordTitle": "Inserisci la password di amministratore per avviare"
   }
 }

@@ -76,5 +76,10 @@
   "restart": {
     "button": "Recommencer",
     "description": "Tu vas quitter cette partie et perdre tes points. Tu pourras ensuite la rejoindre avec le même code PIN."
+  },
+  "landing": {
+    "waiting": "En attente du lancement par l'hôte",
+    "hostStart": "Lancer en tant qu'hôte",
+    "passwordTitle": "Saisis le mot de passe administrateur pour lancer"
   }
 }

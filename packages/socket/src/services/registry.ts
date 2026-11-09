@@ -57,6 +57,11 @@ class Registry {
     )
   }
 
+  /** A lobby counts as active: its participants are expected to join it. */
+  hasActiveGame(quizzId: string): boolean {
+    return this.games.some((g) => g.quizzId === quizzId && !g.finished)
+  }
+
   getGameByManagerSocketId(socketId: string): Game | undefined {
     return this.games.find((g) => g.manager.id === socketId)
   }

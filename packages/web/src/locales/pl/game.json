@@ -75,5 +75,10 @@
   "restart": {
     "button": "Zacznij od nowa",
     "description": "Opuścisz tę grę i stracisz punkty. Potem możesz dołączyć ponownie tym samym PIN-em."
+  },
+  "landing": {
+    "waiting": "Czekamy, aż prowadzący rozpocznie",
+    "hostStart": "Rozpocznij jako prowadzący",
+    "passwordTitle": "Wpisz hasło administratora, aby rozpocząć"
   }
 }

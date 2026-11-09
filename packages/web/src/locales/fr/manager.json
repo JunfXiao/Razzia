@@ -10,11 +10,11 @@
     "export": "Exporter le quizz (JSON)",
     "import": "Importer un quizz (JSON)",
     "none": "Aucun quizz créé",
-    "notFound": "Aucun quizz trouvé",
-    "pleaseCreate": "Veuillez d'abord créer un quizz",
-    "pleaseSelect": "Veuillez sélectionner un quizz",
     "startGame": "Démarrer la partie",
-    "edit": "Modifier le quizz"
+    "edit": "Modifier le quizz",
+    "copyLink": "Copier le lien vers la page de ce quiz",
+    "linkCopied": "Lien copié",
+    "linkCopyFailed": "Impossible de copier le lien : {{link}}"
   },
   "result": {
     "delete": "Supprimer le résultat",
@@ -49,7 +49,6 @@
     "exportCsv": "Exporter en CSV"
   },
   "tabs": {
-    "play": "Jouer",
     "quizz": "Quizz",
     "results": "Résultats"
   },

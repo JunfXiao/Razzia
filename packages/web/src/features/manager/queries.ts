@@ -1,7 +1,8 @@
 import type { GameSettings } from "@razzia/common/types/game"
 import type { QuizzValidated } from "@razzia/common/validators/quizz"
-import { api, unwrap, unwrapEmpty } from "@razzia/web/lib/api"
+import { api, ApiError, unwrap, unwrapEmpty } from "@razzia/web/lib/api"
 import { queryOptions } from "@tanstack/react-query"
+import { StatusCodes } from "http-status-codes"
 
 export const quizzKeys = {
   all: ["quizz"] as const,
@@ -19,6 +20,22 @@ export const activeGameQuery = () =>
   queryOptions({
     queryKey: activeGameKey,
     queryFn: () => unwrap(api.games.active.$get()),
+  })
+
+const LANDING_POLL_MS = 5000
+const LANDING_RETRIES = 3
+
+export const isNotFoundError = (error: unknown) =>
+  error instanceof ApiError && error.status === StatusCodes.NOT_FOUND
+
+export const quizzLandingQuery = (quizzId: string) =>
+  queryOptions({
+    queryKey: ["quizzLanding", quizzId] as const,
+    queryFn: () =>
+      unwrap(api.games.quizz[":quizzId"].$get({ param: { quizzId } })),
+    retry: (count, error) => !isNotFoundError(error) && count < LANDING_RETRIES,
+    refetchInterval: (query) =>
+      isNotFoundError(query.state.error) ? false : LANDING_POLL_MS,
   })
 
 export const quizzListQuery = () =>

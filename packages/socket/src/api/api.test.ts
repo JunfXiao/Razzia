@@ -253,6 +253,42 @@ describe("games", () => {
     expect(Registry.getInstance().getGameById(gameId)).toBeDefined()
   })
 
+  it("exposes only a quizz's public status", async () => {
+    const { id: quizzId } = saveQuizz(createQuizz([createQuestion()]))
+    const path = `/games/quizz/${quizzId}`
+    const idle = await request(path)
+
+    expect(idle.status).toBe(StatusCodes.OK)
+    expect(await json(idle)).toEqual({
+      subject: "Test quizz",
+      branding: null,
+      active: false,
+    })
+
+    const created = await request("/games", {
+      method: "POST",
+      token: managerToken,
+      body: { quizzId },
+    })
+    const { gameId } = (await json(created)) as { gameId: string }
+    const game = Registry.getInstance().getGameById(gameId)
+
+    if (!game) {
+      throw new Error("Game not registered")
+    }
+
+    expect(await json(await request(path))).toMatchObject({ active: true })
+
+    vi.spyOn(game, "finished", "get").mockReturnValue(true)
+
+    expect(await json(await request(path))).toMatchObject({ active: false })
+
+    const missing = await request("/games/quizz/missing")
+
+    expect(missing.status).toBe(StatusCodes.NOT_FOUND)
+    expect(await json(missing)).toEqual({ error: "errors:quizz.notFound" })
+  })
+
   it("allows one running game and lets its manager end it", async () => {
     const { gameId, inviteCode } = await createGame()
     const game = Registry.getInstance().getGameById(gameId)

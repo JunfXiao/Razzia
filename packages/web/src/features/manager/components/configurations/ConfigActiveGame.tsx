@@ -44,7 +44,7 @@ const ConfigActiveGame = ({
   })
 
   return (
-    <div className="flex flex-1 flex-col gap-3">
+    <div className="mb-4 flex shrink-0 flex-col gap-3">
       <div className="border-accent rounded-md border-2 p-3">
         <p className="text-muted-foreground text-sm font-semibold">
           {t("manager:activeGame.title")}
@@ -55,24 +55,28 @@ const ConfigActiveGame = ({
         </p>
       </div>
 
-      <Button
-        onClick={() => {
-          setBranding(branding)
-          navigate({ to: "/party/manager/$gameId", params: { gameId } })
-        }}
-      >
-        {t("manager:activeGame.return")}
-      </Button>
+      <div className="grid grid-cols-2 gap-2">
+        <Button
+          onClick={() => {
+            setBranding(branding)
+            navigate({ to: "/party/manager/$gameId", params: { gameId } })
+          }}
+        >
+          {t("manager:activeGame.return")}
+        </Button>
 
-      <AlertDialog
-        trigger={
-          <Button className="bg-red-500">{t("manager:activeGame.end")}</Button>
-        }
-        title={t("manager:activeGame.end")}
-        description={t("game:endGameConfirm")}
-        confirmLabel={t("game:endGame")}
-        onConfirm={() => end(gameId)}
-      />
+        <AlertDialog
+          trigger={
+            <Button className="bg-red-500">
+              {t("manager:activeGame.end")}
+            </Button>
+          }
+          title={t("manager:activeGame.end")}
+          description={t("game:endGameConfirm")}
+          confirmLabel={t("game:endGame")}
+          onConfirm={() => end(gameId)}
+        />
+      </div>
     </div>
   )
 }

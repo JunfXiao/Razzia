@@ -9,7 +9,7 @@ import { apiFactory } from "@razzia/socket/api/factory"
 import { requireManager, requireSession } from "@razzia/socket/api/middleware"
 import { i18nHook } from "@razzia/socket/api/validation"
 import { mintJoinTicket } from "@razzia/socket/services/auth"
-import { getQuizz } from "@razzia/socket/services/config"
+import { getQuizz, getQuizzById } from "@razzia/socket/services/config"
 import Game from "@razzia/socket/services/game"
 import { getIo } from "@razzia/socket/services/io"
 import Registry from "@razzia/socket/services/registry"
@@ -29,6 +29,15 @@ const routes = apiFactory
             branding: game.branding,
           }
         : null,
+    })
+  })
+  .get("/quizz/:quizzId", (c) => {
+    const { id, subject, branding } = getQuizzById(c.req.param("quizzId"))
+
+    return c.json({
+      subject,
+      branding: branding ?? null,
+      active: Registry.getInstance().hasActiveGame(id),
     })
   })
   .post(

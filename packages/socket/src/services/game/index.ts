@@ -32,6 +32,7 @@ class Game {
   readonly inviteCode: string
   readonly gameMode: QuizzMode
   readonly subject: string
+  readonly quizzId: string | null
   readonly branding: QuizzBranding | null
 
   private _settings: GameSettings = createDefaultGameSettings()
@@ -61,12 +62,17 @@ class Game {
     { name: Status; data: StatusDataMap[Status] }
   >()
 
-  constructor(io: Server, managerClientId: string, quizz: Quizz) {
+  constructor(
+    io: Server,
+    managerClientId: string,
+    quizz: Quizz & { id?: string },
+  ) {
     this.io = io
     this.gameId = uuid()
     this.inviteCode = createInviteCode()
     this.gameMode = quizz.gameMode
     this.subject = quizz.subject
+    this.quizzId = quizz.id ?? null
     this.branding = quizz.branding ?? null
     this._manager = {
       id: "",
@@ -117,6 +123,10 @@ class Game {
 
   get started(): boolean {
     return this.round.isStarted()
+  }
+
+  get finished(): boolean {
+    return this.round.isFinished()
   }
 
   get settings(): GameSettings {

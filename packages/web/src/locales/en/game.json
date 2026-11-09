@@ -78,5 +78,10 @@
   "restart": {
     "button": "Start over",
     "description": "You will leave this game and lose your points. You can then join again with the same PIN."
+  },
+  "landing": {
+    "waiting": "Waiting for the host to start",
+    "hostStart": "Start as host",
+    "passwordTitle": "Enter the admin password to start"
   }
 }

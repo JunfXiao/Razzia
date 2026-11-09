@@ -10,11 +10,11 @@
     "export": "Xuất trò chơi dạng JSON",
     "import": "Nhập trò chơi từ JSON",
     "none": "Chưa có trò chơi nào",
-    "notFound": "Không tìm thấy trò chơi",
-    "pleaseCreate": "Vui lòng tạo trò chơi trước",
-    "pleaseSelect": "Vui lòng chọn một trò chơi",
     "startGame": "Bắt đầu trò chơi",
-    "edit": "Sửa trò chơi"
+    "edit": "Sửa trò chơi",
+    "copyLink": "Sao chép liên kết đến trang của bộ câu hỏi này",
+    "linkCopied": "Đã sao chép liên kết",
+    "linkCopyFailed": "Không thể sao chép liên kết: {{link}}"
   },
   "result": {
     "delete": "Xóa kết quả",
@@ -49,7 +49,6 @@
     "exportCsv": "Xuất CSV"
   },
   "tabs": {
-    "play": "Trò chơi",
     "quizz": "Cấu hình",
     "results": "Kết quả"
   },

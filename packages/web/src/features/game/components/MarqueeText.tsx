@@ -24,7 +24,7 @@ const MarqueeText = ({ text, className }: Props) => {
     }
 
     const measure = () => {
-      const width = content.getBoundingClientRect().width
+      const { width } = content.getBoundingClientRect()
 
       setDuration(
         width > container.clientWidth

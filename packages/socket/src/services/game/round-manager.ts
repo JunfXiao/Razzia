@@ -22,6 +22,7 @@ import type {
 } from "@razzia/common/types/game"
 import type { Server, Socket } from "@razzia/common/types/game/socket"
 import {
+  type Reveal,
   type Status,
   STATUS,
   type StatusDataMap,
@@ -82,6 +83,7 @@ export class RoundManager {
   private leaderboard: Player[] = []
   private tempOldLeaderboard: Player[] | null = null
   private questionsHistory: QuestionResult[] = []
+  private reveals: Reveal[] = []
   private autoAdvanceTimer: NodeJS.Timeout | null = null
 
   constructor(opts: RoundManagerOptions) {
@@ -198,6 +200,10 @@ export class RoundManager {
   }
 
   // ── Flow ─────────────────────────────────────────────────────────────────
+
+  getReveals(): Reveal[] {
+    return this.reveals
+  }
 
   getReconnectInfo(): GameUpdateQuestion | null {
     if (!this.started) {
@@ -378,12 +384,17 @@ export class RoundManager {
     })
   }
 
+  private sendReveal(reveal: Reveal): void {
+    this.reveals.push(reveal)
+    this.opts.send(this.opts.getManagerId(), STATUS.SHOW_RESPONSES, reveal)
+  }
+
   private showResults(): void {
     const currentPlayers = this.opts.players.getAll()
     const answerCounts = countAnswers(this.playersAnswers)
 
     if (this.isSurvey()) {
-      this.opts.send(this.opts.getManagerId(), STATUS.SHOW_RESPONSES, {
+      this.sendReveal({
         ...this.question,
         solutions: undefined,
         responses: answerCounts,
@@ -431,7 +442,7 @@ export class RoundManager {
       })
     })
 
-    this.opts.send(this.opts.getManagerId(), STATUS.SHOW_RESPONSES, {
+    this.sendReveal({
       ...this.question,
       responses: answerCounts,
       textResponses: this.textResponses,

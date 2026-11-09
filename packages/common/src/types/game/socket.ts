@@ -6,7 +6,11 @@ import type {
   Player,
   QuizzMode,
 } from "@razzia/common/types/game"
-import type { Status, StatusDataMap } from "@razzia/common/types/game/status"
+import type {
+  Reveal,
+  Status,
+  StatusDataMap,
+} from "@razzia/common/types/game/status"
 import type { clientEventValidators } from "@razzia/common/validators/socket"
 import {
   Server as ServerIO,
@@ -77,6 +81,7 @@ export interface ServerToClientEvents {
     status: { name: Status; data: StatusDataMap[Status] }
     players: Player[]
     currentQuestion: GameUpdateQuestion | null
+    reveals: Reveal[]
   }) => void
   [EVENTS.MANAGER.STATUS_UPDATE]: (_data: {
     status: Status

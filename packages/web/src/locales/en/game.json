@@ -71,5 +71,6 @@
   "text": {
     "yourAnswer": "Type your answer",
     "playersTyping": "Players are typing their answers"
-  }
+  },
+  "reviewAnswers": "Review revealed answers"
 }

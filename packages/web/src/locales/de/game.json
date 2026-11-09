@@ -68,5 +68,6 @@
   "text": {
     "yourAnswer": "Gib deine Antwort ein",
     "playersTyping": "Die Spieler tippen ihre Antworten"
-  }
+  },
+  "reviewAnswers": "Aufgedeckte Antworten ansehen"
 }

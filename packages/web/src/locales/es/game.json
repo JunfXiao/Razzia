@@ -68,5 +68,6 @@
   "text": {
     "yourAnswer": "Escribe tu respuesta",
     "playersTyping": "Los jugadores están escribiendo sus respuestas"
-  }
+  },
+  "reviewAnswers": "Revisar las respuestas reveladas"
 }

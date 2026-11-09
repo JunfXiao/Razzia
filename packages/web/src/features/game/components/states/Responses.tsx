@@ -14,9 +14,10 @@ import useSound from "use-sound"
 
 interface Props {
   data: ManagerStatusDataMap["SHOW_RESPONSES"]
+  silent?: boolean
 }
 
-const Responses = ({ data }: Props) => {
+const Responses = ({ data, silent = false }: Props) => {
   const { question, answers, responses, solutions, type, note } = data
   const { ResponsesComponent } = QUESTION_REGISTRY[type]
   const percentages = calculatePercentages(responses)
@@ -37,15 +38,19 @@ const Responses = ({ data }: Props) => {
   })
 
   useEffect(() => {
+    if (silent) {
+      return
+    }
+
     stopMusic()
     sfxResults()
-  }, [responses, playMusic, stopMusic, sfxResults])
+  }, [responses, playMusic, stopMusic, sfxResults, silent])
 
   useEffect(() => {
-    if (!isMusicPlaying) {
+    if (!silent && !isMusicPlaying) {
       playMusic()
     }
-  }, [isMusicPlaying, playMusic])
+  }, [isMusicPlaying, playMusic, silent])
 
   useEffect(() => {
     stopMusic()

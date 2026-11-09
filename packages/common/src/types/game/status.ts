@@ -77,6 +77,8 @@ interface ManagerExtraStatus {
   SHOW_LEADERBOARD: { oldLeaderboard: Player[]; leaderboard: Player[] }
 }
 
+export type Reveal = ManagerExtraStatus["SHOW_RESPONSES"]
+
 export type PlayerStatusDataMap = CommonStatusDataMap
 
 export type ManagerStatusDataMap = CommonStatusDataMap & ManagerExtraStatus

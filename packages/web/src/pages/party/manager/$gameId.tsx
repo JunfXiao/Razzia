@@ -1,5 +1,5 @@
 import { EVENTS } from "@razzia/common/constants"
-import { STATUS } from "@razzia/common/types/game/status"
+import { type Reveal, STATUS } from "@razzia/common/types/game/status"
 import GameWrapper from "@razzia/web/features/game/components/GameWrapper"
 import {
   socketClient,
@@ -23,7 +23,8 @@ const ManagerGamePage = () => {
   const navigate = useNavigate()
   const { gameId: gameIdParam } = useParams({ from: "/party/manager/$gameId" })
   const { socket, isConnected } = useSocket()
-  const { gameId, status, updateManager, resetManager } = useManagerStore()
+  const { gameId, status, updateManager, addReveal, resetManager } =
+    useManagerStore()
   const { setQuestionStates } = useQuestionStore()
   const { t } = useTranslation()
 
@@ -32,6 +33,10 @@ const ManagerGamePage = () => {
   useEvent(EVENTS.GAME.STATUS, ({ name, data }) => {
     if (name in GAME_STATE_COMPONENTS_MANAGER) {
       updateManager({ status: createStatus(name, data) })
+    }
+
+    if (name === STATUS.SHOW_RESPONSES) {
+      addReveal(data as Reveal)
     }
   })
 
@@ -51,6 +56,7 @@ const ManagerGamePage = () => {
       status: reconnectStatus,
       players,
       currentQuestion,
+      reveals,
     }) => {
       updateManager({
         gameId: reconnectGameId,
@@ -59,6 +65,7 @@ const ManagerGamePage = () => {
         locked,
         status: createStatus(reconnectStatus.name, reconnectStatus.data),
         players,
+        reveals,
       })
       setQuestionStates(currentQuestion)
     },

@@ -441,6 +441,34 @@ describe("quiz flow", () => {
     expect(status("alice")).toBeUndefined()
   })
 
+  it("gives a reconnecting manager every past reveal", async () => {
+    const quizz = createQuizz([createQuestion(), createTextQuestion()])
+    const { game, manager, sockets, start, reachAnswers, events } = setup(quizz)
+
+    await start()
+    game.selectAnswer(sockets[0], [0])
+    game.advance()
+    await vi.advanceTimersByTimeAsync(TICK_MS)
+    game.advance()
+    await vi.advanceTimersByTimeAsync(TICK_MS)
+    game.advance()
+    await reachAnswers(quizz.questions[1], false)
+    game.selectAnswer(sockets[0], [], "Paris")
+    game.advance()
+    await vi.advanceTimersByTimeAsync(TICK_MS)
+
+    game.reconnect(manager)
+
+    const reconnect = events(MANAGER, EVENTS.MANAGER.SUCCESS_RECONNECT).at(-1)
+
+    expect(reconnect?.data).toMatchObject({
+      reveals: [
+        { responses: { 0: 1 } },
+        { textResponses: [{ text: "Paris", count: 1, correct: true }] },
+      ],
+    })
+  })
+
   it("advances automatically when enabled", async () => {
     const { game, status, start, events } = setup(
       createQuizz([createQuestion(), createQuestion()]),

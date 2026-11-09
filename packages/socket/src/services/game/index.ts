@@ -265,6 +265,7 @@ class Game {
       currentQuestion: this.round.getReconnectInfo(),
       status,
       players: this.playerManager.getAll(),
+      reveals: this.round.getReveals(),
     })
     socket.emit(EVENTS.GAME.TOTAL_PLAYERS, this.playerManager.joinedCount())
 

@@ -3,6 +3,7 @@ import type {
   GameSettings,
   Player,
   Quizz,
+  QuizzBranding,
   QuizzMode,
 } from "@razzia/common/types/game"
 import type { Server, Socket } from "@razzia/common/types/game/socket"
@@ -31,6 +32,7 @@ class Game {
   readonly inviteCode: string
   readonly gameMode: QuizzMode
   readonly subject: string
+  readonly branding: QuizzBranding | null
 
   private _settings: GameSettings = createDefaultGameSettings()
   private _locked = false
@@ -65,6 +67,7 @@ class Game {
     this.inviteCode = createInviteCode()
     this.gameMode = quizz.gameMode
     this.subject = quizz.subject
+    this.branding = quizz.branding ?? null
     this._manager = {
       id: "",
       clientId: managerClientId,
@@ -77,6 +80,7 @@ class Game {
       io,
       gameId: this.gameId,
       gameMode: quizz.gameMode,
+      branding: this.branding,
       getManagerId: () => this._manager.id,
       isStarted: () => this.started,
     })
@@ -268,6 +272,7 @@ class Game {
       status,
       players: this.playerManager.getAll(),
       reveals: this.round.getReveals(),
+      branding: this.branding,
     })
     socket.emit(EVENTS.GAME.TOTAL_PLAYERS, this.playerManager.joinedCount())
 
@@ -315,6 +320,7 @@ class Game {
       currentQuestion: this.round.getReconnectInfo(),
       status,
       player: { username: player.username, points: player.points },
+      branding: this.branding,
     })
     this.playerManager.broadcastCount()
 

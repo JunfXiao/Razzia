@@ -1,5 +1,9 @@
 import { EVENTS } from "@razzia/common/constants"
-import type { Player, QuizzMode } from "@razzia/common/types/game"
+import type {
+  Player,
+  QuizzBranding,
+  QuizzMode,
+} from "@razzia/common/types/game"
 import type { Server, Socket } from "@razzia/common/types/game/socket"
 import { usernameValidator } from "@razzia/common/validators/auth"
 import { getClientId } from "@razzia/socket/utils/socket"
@@ -8,6 +12,7 @@ export interface PlayerManagerOptions {
   io: Server
   gameId: string
   gameMode: QuizzMode
+  branding: QuizzBranding | null
   getManagerId: () => string
   isStarted: () => boolean
 }
@@ -16,6 +21,7 @@ export class PlayerManager {
   private readonly io: Server
   private readonly gameId: string
   private readonly gameMode: QuizzMode
+  private readonly branding: QuizzBranding | null
   private readonly getManagerId: () => string
   private readonly isStarted: () => boolean
   private players: Player[] = []
@@ -24,12 +30,14 @@ export class PlayerManager {
     io,
     gameId,
     gameMode,
+    branding,
     getManagerId,
     isStarted,
   }: PlayerManagerOptions) {
     this.io = io
     this.gameId = gameId
     this.gameMode = gameMode
+    this.branding = branding
     this.getManagerId = getManagerId
     this.isStarted = isStarted
   }
@@ -65,6 +73,7 @@ export class PlayerManager {
       gameId: this.gameId,
       username,
       gameMode: this.gameMode,
+      branding: this.branding,
     })
 
     return null

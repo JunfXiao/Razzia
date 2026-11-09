@@ -7,6 +7,7 @@ import {
   useSocket,
 } from "@razzia/web/features/game/contexts/socket-context"
 import { useSocketConnection } from "@razzia/web/features/game/hooks/useSocketConnection"
+import { useGameBrandingStore } from "@razzia/web/features/game/stores/branding"
 import { usePlayerStore } from "@razzia/web/features/game/stores/player"
 import { useQuestionStore } from "@razzia/web/features/game/stores/question"
 import {
@@ -28,7 +29,11 @@ const PlayerGamePage = () => {
   const { t } = useTranslation()
   const syncedRef = useRef(false)
 
+  const { setBranding } = useGameBrandingStore()
+
   useSocketConnection()
+
+  useEffect(() => () => setBranding(null), [setBranding])
 
   useEffect(() => {
     if (!isConnected) {
@@ -56,7 +61,8 @@ const PlayerGamePage = () => {
 
   useEvent(
     EVENTS.GAME.SUCCESS_JOIN,
-    ({ gameId: joinedGameId, username, gameMode }) => {
+    ({ gameId: joinedGameId, username, gameMode, branding }) => {
+      setBranding(branding)
       updatePlayer({
         gameId: joinedGameId,
         gameMode,
@@ -75,7 +81,9 @@ const PlayerGamePage = () => {
       status: reconnectStatus,
       player,
       currentQuestion,
+      branding,
     }) => {
+      setBranding(branding)
       updatePlayer({
         gameId: reconnectGameId,
         gameMode,

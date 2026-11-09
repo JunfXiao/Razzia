@@ -27,11 +27,12 @@ import { useTranslation } from "react-i18next"
 interface Props {
   open: boolean
   onOpenChange: (_open: boolean) => void
+  onPick?: (_media: UploadedMedia) => void
 }
 
 const hasFiles = (e: DragEvent) => e.dataTransfer.types.includes("Files")
 
-const MediaLibrary = ({ open, onOpenChange }: Props) => {
+const MediaLibrary = ({ open, onOpenChange, onPick }: Props) => {
   const { questions, updateQuestion, currentIndex } = useQuizzEditor()
   const { data, isPending } = useQuery({ ...mediaListQuery(), enabled: open })
   const { upload, pendingCount } = useUploadMedia()
@@ -67,7 +68,14 @@ const MediaLibrary = ({ open, onOpenChange }: Props) => {
   )
 
   const handleSelect = (item: UploadedMedia) => () => {
-    updateQuestion(currentIndex, { media: { type: item.type, url: item.url } })
+    if (onPick) {
+      onPick(item)
+    } else {
+      updateQuestion(currentIndex, {
+        media: { type: item.type, url: item.url },
+      })
+    }
+
     onOpenChange(false)
   }
 

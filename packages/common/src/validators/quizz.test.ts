@@ -227,3 +227,47 @@ describe("text questions", () => {
     ).toBe(true)
   })
 })
+
+describe("quizz branding and word clouds", () => {
+  const buildQuizz = (extra: object, question: object = {}) => ({
+    gameMode: QUIZZ_MODES.QUIZ,
+    subject: "Subject",
+    questions: [
+      {
+        type: QUESTION_TYPES.TEXT,
+        question: "Q ?",
+        answers: ["A"],
+        cooldown: 5,
+        time: 15,
+        ...question,
+      },
+    ],
+    ...extra,
+  })
+
+  it("accepts uploaded and external branding images", () => {
+    const branding = {
+      background: "/media/bg.png",
+      logo: "https://example.com/logo.png",
+    }
+
+    expect(quizzValidator.parse(buildQuizz({ branding })).branding).toEqual(
+      branding,
+    )
+  })
+
+  it("rejects branding that is not a media url", () => {
+    expect(
+      quizzValidator.safeParse(buildQuizz({ branding: { logo: "nope" } }))
+        .success,
+    ).toBe(false)
+  })
+
+  it("keeps the word cloud option when reading a saved quizz", () => {
+    const parsed = quizzValidator.parse(
+      normalizeLegacyQuizz(buildQuizz({}, { options: { wordCloud: true } })),
+    )
+
+    expect(parsed.questions[0].options).toEqual({ wordCloud: true })
+  })
+})

@@ -2,6 +2,7 @@ import Button from "@razzia/web/components/Button"
 import Card from "@razzia/web/components/Card"
 import PinInput from "@razzia/web/components/PinInput"
 import { checkInviteCode } from "@razzia/web/features/game/queries"
+import { useGameBrandingStore } from "@razzia/web/features/game/stores/branding"
 import { usePlayerStore } from "@razzia/web/features/game/stores/player"
 import { ApiError } from "@razzia/web/lib/api"
 import { useMutation } from "@tanstack/react-query"
@@ -12,6 +13,7 @@ import { useTranslation } from "react-i18next"
 
 const Room = () => {
   const { updatePlayer } = usePlayerStore()
+  const { setBranding } = useGameBrandingStore()
   const [invitation, setInvitation] = useState("")
   const { pin } = useSearch({ from: "/(auth)/" })
   const hasCheckedRef = useRef(false)
@@ -19,8 +21,9 @@ const Room = () => {
 
   const { mutate: check, isPending } = useMutation({
     mutationFn: checkInviteCode,
-    onSuccess: ({ generatedUsernames }, code) => {
+    onSuccess: ({ generatedUsernames, branding }, code) => {
       updatePlayer({ inviteCode: code, generatedUsernames })
+      setBranding(branding)
     },
     onError: (error) => {
       toast.error(

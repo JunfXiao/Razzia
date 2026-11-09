@@ -7,6 +7,7 @@ import {
   useSocket,
 } from "@razzia/web/features/game/contexts/socket-context"
 import { useSocketConnection } from "@razzia/web/features/game/hooks/useSocketConnection"
+import { useGameBrandingStore } from "@razzia/web/features/game/stores/branding"
 import { useManagerStore } from "@razzia/web/features/game/stores/manager"
 import { useQuestionStore } from "@razzia/web/features/game/stores/question"
 import { createStatus } from "@razzia/web/features/game/utils/createStatus"
@@ -34,7 +35,11 @@ const ManagerGamePage = () => {
   const { setQuestionStates } = useQuestionStore()
   const { t } = useTranslation()
 
+  const { setBranding } = useGameBrandingStore()
+
   useSocketConnection()
+
+  useEffect(() => () => setBranding(null), [setBranding])
 
   useEvent(EVENTS.GAME.STATUS, ({ name, data }) => {
     if (name in GAME_STATE_COMPONENTS_MANAGER) {
@@ -63,7 +68,9 @@ const ManagerGamePage = () => {
       players,
       currentQuestion,
       reveals,
+      branding,
     }) => {
+      setBranding(branding)
       updateManager({
         gameId: reconnectGameId,
         inviteCode,

@@ -9,6 +9,7 @@ import {
   quizzKeys,
   updateQuizz,
 } from "@razzia/web/features/manager/queries"
+import QuizzBrandingButton from "@razzia/web/features/quizz/components/QuizzBrandingButton"
 import {
   useQuizzEditor,
   type QuizzFormValues,
@@ -131,6 +132,7 @@ const QuizzEditorHeader = () => {
       </div>
 
       <div className="flex gap-2">
+        <QuizzBrandingButton />
         <Button
           className="text-md bg-accent text-accent-foreground px-4 py-2 font-semibold"
           onClick={handleExit}

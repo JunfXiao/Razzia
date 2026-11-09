@@ -4,6 +4,7 @@ import type {
   GameSettings,
   GameUpdateQuestion,
   Player,
+  QuizzBranding,
   QuizzMode,
 } from "@razzia/common/types/game"
 import type {
@@ -50,6 +51,7 @@ export interface ServerToClientEvents {
     gameId: string
     username: string
     gameMode: QuizzMode
+    branding: QuizzBranding | null
   }) => void
   [EVENTS.GAME.TOTAL_PLAYERS]: (_count: number) => void
   [EVENTS.GAME.ERROR_MESSAGE]: (_message: string) => void
@@ -69,6 +71,7 @@ export interface ServerToClientEvents {
     status: { name: Status; data: StatusDataMap[Status] }
     player: { username: string; points: number }
     currentQuestion: GameUpdateQuestion | null
+    branding: QuizzBranding | null
   }) => void
   [EVENTS.PLAYER.UPDATE_LEADERBOARD]: (_data: { leaderboard: Player[] }) => void
 
@@ -82,6 +85,7 @@ export interface ServerToClientEvents {
     players: Player[]
     currentQuestion: GameUpdateQuestion | null
     reveals: Reveal[]
+    branding: QuizzBranding | null
   }) => void
   [EVENTS.MANAGER.STATUS_UPDATE]: (_data: {
     status: Status

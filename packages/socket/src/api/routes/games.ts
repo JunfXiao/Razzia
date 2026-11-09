@@ -121,7 +121,10 @@ const routes = apiFactory
       return c.json({ error: "errors:game.locked" }, StatusCodes.FORBIDDEN)
     }
 
-    return c.json({ generatedUsernames: game.settings.generatedUsernames })
+    return c.json({
+      generatedUsernames: game.settings.generatedUsernames,
+      branding: game.branding,
+    })
   })
   .post(
     "/join",

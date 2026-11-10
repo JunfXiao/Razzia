@@ -119,7 +119,10 @@
     "color": "Color",
     "image": "Imagen",
     "text": "Texto",
-    "logoTextPlaceholder": "Texto del logotipo"
+    "logoTextPlaceholder": "Texto del logotipo",
+    "soundEffects": "Efectos de sonido",
+    "on": "Activados",
+    "off": "Desactivados"
   },
   "setup": {
     "title": "Nuevo cuestionario",

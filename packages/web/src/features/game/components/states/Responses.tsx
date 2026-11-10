@@ -12,7 +12,7 @@ import { calculatePercentages } from "@razzia/web/features/game/utils/score"
 import { QUESTION_REGISTRY } from "@razzia/web/features/questions"
 import clsx from "clsx"
 import { useEffect, useState } from "react"
-import useSound from "use-sound"
+import { useBrandingSound } from "../../hooks/useBrandingSound"
 
 interface Props {
   data: ManagerStatusDataMap["SHOW_RESPONSES"]
@@ -33,11 +33,11 @@ const Responses = ({ data, silent = false }: Props) => {
       : percentages[key]
   const [isMusicPlaying, setIsMusicPlaying] = useState(false)
 
-  const [sfxResults] = useSound(SFX.RESULTS_SOUND, {
+  const [sfxResults] = useBrandingSound(SFX.RESULTS_SOUND, {
     volume: 0.2,
   })
 
-  const [playMusic, { stop: stopMusic }] = useSound(SFX.ANSWERS.MUSIC, {
+  const [playMusic, { stop: stopMusic }] = useBrandingSound(SFX.ANSWERS.MUSIC, {
     volume: 0.2,
     onplay: () => {
       setIsMusicPlaying(true)

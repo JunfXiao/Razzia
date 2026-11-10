@@ -119,7 +119,10 @@
     "color": "Renk",
     "image": "Görsel",
     "text": "Metin",
-    "logoTextPlaceholder": "Logo metni"
+    "logoTextPlaceholder": "Logo metni",
+    "soundEffects": "Ses efektleri",
+    "on": "Açık",
+    "off": "Kapalı"
   },
   "setup": {
     "title": "Yeni test",

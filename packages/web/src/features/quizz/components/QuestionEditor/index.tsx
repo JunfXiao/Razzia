@@ -17,20 +17,21 @@ import { useFormContext, useWatch } from "react-hook-form"
 const QuestionEditor = () => {
   const { currentQuestion, currentQuestionId, isRemoving } = useQuizzEditor()
   const { control } = useFormContext<QuizzFormValues>()
-  const [background, backgroundColor, logo, logoText] = useWatch({
+  const [background, backgroundColor, logo, logoText, playSoundEffects] = useWatch({
     control,
     name: [
       "branding.background",
       "branding.backgroundColor",
       "branding.logo",
       "branding.logoText",
+      "branding.playSoundEffects"
     ],
   })
   const { setBranding } = useGameBrandingStore()
 
   useEffect(() => {
-    setBranding({ background, backgroundColor, logo, logoText })
-  }, [background, backgroundColor, logo, logoText, setBranding])
+    setBranding({ background, backgroundColor, logo, logoText, playSoundEffects })
+  }, [background, backgroundColor, logo, logoText, playSoundEffects, setBranding])
 
   useEffect(() => () => setBranding(null), [setBranding])
 

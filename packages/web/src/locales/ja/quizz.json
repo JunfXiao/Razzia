@@ -119,7 +119,10 @@
     "color": "色",
     "image": "画像",
     "text": "テキスト",
-    "logoTextPlaceholder": "ロゴのテキスト"
+    "logoTextPlaceholder": "ロゴのテキスト",
+    "soundEffects": "効果音",
+    "on": "オン",
+    "off": "オフ"
   },
   "setup": {
     "title": "新しいクイズ",

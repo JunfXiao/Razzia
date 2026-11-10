@@ -29,7 +29,7 @@ type BrandingKey = keyof NonNullable<QuizzFormValues["branding"]>
 const useSetBranding = () => {
   const { setValue } = useFormContext<QuizzFormValues>()
 
-  return (name: BrandingKey, value: string | undefined) =>
+  return (name: BrandingKey, value: string | boolean | undefined) =>
     setValue(`branding.${name}`, value, { shouldDirty: true })
 }
 
@@ -228,6 +228,35 @@ const LogoField = () => {
   )
 }
 
+
+const SoundEffectFields = () => {
+  const { control } = useFormContext<QuizzFormValues>()
+  const shouldPlaySound = useWatch({
+    control,
+    name: "branding.playSoundEffects",
+  })
+  const setBranding = useSetBranding()
+  const { t } = useTranslation()
+
+  return (
+    <div className="flex flex-col gap-2">
+      <div className="flex items-center justify-between gap-3">
+        <p className="text-foreground font-semibold">
+          {t("quizz:branding.soundEffects")}
+        </p>
+        <ToggleGroup
+          value={shouldPlaySound ? "on" : "off"}
+          onChange={(value) => setBranding("playSoundEffects", value === "on")}
+          items={[
+            { value: "off", label: t("quizz:branding.off") },
+            { value: "on", label: t("quizz:branding.on") },
+          ]}
+        />
+      </div>
+    </div>
+  )
+}
+
 const BrandingFields = () => {
   const { t } = useTranslation()
 
@@ -235,6 +264,7 @@ const BrandingFields = () => {
     <>
       <BackgroundField />
       <LogoField />
+      <SoundEffectFields />
       <p className="text-muted-foreground text-sm">
         {t("quizz:branding.hint")}
       </p>

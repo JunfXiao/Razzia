@@ -2,14 +2,14 @@ import { MEDIA_TYPES } from "@razzia/common/constants"
 import type { CommonStatusDataMap } from "@razzia/common/types/game/status"
 import { SFX } from "@razzia/web/features/game/utils/constants"
 import { useEffect } from "react"
-import useSound from "use-sound"
+import { useBrandingSound } from "../../hooks/useBrandingSound"
 
 interface Props {
   data: CommonStatusDataMap["SHOW_QUESTION"]
 }
 
 const Question = ({ data: { question, media, cooldown } }: Props) => {
-  const [sfxShow] = useSound(SFX.SHOW_SOUND, { volume: 0.5 })
+  const [sfxShow] = useBrandingSound(SFX.SHOW_SOUND, { volume: 0.5 })
 
   useEffect(() => {
     sfxShow()

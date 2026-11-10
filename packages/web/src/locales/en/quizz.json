@@ -119,7 +119,10 @@
     "color": "Color",
     "image": "Image",
     "text": "Text",
-    "logoTextPlaceholder": "Logo text"
+    "logoTextPlaceholder": "Logo text",
+    "soundEffects": "Sound effects",
+    "on": "On",
+    "off": "Off"
   },
   "setup": {
     "title": "New quizz",

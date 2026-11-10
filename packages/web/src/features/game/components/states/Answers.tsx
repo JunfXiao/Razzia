@@ -15,7 +15,7 @@ import clsx from "clsx"
 import { CircleQuestionMark, Image, Video } from "lucide-react"
 import { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
-import useSound from "use-sound"
+import { useBrandingSound } from "../../hooks/useBrandingSound"
 
 // Tailwind sm breakpoint
 const MOBILE_BREAKPOINT = 640
@@ -50,11 +50,11 @@ const Answers = ({
   const showMediaInPopup =
     Boolean(player) && width < MOBILE_BREAKPOINT && isPopupMedia
 
-  const [sfxPop] = useSound(SFX.ANSWERS.SOUND, {
+  const [sfxPop] = useBrandingSound(SFX.ANSWERS.SOUND, {
     volume: 0.1,
   })
 
-  const [playMusic, { stop: stopMusic }] = useSound(SFX.ANSWERS.MUSIC, {
+  const [playMusic, { stop: stopMusic }] = useBrandingSound(SFX.ANSWERS.MUSIC, {
     volume: 0.2,
     interrupt: true,
     loop: true,

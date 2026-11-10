@@ -42,6 +42,7 @@ const quizzBrandingValidator = z.object({
     .min(1, "errors:quizz.invalidBranding")
     .max(MAX_LOGO_TEXT_LENGTH, "errors:quizz.invalidBranding")
     .optional(),
+  playSoundEffects: z.boolean().optional(),
 })
 
 export const mediaUploadValidator = z.object({
@@ -171,14 +172,14 @@ export const normalizeLegacyQuizz = (data: unknown): unknown => {
             ? question.solutions
             : [question.solutions],
         ...(isRecord(question.options) &&
-        question.type !== QUESTION_TYPES.ESTIMATION &&
-        question.type !== QUESTION_TYPES.TEXT
+          question.type !== QUESTION_TYPES.ESTIMATION &&
+          question.type !== QUESTION_TYPES.TEXT
           ? {
-              options: {
-                scoringMode: SCORING_MODES.BALANCED,
-                ...question.options,
-              },
-            }
+            options: {
+              scoringMode: SCORING_MODES.BALANCED,
+              ...question.options,
+            },
+          }
           : {}),
       }
     }),

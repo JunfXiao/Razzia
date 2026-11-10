@@ -5,7 +5,7 @@ import { usePlayerStore } from "@razzia/web/features/game/stores/player"
 import { SFX } from "@razzia/web/features/game/utils/constants"
 import { useEffect } from "react"
 import { useTranslation } from "react-i18next"
-import useSound from "use-sound"
+import { useBrandingSound } from "../../hooks/useBrandingSound"
 
 interface Props {
   data: CommonStatusDataMap["SHOW_RESULT"]
@@ -17,7 +17,7 @@ const Result = ({
   const { updatePlayer } = usePlayerStore()
   const { t } = useTranslation()
 
-  const [sfxResults] = useSound(SFX.RESULTS_SOUND, {
+  const [sfxResults] = useBrandingSound(SFX.RESULTS_SOUND, {
     volume: 0.2,
   })
 

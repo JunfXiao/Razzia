@@ -119,7 +119,10 @@
     "color": "Màu",
     "image": "Hình ảnh",
     "text": "Chữ",
-    "logoTextPlaceholder": "Chữ của logo"
+    "logoTextPlaceholder": "Chữ của logo",
+    "soundEffects": "Hiệu ứng âm thanh",
+    "on": "Bật",
+    "off": "Tắt"
   },
   "setup": {
     "title": "Bộ câu hỏi mới",

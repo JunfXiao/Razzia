@@ -40,6 +40,7 @@ export interface QuizzBranding {
   backgroundColor?: string
   logo?: string
   logoText?: string
+  playSoundEffects?: boolean
 }
 
 export interface Player {

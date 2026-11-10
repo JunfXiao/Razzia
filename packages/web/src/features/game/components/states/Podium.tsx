@@ -4,7 +4,7 @@ import useScreenSize from "@razzia/web/hooks/useScreenSize"
 import clsx from "clsx"
 import { useEffect, useState } from "react"
 import ReactConfetti from "react-confetti"
-import useSound from "use-sound"
+import { useBrandingSound } from "../../hooks/useBrandingSound"
 
 interface Props {
   data: ManagerStatusDataMap["FINISHED"]
@@ -17,12 +17,12 @@ const usePodiumAnimation = (topLength: number) => {
   const hasSuspense = topLength >= SUSPENSE_MIN_PLAYERS
   const [apparition, setApparition] = useState(() => (hasSuspense ? 0 : 4))
 
-  const [sfxtThree] = useSound(SFX.PODIUM.THREE, { volume: 0.1 })
-  const [sfxSecond] = useSound(SFX.PODIUM.SECOND, { volume: 0.1 })
-  const [sfxRool, { stop: sfxRoolStop }] = useSound(SFX.PODIUM.SNEAR_ROOL, {
+  const [sfxtThree] = useBrandingSound(SFX.PODIUM.THREE, { volume: 0.1 })
+  const [sfxSecond] = useBrandingSound(SFX.PODIUM.SECOND, { volume: 0.1 })
+  const [sfxRool, { stop: sfxRoolStop }] = useBrandingSound(SFX.PODIUM.SNEAR_ROOL, {
     volume: 0.1,
   })
-  const [sfxFirst] = useSound(SFX.PODIUM.FIRST, { volume: 0.1 })
+  const [sfxFirst] = useBrandingSound(SFX.PODIUM.FIRST, { volume: 0.1 })
 
   useEffect(() => {
     const actions: Partial<Record<number, () => void>> = {

@@ -119,7 +119,10 @@
     "color": "Couleur",
     "image": "Image",
     "text": "Texte",
-    "logoTextPlaceholder": "Texte du logo"
+    "logoTextPlaceholder": "Texte du logo",
+    "soundEffects": "Effets sonores",
+    "on": "Activés",
+    "off": "Désactivés"
   },
   "setup": {
     "title": "Nouveau quiz",

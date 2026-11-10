@@ -6,6 +6,7 @@ import { create } from "zustand"
 
 interface ManagerState<T> {
   gameId: string | null
+  quizzId: string | null
   inviteCode: string | null
   settings: GameSettings
   locked: boolean
@@ -23,6 +24,7 @@ type ManagerStore<T> = ManagerState<T> & {
 
 const initialState: ManagerState<StatusDataMap> = {
   gameId: null,
+  quizzId: null,
   inviteCode: null,
   settings: createDefaultGameSettings(),
   locked: false,

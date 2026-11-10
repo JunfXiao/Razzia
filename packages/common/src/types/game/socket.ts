@@ -78,6 +78,7 @@ export interface ServerToClientEvents {
   // Manager events
   [EVENTS.MANAGER.SUCCESS_RECONNECT]: (_data: {
     gameId: string
+    quizzId: string | null
     inviteCode: string
     settings: GameSettings
     locked: boolean

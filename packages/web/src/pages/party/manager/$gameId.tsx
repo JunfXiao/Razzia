@@ -15,6 +15,8 @@ import {
   GAME_STATE_COMPONENTS_MANAGER,
   isKeyOf,
 } from "@razzia/web/features/game/utils/constants"
+import { quizzLandingQuery } from "@razzia/web/features/manager/queries"
+import { useQueryClient } from "@tanstack/react-query"
 import { createFileRoute, useNavigate, useParams } from "@tanstack/react-router"
 import { useEffect } from "react"
 import toast from "react-hot-toast"
@@ -22,10 +24,12 @@ import { useTranslation } from "react-i18next"
 
 const ManagerGamePage = () => {
   const navigate = useNavigate()
+  const queryClient = useQueryClient()
   const { gameId: gameIdParam } = useParams({ from: "/party/manager/$gameId" })
   const { socket, isConnected } = useSocket()
   const {
     gameId,
+    quizzId,
     status,
     updateManager,
     addReveal,
@@ -61,6 +65,7 @@ const ManagerGamePage = () => {
     EVENTS.MANAGER.SUCCESS_RECONNECT,
     ({
       gameId: reconnectGameId,
+      quizzId: reconnectQuizzId,
       inviteCode,
       settings,
       locked,
@@ -73,6 +78,7 @@ const ManagerGamePage = () => {
       setBranding(branding)
       updateManager({
         gameId: reconnectGameId,
+        quizzId: reconnectQuizzId,
         inviteCode,
         settings,
         locked,
@@ -104,8 +110,25 @@ const ManagerGamePage = () => {
     updateManager({ locked })
   })
 
+  // After a game is over, go back to the page of its quizz (the one the
+  // players and the host started from), falling back to the manager config.
+  const leaveToQuizzPage = () => {
+    if (quizzId) {
+      // Drop the cached landing data, which may still say the game is active.
+      queryClient.removeQueries({ queryKey: quizzLandingQuery(quizzId).queryKey })
+      navigate({ to: "/q/$quizzId", params: { quizzId } })
+    } else {
+      navigate({ to: "/manager/config" })
+    }
+  }
+
   useEvent(EVENTS.GAME.RESET, (message) => {
-    navigate({ to: "/manager/config" })
+    if (message === "errors:game.endedByManager") {
+      leaveToQuizzPage()
+    } else {
+      navigate({ to: "/manager/config" })
+    }
+
     resetManager()
     setQuestionStates(null)
     toast.error(t(message))
@@ -117,7 +140,7 @@ const ManagerGamePage = () => {
     }
 
     if (status.name === STATUS.FINISHED || status.name === STATUS.SUMMARY) {
-      navigate({ to: "/manager/config" })
+      leaveToQuizzPage()
       resetManager()
       setQuestionStates(null)
 

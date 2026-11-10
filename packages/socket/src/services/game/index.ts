@@ -275,6 +275,7 @@ class Game {
 
     socket.emit(EVENTS.MANAGER.SUCCESS_RECONNECT, {
       gameId: this.gameId,
+      quizzId: this.quizzId,
       inviteCode: this.inviteCode,
       settings: this._settings,
       locked: this._locked,

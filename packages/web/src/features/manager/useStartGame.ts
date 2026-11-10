@@ -19,10 +19,11 @@ export const useStartGame = () => {
 
   return useMutation({
     mutationFn: createGame,
-    onSuccess: ({ gameId, inviteCode, branding }) => {
+    onSuccess: ({ gameId, inviteCode, branding }, quizzId) => {
       setBranding(branding)
       updateManager({
         gameId,
+        quizzId,
         inviteCode,
         status: createStatus(STATUS.SHOW_ROOM, {
           text: "game:waitingForPlayers",
